@@ -364,7 +364,7 @@
         <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
         <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
       </svg>
-      Start Narrator
+      Start Narrator <span class="text-xs opacity-75">(Tap screen first on Android)</span>
     </button>
     <button id="stopNarrator" class="narrator-button">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1537,61 +1537,117 @@
         particlesContainer.appendChild(particle);
       }
       
-      // COMPLETELY REWRITTEN NARRATOR FUNCTIONALITY
-      // This implementation focuses on working with multiple voice types and improved reliability
+      // ENHANCED NARRATOR FUNCTIONALITY WITH ANDROID SUPPORT
+      // This implementation addresses cross-platform compatibility issues
       
       // Initialize speech synthesis
       const synth = window.speechSynthesis;
       let selectedVoice = null;
       let isSpeaking = false;
       let speechQueue = [];
+      let userInteracted = false;
       
-      // Function to find available voice with better fallback options
-      async function findAvailableVoice() {
+      // Detect if running on Android
+      const isAndroid = /Android/i.test(navigator.userAgent);
+      console.log("Device detection: " + (isAndroid ? "Android" : "Non-Android"));
+      
+      // Function to find appropriate voice based on platform
+      async function findBestVoice() {
         return new Promise((resolve) => {
+          function processList(voiceList) {
+            if (!voiceList || voiceList.length === 0) {
+              console.error("No voices available");
+              resolve(null);
+              return;
+            }
+            
+            console.log("Available voices:", voiceList.map(v => `${v.name} (${v.lang})`).join(", "));
+            let voice;
+            
+            // Different voice selection strategy based on platform
+            if (isAndroid) {
+              // On Android, prioritize Google voices
+              voice = 
+                voiceList.find(v => v.name.includes('Google') && v.lang.includes('en')) ||
+                voiceList.find(v => v.name.includes('Google')) ||
+                voiceList.find(v => v.lang.includes('en')) ||
+                voiceList[0];
+                
+              console.log("Selected Android voice:", voice?.name || "None found");
+            } else {
+              // On desktop, prioritize Microsoft voices
+              voice = 
+                voiceList.find(v => v.name.includes('Microsoft Mark')) ||
+                voiceList.find(v => v.name.includes('Microsoft David')) ||
+                voiceList.find(v => v.name.includes('Microsoft Zira')) ||
+                voiceList.find(v => v.lang.includes('en-US')) ||
+                voiceList.find(v => v.lang.includes('en')) ||
+                voiceList[0];
+                
+              console.log("Selected desktop voice:", voice?.name || "None found");
+            }
+            
+            resolve(voice);
+          }
+          
           // Get voices - if empty, wait for voiceschanged event
           let voices = synth.getVoices();
           
-          if (voices.length > 0) {
+          if (voices && voices.length > 0) {
             processList(voices);
           } else {
+            // Set a timeout in case voiceschanged never fires
+            const timeoutId = setTimeout(() => {
+              console.warn("Voice list timeout - trying with whatever is available");
+              processList(synth.getVoices() || []);
+            }, 1000);
+            
             // Wait for voices to load
             synth.addEventListener('voiceschanged', () => {
+              clearTimeout(timeoutId);
               voices = synth.getVoices();
               processList(voices);
             }, { once: true });
           }
-          
-          function processList(voiceList) {
-            console.log("Available voices:", voiceList.map(v => v.name).join(", "));
-            
-            // Prioritized list of voices to try
-            let voice = 
-              // First try Microsoft Mark
-              voiceList.find(v => v.name.includes('Microsoft Mark')) ||
-              // Then try David or Zira
-              voiceList.find(v => v.name.includes('Microsoft David')) ||
-              voiceList.find(v => v.name.includes('Microsoft Zira')) ||
-              // Then any English voice
-              voiceList.find(v => v.lang.includes('en')) ||
-              // Finally, just use the first available voice
-              voiceList[0];
-            
-            console.log("Selected voice:", voice ? voice.name : "No voice found");
-            resolve(voice);
-          }
         });
       }
       
-      // Initialize voice once the document is fully loaded
-      document.addEventListener('DOMContentLoaded', async () => {
-        try {
-          selectedVoice = await findAvailableVoice();
-          console.log('Voice initialized:', selectedVoice?.name || 'No voice found');
-        } catch (error) {
-          console.error('Error initializing voice:', error);
+      // Function to ensure user interaction has occurred
+      function ensureUserInteraction() {
+        if (userInteracted) return true;
+        
+        if (isAndroid) {
+          alert("Tap the screen once to enable narration on Android.");
+          return false;
         }
-      });
+        
+        return true;
+      }
+      
+      // Listen for any user interaction to enable speech
+      document.addEventListener('click', function() {
+        userInteracted = true;
+        console.log("User interaction detected - speech enabled");
+        
+        // Try a quick test speech if on Android
+        if (isAndroid && !selectedVoice) {
+          setTimeout(async () => {
+            try {
+              const testVoice = await findBestVoice();
+              if (testVoice) {
+                const testUtterance = new SpeechSynthesisUtterance("Speech enabled.");
+                testUtterance.voice = testVoice;
+                testUtterance.volume = 0.3; // Quieter test
+                synth.cancel();
+                setTimeout(() => synth.speak(testUtterance), 100);
+                selectedVoice = testVoice;
+              }
+            } catch (error) {
+              console.error("Test speech failed:", error);
+            }
+          }, 500);
+        }
+      }, { once: true });
       
       // Function to cancel all speech
       function stopSpeaking() {
@@ -1615,7 +1671,7 @@
           utterance.voice = selectedVoice;
         }
         
-        utterance.rate = 0.9;  // Slightly slower for better comprehension
+        utterance.rate = isAndroid ? 0.95 : 0.9; // Slightly adjust for platform
         utterance.pitch = 1.0;
         utterance.volume = 1.0;
         
@@ -1653,9 +1709,14 @@
       
       // Start narrating the page with better error handling
       document.getElementById('startNarrator').addEventListener('click', async () => {
-        // Display a message for mobile users
-        if (window.innerWidth < 768) {
-          alert("Speech synthesis may not work on all mobile devices. If you don't hear narration, please try on a desktop browser.");
+        // Ensure user has interacted with the page (important for Android)
+        if (!ensureUserInteraction()) {
+          return; // Wait for user interaction
+        }
+        
+        // Platform-specific guidance
+        if (isAndroid) {
+          alert("Android detected. If narration doesn't work, please:\n1. Make sure Google Text-to-Speech is enabled in your Accessibility settings\n2. Try using Firefox for Android instead of Chrome\n3. Increase your device volume");
         }
         
         // If already speaking, stop first
@@ -1666,9 +1727,13 @@
         // Ensure we have a voice
         if (!selectedVoice) {
           try {
-            selectedVoice = await findAvailableVoice();
+            selectedVoice = await findBestVoice();
             if (!selectedVoice) {
-              alert("Could not find a voice for narration. Please try a different browser.");
+              if (isAndroid) {
+                alert("No voice found. Please check your Android Text-to-Speech settings and try Firefox instead of Chrome.");
+              } else {
+                alert("Could not find a voice for narration. Please try a different browser.");
+              }
               return;
             }
           } catch (error) {

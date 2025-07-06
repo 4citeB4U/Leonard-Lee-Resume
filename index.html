@@ -1,0 +1,4649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+  <title>Leonard Lee - Professional Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="agent-lee.css">
+  <style>
+    :root {
+      --color-primary: #6366f1;
+      --color-primary-light: #818cf8;
+      --color-secondary: #f59e0b;
+      --color-light: #f3f4f6;
+      --color-dark: #1e293b;
+      --color-gray: #64748b;
+      --font-primary: 'Poppins', sans-serif;
+      --font-secondary: 'Montserrat', sans-serif;
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: var(--font-primary);
+      line-height: 1.6;
+      color: var(--color-dark);
+      background-color: #f9fafb;
+      overflow-x: hidden;
+    }
+    
+    .dark-mode {
+      --color-light: #1e293b;
+      --color-dark: #f3f4f6;
+      --color-gray: #94a3b8;
+      background-color: #0f172a;
+    }
+    
+    /* Project item styles */
+    .project-item {
+      background-color: rgba(99, 102, 241, 0.05);
+      padding: 1.25rem;
+      border-radius: 12px;
+      transition: var(--transition);
+    }
+    
+    .dark-mode .project-item {
+      background-color: rgba(99, 102, 241, 0.1);
+    }
+    
+    .project-item:hover {
+      background-color: rgba(99, 102, 241, 0.1);
+      transform: translateY(-5px);
+    }
+    
+    .dark-mode .project-item:hover {
+      background-color: rgba(99, 102, 241, 0.2);
+    }
+    
+    .project-name {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Loader */
+    .loader-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    
+    .dark-mode .loader-container {
+      background-color: #0f172a;
+    }
+    
+    .loader {
+      width: 100px;
+      height: 100px;
+      position: relative;
+    }
+    
+    .loader-circle {
+      border: 4px solid rgba(99, 102, 241, 0.2);
+      border-top: 4px solid var(--color-primary);
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      animation: spin 1.5s linear infinite;
+    }
+    
+    .loader-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Header with thin clean design */
+    .header {
+      background-color: var(--color-primary);
+      padding: 0.5rem 0;
+      position: relative;
+      z-index: 10;
+      height: 60px; /* Thin clean header */
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+=======
+  <title>Leonard Lee Resume</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #000000; /* Pure black background */
+      color: white;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(2px);
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .name-particle {
+      position: absolute;
+      pointer-events: none;
+      transform-origin: center;
+      z-index: 2;
+      filter: blur(0.5px);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .scrolling-message {
+      position: fixed;
+      left: 20px;
+      top: 30%;
+      width: 220px;
+      padding: 1rem;
+      background-color: rgba(10, 12, 16, 0.9);
+      border: 1px solid rgba(0, 162, 255, 0.6);
+      border-radius: 0.75rem;
+      box-shadow: 0 0 25px rgba(0, 162, 255, 0.4);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      pointer-events: none;
+      font-size: 0.85rem;
+      margin-right: 20px;
+    }
+    
+    .scrolling-message-content {
+      color: white;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      animation: scrollMessage 25s linear forwards;
+      text-align: left;
+    }
+    
+    @keyframes scrollMessage {
+      0% {
+        transform: translateY(100%);
+      }
+      5% {
+        transform: translateY(85%);
+      }
+      95% {
+        transform: translateY(-85%);
+      }
+      100% {
+        transform: translateY(-100%);
+      }
+    }
+    
+    .glass-card {
+      background-color: rgba(31, 41, 55, 0.4);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(55, 65, 81, 0.5);
+      border-radius: 0.75rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      transition: all 1s ease-out;
+      transform: translateY(0);
+      opacity: 1;
+>>>>>>> e987ad9ea31394d031afa9e5217c4761fd9c1eba
+      position: relative;
+      z-index: 2;
+    }
+    
+<<<<<<< HEAD
+    .header-content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      text-align: left;
+      color: white;
+    }
+    
+    .profile-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 2rem;
+      transition: var(--transition);
+      margin-top: 150px; /* Adjusted to position card properly after profile image */
+    }
+    
+    .dark-mode .profile-card {
+      background: #1e293b;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+    }
+    
+    .profile-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      position: relative;
+    }
+    
+    .profile-img-container {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 250px;
+      height: 250px;
+      z-index: 101;
+    }
+    
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      box-shadow: 0 15px 30px -5px rgba(99, 102, 241, 0.4);
+      background: linear-gradient(135deg, #6366f1, #818cf8);
+    }
+    
+    .profile-icon {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 5rem;
+      color: white;
+    }
+    
+    .profile-details {
+      text-align: center;
+      margin-top: 1.5rem;
+      margin-left: 280px; /* Add space to the left to accommodate profile image */
+    }
+    
+    .tech-skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .tech-icon {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(99, 102, 241, 0.1);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      transition: var(--transition);
+    }
+    
+    .tech-icon:hover {
+      background-color: var(--color-primary);
+      color: white;
+      transform: translateY(-5px);
+    }
+    
+    .profile-name {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--color-dark);
+      font-family: var(--font-secondary);
+    }
+    
+    .profile-title {
+      font-size: 1.25rem;
+      color: var(--color-secondary);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    
+    .profile-bio {
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+      color: var(--color-gray);
+      line-height: 1.7;
+    }
+    
+    .contact-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 1rem;
+=======
+    .agent-logo {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .agent-logo-glow {
+      position: absolute;
+      inset: -1rem;
+      transform: scale(1.25);
+      border-radius: 9999px;
+      background-color: rgba(59, 130, 246, 0.3);
+      filter: blur(12px);
+      animation: pulse 2s infinite;
+    }
+    
+    .skill-section h3 {
+      color: #fcd34d;
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .skill-item {
+      color: #d1d5db;
+      margin-bottom: 0.25rem;
+    }
+    
+    .project-card {
+      background-color: rgba(31, 41, 55, 0.5);
+      border: 1px solid rgba(55, 65, 81, 0.5);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .tag {
+      background-color: rgba(30, 58, 138, 0.5);
+      color: #93c5fd;
+      border-radius: 0.25rem;
+      padding: 0.125rem 0.5rem;
+      font-size: 0.75rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 0.9;
+      }
+      50% {
+        opacity: 0.6;
+      }
+    }
+    
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) translateX(0);
+      }
+      25% {
+        transform: translateY(-15px) translateX(15px);
+      }
+      50% {
+        transform: translateY(0) translateX(30px);
+      }
+      75% {
+        transform: translateY(15px) translateX(15px);
+      }
+    }
+    
+    .spin {
+      animation: spin 10s linear infinite;
+    }
+    
+    .spin-reverse {
+      animation: spin 15s linear infinite reverse;
+>>>>>>> e987ad9ea31394d031afa9e5217c4761fd9c1eba
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+<<<<<<< HEAD
+      color: var(--color-gray);
+      transition: var(--transition);
+    }
+    
+    .contact-item:hover {
+      color: var(--color-primary);
+    }
+    
+    .contact-icon {
+      color: var(--color-primary);
+      font-size: 1.2rem;
+    }
+    
+    /* Mode Toggle */
+    .mode-toggle {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 100;
+      width: 50px;
+      height: 50px;
+      background-color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transition: var(--transition);
+    }
+    
+    .dark-mode .mode-toggle {
+      background-color: #1e293b;
+    }
+    
+    .mode-toggle i {
+      font-size: 1.5rem;
+      color: var(--color-dark);
+      transition: var(--transition);
+    }
+    
+    /* Content Section */
+    .main-content {
+      padding: 2rem 0 4rem;
+      position: relative;
+    }
+    
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--font-secondary);
+      position: relative;
+    }
+    
+    .section-title::before {
+      content: '';
+      width: 30px;
+      height: 3px;
+      background-color: var(--color-primary);
+      display: block;
+      border-radius: 3px;
+    }
+    
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    /* Cards */
+    .card {
+      background-color: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transition: var(--transition);
+      position: relative;
+    }
+    
+    .dark-mode .card {
+      background-color: #1e293b;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    
+    .card-header {
+      padding: 1.5rem 1.5rem 0;
+    }
+    
+    .card-body {
+      padding: 1.5rem;
+    }
+    
+    /* Experience Timeline */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 2px;
+      background-color: var(--color-primary-light);
+      opacity: 0.3;
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+    }
+    
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .timeline-dot {
+      position: absolute;
+      left: -2rem;
+      top: 0.5rem;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background-color: var(--color-primary);
+      z-index: 1;
+    }
+    
+    .timeline-date {
+      font-size: 0.875rem;
+      color: var(--color-gray);
+      margin-bottom: 0.5rem;
+    }
+    
+    .timeline-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      margin-bottom: 0.25rem;
+    }
+    
+    .timeline-company {
+      font-size: 1rem;
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+    
+    .timeline-description {
+      color: var(--color-gray);
+    }
+    
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .skill-category {
+      margin-bottom: 2rem;
+    }
+    
+    .skill-category-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+    }
+    
+    .skill-item {
+      background-color: rgba(99, 102, 241, 0.1);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      color: var(--color-dark);
+      font-weight: 500;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .dark-mode .skill-item {
+      background-color: rgba(99, 102, 241, 0.2);
+    }
+    
+    .skill-item:hover {
+      background-color: var(--color-primary);
+      color: white;
+    }
+    
+    .skill-icon {
+      color: var(--color-primary);
+      font-size: 1.25rem;
+      transition: var(--transition);
+    }
+    
+    .skill-item:hover .skill-icon {
+      color: white;
+    }
+    
+    /* Projects Section */
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .project-img {
+      height: 200px;
+      background-color: rgba(99, 102, 241, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+    
+    .project-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      margin-bottom: 0.5rem;
+    }
+    
+    .project-description {
+      color: var(--color-gray);
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+    
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .tag {
+      background-color: rgba(99, 102, 241, 0.1);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.875rem;
+      color: var(--color-primary);
+      transition: var(--transition);
+    }
+    
+    .dark-mode .tag {
+      background-color: rgba(99, 102, 241, 0.2);
+    }
+    
+    .tag:hover {
+      background-color: var(--color-primary);
+      color: white;
+    }
+    
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--color-primary);
+      font-weight: 500;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    .project-link:hover {
+      color: var(--color-secondary);
+    }
+    
+    /* Education Section */
+    .education-item {
+      margin-bottom: 2rem;
+    }
+    
+    .education-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .education-degree {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      margin-bottom: 0.25rem;
+    }
+    
+    .education-school {
+      font-size: 1rem;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .education-date {
+      font-size: 0.875rem;
+      color: var(--color-gray);
+      margin-bottom: 0.75rem;
+    }
+    
+    .education-description {
+      color: var(--color-gray);
+    }
+    
+    /* Certifications Section */
+    .certification-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .certification-item {
+      background-color: rgba(99, 102, 241, 0.05);
+      padding: 1.25rem;
+      border-radius: 12px;
+      transition: var(--transition);
+    }
+    
+    .dark-mode .certification-item {
+      background-color: rgba(99, 102, 241, 0.1);
+    }
+    
+    .certification-item:hover {
+      background-color: rgba(99, 102, 241, 0.1);
+    }
+    
+    .dark-mode .certification-item:hover {
+      background-color: rgba(99, 102, 241, 0.2);
+    }
+    
+    .certification-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      margin-bottom: 0.5rem;
+    }
+    
+    .certification-issuer {
+      font-size: 0.875rem;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Community Section */
+    .community-item {
+      margin-bottom: 1.5rem;
+    }
+    
+    .community-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .community-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      margin-bottom: 0.5rem;
+    }
+    
+    .community-description {
+      color: var(--color-gray);
+    }
+    
+    /* Table Styles */
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    
+    .info-table th,
+    .info-table td {
+      padding: 1rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    
+    .info-table th {
+      width: 25%;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      background-color: rgba(99, 102, 241, 0.05);
+      border-bottom: 2px solid var(--color-primary);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      vertical-align: top;
+    }
+    
+    .info-table td {
+      color: var(--color-gray);
+      border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      width: 75%;
+    }
+    
+    .dark-mode .info-table th {
+      background-color: rgba(99, 102, 241, 0.1);
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: white;
+      padding: 2rem 0;
+      text-align: center;
+      margin-top: 4rem;
+      position: relative;
+    }
+    
+    .dark-mode .footer {
+      background-color: #1e293b;
+    }
+    
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    
+    .footer-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      letter-spacing: 1px;
+    }
+    
+    .footer-text {
+      color: var(--color-gray);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(99, 102, 241, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--color-primary);
+      transition: var(--transition);
+    }
+    
+    .social-link:hover {
+      background-color: var(--color-primary);
+      color: white;
+    }
+    
+    .qr-code {
+      width: 120px;
+      height: 120px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 1rem auto;
+    }
+    
+    .qr-code img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Decorative Elements */
+    .bg-shapes {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .shape {
+      position: absolute;
+      opacity: 0.15;
+      border-radius: 50%;
+      background-color: white;
+    }
+    
+    .shape-1 {
+      width: 200px;
+      height: 200px;
+      top: -100px;
+      left: -100px;
+    }
+    
+    .shape-2 {
+      width: 300px;
+      height: 300px;
+      top: 20%;
+      right: -150px;
+    }
+    
+    .shape-3 {
+      width: 150px;
+      height: 150px;
+      bottom: 10%;
+      left: 20%;
+    }
+    
+    /* Diagonal Divider */
+    .diagonal-divider {
+      position: relative;
+      height: 150px;
+      margin-top: -150px;
+      background-color: #f9fafb;
+      clip-path: polygon(0 0, 100% 100%, 100% 100%, 0% 100%);
+    }
+    
+    .dark-mode .diagonal-divider {
+      background-color: #0f172a;
+    }
+    
+    /* Animations */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+    
+    .float-animation {
+      animation: float 5s ease-in-out infinite;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header {
+        padding: 1rem 0;
+        margin-bottom: 7rem;
+      }
+      
+      .profile-card {
+        margin-top: -6rem;
+      }
+      
+      .profile-img {
+        width: 150px;
+        height: 150px;
+        margin-top: -75px;
+      }
+      
+      .profile-name {
+        font-size: 2rem;
+      }
+      
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .skills-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+      
+      .certification-list {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .profile-img {
+        width: 120px;
+        height: 120px;
+        margin-top: -60px;
+      }
+      
+      .profile-name {
+        font-size: 1.75rem;
+      }
+      
+      .contact-list {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+      }
+    }
+  
+    /* Print Styles */
+    @media print {
+      body {
+        background-color: white !important;
+        color: black !important;
+      }
+      
+      .dark-mode {
+        --color-dark: #000000 !important;
+        --color-light: #ffffff !important;
+        background-color: white !important;
+      }
+      
+      .mode-toggle, 
+      .loader-container,
+      .diagonal-divider,
+      .narration-controls,
+      .header,
+      .footer,
+      .project-link,
+      .download-resume {
+        display: none !important;
+      }
+      
+      .profile-card,
+      .card {
+        box-shadow: none !important;
+        background: white !important;
+        margin-bottom: 1rem !important;
+        page-break-inside: avoid !important;
+      }
+      
+      /* Profile image in print */
+      .profile-img-container {
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 200px !important;
+        height: 200px !important;
+        float: left !important;
+        margin: 0 20px 20px 0 !important;
+      }
+      
+      .profile-img {
+        width: 100% !important;
+        height: 100% !important;
+      }
+      
+      .profile-details {
+        margin-left: 0 !important;
+        text-align: left !important;
+        clear: right !important;
+      }
+      
+      .profile-card {
+        margin-top: 0 !important;
+        padding-top: 2rem !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      
+      /* Force all section content to display */
+      .section {
+        display: block !important;
+        page-break-inside: avoid !important;
+        margin-bottom: 1.5rem !important;
+        break-inside: avoid !important;
+      }
+      
+      /* Force new sections to start on a new page if needed */
+      h2.section-title {
+        page-break-before: auto !important;
+        break-before: auto !important;
+      }
+      
+      .main-content {
+        padding-top: 0 !important;
+        display: block !important;
+      }
+      
+      /* Improve table rendering */
+      .info-table {
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        width: 100% !important;
+        border-collapse: collapse !important;
+        display: table !important;
+        table-layout: fixed !important;
+      }
+      
+      .info-table th {
+        width: 25% !important;
+        word-wrap: break-word !important;
+        vertical-align: top !important;
+        border: 1px solid #ddd !important;
+      }
+      
+      .info-table td {
+        width: 75% !important;
+        word-wrap: break-word !important;
+        border: 1px solid #ddd !important;
+      }
+      
+      /* Ensure text doesn't bleed outside cells */
+      .info-table th,
+      .info-table td {
+        padding: 8px !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        max-width: none !important;
+      }
+      
+      /* Show all sections for printing */
+      section {
+        display: block !important;
+      }
+      
+      /* Force content to be shown */
+      .container, .grid-container, .card-body {
+        display: block !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        width: 100% !important;
+      }
+      
+      /* Improve page settings */
+      @page {
+        margin: 0.5in;
+        size: letter portrait;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Loader -->
+  <div class="loader-container" id="loader" style="opacity: 0; display: none;">
+    <div class="loader">
+      <div class="loader-circle"></div>
+      <div class="loader-text">LL</div>
+    </div>
+  </div>
+
+  <!-- Mode Toggle -->
+  <div class="mode-toggle" id="modeToggle">
+    <i class="fas fa-moon"></i>
+  </div>
+
+  <!-- Thin clean header -->
+  <div class="header">
+    <div class="container">
+      <div class="header-content">
+        <div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile Card -->
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="profile-img-container">
+        <img src="s970brirc7.jpg" alt="Leonard Lee" class="profile-img" style="object-fit: cover; transform: rotate(90deg);"> <!-- Rotated 90 degrees to make person upright -->
+      </div>
+      <div class="profile-details">
+        <h2 class="profile-name">Leonard Lee</h2>
+        <p class="profile-title">Founder, RapidWebDevelop LLC & Agent Lee</p>
+        <div class="tech-skills">
+          <div class="tech-icon" title="HTML5"><i class="fab fa-html5"></i></div>
+          <div class="tech-icon" title="CSS3"><i class="fab fa-css3-alt"></i></div>
+          <div class="tech-icon" title="JavaScript"><i class="fab fa-js"></i></div>
+          <div class="tech-icon" title="React"><i class="fab fa-react"></i></div>
+          <div class="tech-icon" title="Python"><i class="fab fa-python"></i></div>
+          <div class="tech-icon" title="Java"><i class="fab fa-java"></i></div>
+          <div class="tech-icon" title="Node.js"><i class="fab fa-node-js"></i></div>
+          <div class="tech-icon" title="Docker"><i class="fab fa-docker"></i></div>
+          <div class="tech-icon" title="Tailwind CSS"><i class="fab fa-css3"></i></div>
+          <div class="tech-icon" title="Git"><i class="fab fa-git-alt"></i></div>
+        </div>
+        <p class="profile-bio">
+          Experienced developer and entrepreneur with over 15 years in logistics, leadership, and community service. Creator of the LEEWAY™ Standard and founder of RapidWebDevelop LLC, empowering artists with digital ownership through innovative technology solutions.
+        </p>
+        <div class="contact-list">
+          <div class="contact-item">
+            <span class="contact-icon"><i class="fas fa-phone"></i></span>
+            <span>+1-414-303-8580</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+            <span>LeonardLee6@outlook.com</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon"><i class="fab fa-github"></i></span>
+            <a href="https://github.com/4citeB4U" target="_blank">github.com/4citeB4U</a>
+          </div>
+        </div>
+        
+        <!-- Download Resume Buttons -->
+        <div class="download-resume" style="margin-top: 1.5rem;">
+          <button id="printButton" class="download-btn" style="background-color: var(--color-primary); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; margin-right: 1rem; display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-file-pdf"></i> Print as PDF
+          </button>
+          <a href="leonard_lee_resume.csv" download class="download-btn" style="background-color: var(--color-secondary); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem;">
+            <i class="fas fa-file-csv"></i> Download CSV
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <!-- RapidWebDevelop & LEEWAY Standards -->
+      <section class="section">
+        <h2 class="section-title">RapidWebDevelop LLC & LEEWAY™ Standards</h2>
+        <div class="card">
+          <div class="card-body">
+            <table class="info-table">
+              <tbody>
+                <tr>
+                  <th>RapidWebDevelop LLC</th>
+                  <td>
+                    Founded to empower independent artists with true ownership and unprecedented control over their digital presence. 
+                    Artists receive a single-file website—theirs to keep—void of recurring platform fees or commission cuts.
+                  </td>
+                </tr>
+                <tr>
+                  <th>Agent Lee AI Assistant</th>
+                  <td>
+                    An AI assistant with voice, chat, and automation capabilities, embedded with context-persistent technology. 
+                    Agent Lee provides natural language help, quick actions, and context-aware suggestions for artists and users.
+                  </td>
+                </tr>
+                <tr>
+                  <th>LEEWAY™ Standard</th>
+                  <td>
+                    A proprietary methodology standing for <strong>L</strong>ogically <strong>E</strong>nhanced <strong>W</strong>eb <strong>E</strong>ngineering <strong>A</strong>rchitecture <strong>Y</strong>ield. 
+                    It delivers sovereign, high-performance digital platforms that give artists complete control over their future.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Professional Experience Section -->
+      <section class="section">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="card">
+          <div class="card-body">
+            <table class="info-table">
+              <tbody>
+                <tr>
+                  <th>2022 – Present<br>Senior Developer</th>
+                  <td>
+                    <strong>RapidWebDevelop LLC & Agent Lee | Milwaukee, WI</strong><br>
+                    • Founder and primary developer of RapidWebDevelop LLC, an innovative platform delivering single-file websites to artists with no recurring fees<br>
+                    • Created the LEEWAY™ Standard (Logically Enhanced Web Engineering Architecture Yield), a proprietary methodology for delivering sovereign, high-performance digital platforms<br>
+                    • Designed and built Agent Lee, an AI assistant with voice, chat, and automation capabilities featuring context-persistent technology<br>
+                    • Developed AI-integrated systems using FastAPI, Docker, Python, and React for real-time interactions<br>
+                    • Led the creation of tools that empower artists to maintain 100% revenue retention and complete ownership of their digital presence
+                  </td>
+                </tr>
+                <tr>
+                  <th>2008 – Present<br>Owner/Manager</th>
+                  <td>
+                    <strong>Carriers Logistics LLC | Milwaukee, WI</strong><br>
+                    • Developed community-driven services including junk removal and affordable delivery solutions<br>
+                    • Mentored employees facing employment barriers, organized donation drives, and incorporated AI-based tracking systems for fleet optimization<br>
+                    • Created and implemented technologies to improve operational efficiency and customer service
+                  </td>
+                </tr>
+                <tr>
+                  <th>2010 – 2014<br>Night Shift Driver Supervisor</th>
+                  <td>
+                    <strong>Crothall Laundry Services | Oak Creek, WI</strong><br>
+                    • Supervised fleet operations, optimizing logistics routes for efficiency<br>
+                    • Conducted mechanical repairs and preventative maintenance, reducing operational costs by 25%
+                  </td>
+                </tr>
+                <tr>
+                  <th>2006 – 2009<br>Carpenter/Heavy Equipment Operator</th>
+                  <td>
+                    <strong>City of Milwaukee | Milwaukee, WI</strong><br>
+                    • Operated heavy equipment for urban infrastructure improvement projects across Milwaukee neighborhoods<br>
+                    • Collaborated with the Neil Wright team on community development initiatives
+                  </td>
+                </tr>
+                <tr>
+                  <th>2004 – 2007<br>Consultant</th>
+                  <td>
+                    <strong>International Profit Associates | Buffalo Grove, IL</strong><br>
+                    • Built and maintained relationships with clients from diverse socioeconomic backgrounds across Wisconsin<br>
+                    • Provided tailored solutions and delivered workshops on professional development
+                  </td>
+                </tr>
+                <tr>
+                  <th>2001 – 2004<br>Team Manager</th>
+                  <td>
+                    <strong>Nevels Joe Landscape Co. | Grafton, WI</strong><br>
+                    • Managed teams of individuals from various backgrounds, fostering collaboration and mutual respect<br>
+                    • Mentored entry-level employees, providing guidance to overcome obstacles
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section class="section">
+        <h2 class="section-title">Core Competencies</h2>
+        <div class="grid-container">
+          <div class="card">
+            <div class="card-body">
+              <div class="skill-category">
+                <h3 class="skill-category-title">Community & Leadership</h3>
+                <div class="skills-grid">
+                  <div class="skill-item">
+                    <span class="skill-icon"><i class="fas fa-users"></i></span>
+                    <span>Community Outreach</span>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-icon"><i class="fas fa-headphones"></i></span>
+                    <span>Active Listening</span>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-icon"><i class="fas fa-hands-helping"></i></span>
+                    <span>Conflict Resolution</span>
+                  </div>
+                </div>
+              </div>
+              <div class="skill-category">
+                <h3 class="skill-category-title">Management & Organization</h3>
+                <div class="skills-grid">
+                  <div class="skill-item">
+                    <span class="skill-icon"><i class="fas fa-tasks"></i></span>
+                    <span>Resource Allocation</span>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-icon"><i class="fas fa-project-diagram"></i></span>
+                    <span>Program Planning</span>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-icon"><i class="fas fa-clipboard-list"></i></span>
+                    <span>Record-Keeping</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="skill-category">
+                <h3 class="skill-category-title">Technical Skills</h3>
+                <div class="skills-grid">
+                  <div class="skill-item">
+                    <span class="skill-icon"><i class="fas fa-truck"></i></span>
+                    <span>Class A CDL</span>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-icon"><i class="fas fa-tools"></i></span>
+                    <span>Heavy Equipment</span>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-icon"><i class="fas fa-hammer"></i></span>
+                    <span>Carpentry</span>
+                  </div>
+                </div>
+              </div>
+              <div class="skill-category">
+                <h3 class="skill-category-title">Technology</h3>
+                <div class="skills-grid">
+                  <div class="skill-item">
+                    <span class="skill-icon"><i class="fab fa-react"></i></span>
+                    <span>React, TypeScript</span>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-icon"><i class="fab fa-python"></i></span>
+                    <span>Python, FastAPI</span>
+                  </div>
+                  <div class="skill-item">
+                    <span class="skill-icon"><i class="fab fa-docker"></i></span>
+                    <span>Docker</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section class="section">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="grid-container">
+          <div class="card project-card">
+            <div class="card-body">
+              <div class="project-img">
+                <div class="float-animation">
+                  <svg viewBox="0 0 500 500" width="120" height="120">
+                    <circle cx="250" cy="250" r="250" fill="#6366f1" fill-opacity="0.1"></circle>
+                    <circle cx="250" cy="250" r="230" stroke="#6366f1" stroke-width="5" fill="none"></circle>
+                    <circle cx="250" cy="250" r="235" stroke="#818cf8" stroke-width="2" fill="none"></circle>
+                    <circle cx="250" cy="250" r="190" stroke="#6366f1" stroke-width="3" fill="none"></circle>
+                    <circle cx="250" cy="250" r="120" fill="#6366f1" fill-opacity="0.1" stroke="#818cf8" stroke-width="3"></circle>
+                    <text x="250" y="230" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#6366f1" text-anchor="middle">AGENT</text>
+                    <text x="250" y="280" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#6366f1" text-anchor="middle">LEE</text>
+                  </svg>
+                </div>
+              </div>
+              <h3 class="project-title">Agent Lee AI Assistant</h3>
+              <p class="project-description">
+                An AI assistant with voice, chat, and automation capabilities, optimized for professional and personal assistance.
+              </p>
+              <div class="tags">
+                <span class="tag">React</span>
+                <span class="tag">Python</span>
+                <span class="tag">FastAPI</span>
+                <span class="tag">Docker</span>
+                <span class="tag">AI</span>
+              </div>
+              <a href="https://github.com/4citeB4U/agentx23" class="project-link" target="_blank">
+                <i class="fab fa-github"></i> View on GitHub
+              </a>
+            </div>
+          </div>
+          <div class="card project-card">
+            <div class="card-body">
+              <div class="project-img">
+                <div class="float-animation">
+                  <svg viewBox="0 0 500 500" width="120" height="120">
+                    <circle cx="250" cy="250" r="250" fill="#6366f1" fill-opacity="0.1"></circle>
+                    <path d="M 150 200 Q 250 100 350 200 Q 400 250 350 300 Q 250 400 150 300 Q 100 250 150 200" fill="#6366f1" fill-opacity="0.2" stroke="#818cf8" stroke-width="5"></path>
+                    <circle cx="200" cy="220" r="15" fill="#f59e0b"></circle>
+                    <circle cx="300" cy="220" r="15" fill="#f59e0b"></circle>
+                    <path d="M 200 280 Q 250 320 300 280" stroke="#f59e0b" stroke-width="8" fill="none"></path>
+                  </svg>
+                </div>
+              </div>
+              <h3 class="project-title">DirectHealthCare2U</h3>
+              <p class="project-description">
+                Healthcare-focused AI integration system that connects patients with medical resources in underserved communities.
+              </p>
+              <div class="tags">
+                <span class="tag">Healthcare</span>
+                <span class="tag">AI</span>
+                <span class="tag">Python</span>
+                <span class="tag">FastAPI</span>
+              </div>
+              <a href="https://github.com/4citeB4U/DirectHealthCare2U" class="project-link" target="_blank">
+                <i class="fab fa-github"></i> View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Two Column Section -->
+      <div class="grid-container">
+        <!-- Education Column -->
+        <section class="section">
+          <h2 class="section-title">Education</h2>
+          <div class="card">
+            <div class="card-body">
+              <div class="education-item">
+                <h3 class="education-degree">Associate of Applied Science (AAS) – Business</h3>
+                <p class="education-school">Milwaukee Area Technical College</p>
+                <p class="education-date">Graduation: August 2019 | GPA: 3.8</p>
+                <p class="education-description">
+                  Relevant coursework: Leadership & Organizational Behavior, Project Management, Business Ethics, Diversity & Inclusion, Community Development, Nonprofit Management
+=======
+      color: #d1d5db;
+    }
+    
+    .contact-icon {
+      color: #fcd34d;
+    }
+    
+    .experience-item h3 {
+      color: #bfdbfe;
+      font-weight: 600;
+      font-size: 1.125rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .experience-company {
+      color: #fcd34d;
+      margin-bottom: 0.25rem;
+    }
+    
+    .experience-period {
+      color: #9ca3af;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Narrator button styles */
+    .narrator-controls {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 50;
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    .narrator-button {
+      background-color: rgba(30, 58, 138, 0.7);
+      color: white;
+      border: 1px solid rgba(59, 130, 246, 0.5);
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .narrator-button:hover {
+      background-color: rgba(30, 58, 138, 0.9);
+    }
+    
+    /* Added styles for particles to make them more visible */
+    .particles-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+    
+    .footer-link {
+      color: #93c5fd;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-link:hover {
+      color: #ffffff;
+    }
+    
+    /* Added styles for code display */
+    .code-container {
+      background-color: rgba(15, 23, 42, 0.7);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      overflow-x: auto;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    
+    .code {
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.85rem;
+      color: #e2e8f0;
+      white-space: pre;
+    }
+    
+    /* Tabs for code display */
+    .tab-container {
+      display: flex;
+      border-bottom: 1px solid rgba(55, 65, 81, 0.5);
+      margin-bottom: 1rem;
+    }
+    
+    .tab {
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .tab.active {
+      border-bottom: 2px solid #3b82f6;
+      color: #3b82f6;
+    }
+    
+    .tab-content {
+      display: none;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    /* Toggle switch for showing code */
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 20px;
+    }
+    
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #374151;
+      transition: .4s;
+      border-radius: 34px;
+    }
+    
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    
+    input:checked + .toggle-slider {
+      background-color: #3b82f6;
+    }
+    
+    input:checked + .toggle-slider:before {
+      transform: translateX(20px);
+    }
+  </style>
+</head>
+<body>
+  <!-- Narrator Controls -->
+  <div class="narrator-controls">
+    <button id="startNarrator" class="narrator-button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+      </svg>
+      Start Narrator <span class="text-xs opacity-75">(Tap screen first on Android)</span>
+    </button>
+    <button id="stopNarrator" class="narrator-button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <line x1="23" y1="9" x2="17" y2="15"></line>
+        <line x1="17" y1="9" x2="23" y2="15"></line>
+      </svg>
+      Stop Narrator
+    </button>
+  </div>
+
+  <!-- Particle Background - Will be generated by JavaScript -->
+  <div class="particles-container"></div>
+
+  <!-- Header Section -->
+  <header class="relative pt-12 pb-6 px-6 z-10">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between">
+      <div class="text-center md:text-left mb-6 md:mb-0">
+        <h1 class="text-4xl md:text-5xl font-bold mb-2 text-blue-200">Leonard Lee</h1>
+        <h2 class="text-xl md:text-2xl font-light text-yellow-300 mb-6">Compassionate and Resourceful Professional</h2>
+        
+        <div class="flex flex-wrap justify-center md:justify-start gap-4 mb-6">
+          <div class="contact-item">
+            <span class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </span>
+            <span>+1-414-303-8580</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </span>
+            <span>LeonardLee6@outlook.com</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+            </span>
+            <a href="https://github.com/4citeB4U" class="hover:text-blue-300">github.com/4citeB4U</a>
+          </div>
+        </div>
+        
+        <p class="max-w-3xl mx-auto md:mx-0 text-gray-300 mb-6">
+          Compassionate and resourceful professional with over 15 years of experience in logistics, leadership, and community
+          service. Skilled in connecting with individuals from diverse backgrounds, offering support, and fostering growth,
+          particularly in underserved urban communities. Strong communication, problem-solving, and organizational abilities,
+          with a personal understanding of challenges faced by at-risk youth and families.
+        </p>
+      </div>
+      
+      <div class="w-40 h-40 md:w-56 md:h-56 relative">
+        <div class="agent-logo">
+          <div class="agent-logo-glow"></div>
+          <svg class="w-full h-full" viewBox="0 0 500 500">
+            <defs>
+              <radialgradient id="bgGradientHeader" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                <stop offset="0%" stop-color="#1a2334" stop-opacity="1"></stop>
+                <stop offset="100%" stop-color="#0a0f18" stop-opacity="1"></stop>
+              </radialgradient>
+            </defs>
+            <circle cx="250" cy="250" r="250" fill="url(#bgGradientHeader)"></circle>
+            <circle cx="250" cy="250" r="230" stroke="#b28a3c" stroke-width="5" fill="none" class="spin"></circle>
+            <circle cx="250" cy="250" r="235" stroke="#d4a74a" stroke-width="2" fill="none"></circle>
+            <circle cx="250" cy="250" r="190" stroke="#00a2ff" stroke-width="3" fill="none" class="spin-reverse"></circle>
+            <circle cx="250" cy="250" r="120" fill="#1a2334" stroke="#b28a3c" stroke-width="3"></circle>
+            <text x="250" y="230" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#ffffff" text-anchor="middle">AGENT</text>
+            <text x="250" y="280" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#ffffff" text-anchor="middle">LEE</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="relative px-4 z-10 max-w-6xl mx-auto pb-20">
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- Left Column -->
+      <div class="space-y-6">
+        <!-- Technical Skills Card -->
+        <div class="glass-card">
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="text-yellow-300">
+                <svg viewBox="0 0 500 500" width="32" height="32">
+                  <circle cx="250" cy="250" r="250" fill="#1a2334"></circle>
+                  <circle cx="250" cy="250" r="230" stroke="#b28a3c" stroke-width="5" fill="none"></circle>
+                  <circle cx="250" cy="250" r="235" stroke="#d4a74a" stroke-width="2" fill="none"></circle>
+                  <circle cx="250" cy="250" r="190" stroke="#00a2ff" stroke-width="3" fill="none"></circle>
+                  <circle cx="250" cy="250" r="120" fill="#1a2334" stroke="#b28a3c" stroke-width="3"></circle>
+                  <text x="250" y="260" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#ffffff" text-anchor="middle">AL</text>
+                </svg>
+              </div>
+              <h2 class="text-xl font-semibold text-blue-200">Core Competencies</h2>
+            </div>
+            <div>
+              <div class="skill-section mb-4">
+                <h3>Community &amp; Leadership</h3>
+                <div class="space-y-1">
+                  <div class="skill-item">Community Outreach &amp; Engagement</div>
+                  <div class="skill-item">Active Listening &amp; Counseling Support</div>
+                  <div class="skill-item">Conflict Resolution &amp; De-escalation Techniques</div>
+                </div>
+              </div>
+              
+              <div class="skill-section mb-4">
+                <h3>Management &amp; Organization</h3>
+                <div class="space-y-1">
+                  <div class="skill-item">Resource Allocation &amp; Case Management</div>
+                  <div class="skill-item">Program Planning &amp; Execution</div>
+                  <div class="skill-item">Record-Keeping &amp; Reporting</div>
+                </div>
+              </div>
+              
+              <div class="skill-section mb-4">
+                <h3>Technical Skills</h3>
+                <div class="space-y-1">
+                  <div class="skill-item">Class A CDL with Endorsements</div>
+                  <div class="skill-item">Heavy Equipment Operation</div>
+                  <div class="skill-item">Carpentry &amp; Construction</div>
+                </div>
+              </div>
+              
+              <div class="skill-section mb-4">
+                <h3>Technology</h3>
+                <div class="space-y-1">
+                  <div class="skill-item">React, TypeScript, Tailwind CSS</div>
+                  <div class="skill-item">Python, FastAPI, Docker</div>
+                  <div class="skill-item">AI Integration (Agent Lee Platform)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education Card -->
+        <div class="glass-card">
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="text-yellow-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+                </svg>
+              </div>
+              <h2 class="text-xl font-semibold text-blue-200">Education</h2>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-blue-200 mb-1">Associate of Applied Science (AAS) – Business</h3>
+              <p class="text-gray-300 mb-2">Graduation Date: August 2019 | Milwaukee, WI</p>
+              <p class="mb-2"><span class="font-semibold">GPA:</span> 3.8</p>
+              
+              <div class="mb-4">
+                <h4 class="text-md font-semibold text-yellow-300 mb-1">Relevant Coursework</h4>
+                <p class="text-gray-300">
+                  Leadership &amp; Organizational Behavior, Project Management, Business Ethics, 
+                  Diversity &amp; Inclusion, Community Development, Nonprofit Management, 
+                  Social Entrepreneurship, Crisis Management, Conflict Resolution, 
+                  Public Speaking, Human Resources Management, Logistics &amp; Supply Chain Management, 
+                  Urban Studies, Social Work Fundamentals, Grant Writing &amp; Fundraising,
+                  Cultural Competence in Business, Business for Social Impact, Strategic Planning
+>>>>>>> e987ad9ea31394d031afa9e5217c4761fd9c1eba
+                </p>
+              </div>
+            </div>
+          </div>
+<<<<<<< HEAD
+        </section>
+
+        <!-- Certifications Column -->
+        <section class="section">
+          <h2 class="section-title">Certifications</h2>
+          <div class="card">
+            <div class="card-body">
+              <div class="certification-list">
+                <div class="certification-item">
+                  <h3 class="certification-title">FEMA Emergency Management</h3>
+                  <p class="certification-issuer">FEMA Emergency Management Institute</p>
+                  <p>IS-100.C: Introduction to Incident Command System</p>
+                </div>
+                <div class="certification-item">
+                  <h3 class="certification-title">Transportation Safety</h3>
+                  <p class="certification-issuer">U.S. Department of Transportation</p>
+                  <p>SMS Awareness, Rail Nomenclature, Fatigue Management</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- RapidWebDevelop & LEEWAY Standards -->
+      <section class="section">
+        <h2 class="section-title">RapidWebDevelop LLC & LEEWAY™ Standards</h2>
+        <div class="card">
+          <div class="card-body">
+            <table class="info-table">
+              <tbody>
+                <tr>
+                  <th>RapidWebDevelop LLC</th>
+                  <td>
+                    Founded to empower independent artists with true ownership and unprecedented control over their digital presence. 
+                    Artists receive a single-file website—theirs to keep—void of recurring platform fees or commission cuts.
+                  </td>
+                </tr>
+                <tr>
+                  <th>Agent Lee AI Assistant</th>
+                  <td>
+                    An AI assistant with voice, chat, and automation capabilities, embedded with context-persistent technology. 
+                    Agent Lee provides natural language help, quick actions, and context-aware suggestions for artists and users.
+                  </td>
+                </tr>
+                <tr>
+                  <th>LEEWAY™ Standard</th>
+                  <td>
+                    A proprietary methodology standing for <strong>L</strong>ogically <strong>E</strong>nhanced <strong>W</strong>eb <strong>E</strong>ngineering <strong>A</strong>rchitecture <strong>Y</strong>ield. 
+                    It delivers sovereign, high-performance digital platforms that give artists complete control over their future.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Community Involvement -->
+      <section class="section">
+        <h2 class="section-title">Community Involvement</h2>
+        <div class="card">
+          <div class="card-body">
+            <table class="info-table">
+              <tbody>
+                <tr>
+                  <th>Youth Mentor</th>
+                  <td>
+                    Volunteered as a mentor for at-risk youth in Milwaukee, offering guidance on education, employment, and personal development.
+                  </td>
+                </tr>
+                <tr>
+                  <th>Neighborhood Clean-Up Leader</th>
+                  <td>
+                    Organized and led efforts to clean and improve local urban spaces, engaging residents in collaborative community betterment.
+                  </td>
+                </tr>
+                <tr>
+                  <th>Church Volunteer</th>
+                  <td>
+                    Assisted with food drives and holiday events to support families in need, fostering community connections and support systems.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Digital Business Card -->
+      <section class="section">
+        <h2 class="section-title">My Digital Business Card</h2>
+        <div class="card">
+          <div class="card-body" style="text-align: center;">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
+              <div style="max-width: 400px; width: 100%;">
+                <img src="b4p52fn695.png" alt="Artist Empowerment Platform Promotional Poster" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.3);">
+              </div>
+              <a href="gwglulpjnx.html" class="project-link" style="background-color: var(--color-primary); color: white; padding: 1rem 2rem; border-radius: 12px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; transition: var(--transition);">
+                <i class="fas fa-id-card"></i> View My Interactive Business Card
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GitHub Projects -->
+      <section class="section">
+        <h2 class="section-title">My GitHub Projects</h2>
+        <div class="card">
+          <div class="card-body">
+            <div class="grid-container" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem;">
+              <!-- GitHub Project Items -->
+              <div class="project-item">
+                <h3 class="project-name">leosinsight</h3>
+                <a href="https://github.com/4citeB4U/leosinsight" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/leosinsight
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">RapidWebDev</h3>
+                <a href="https://github.com/4citeB4U/RapidWebDev" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/RapidWebDev
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">Leonard-Lee-Resume</h3>
+                <a href="https://github.com/4citeB4U/Leonard-Lee-Resume" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/Leonard-Lee-Resume
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">AgentLee</h3>
+                <a href="https://github.com/4citeB4U/AgentLee" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/AgentLee
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">webportfoliocreator</h3>
+                <a href="https://github.com/4citeB4U/webportfoliocreator" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/webportfoliocreator
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">DirectHealthCare2U</h3>
+                <a href="https://github.com/4citeB4U/DirectHealthCare2U" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/DirectHealthCare2U
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">leolasliabrary</h3>
+                <a href="https://github.com/4citeB4U/leolasliabrary" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/leolasliabrary
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">leolalsBookv2</h3>
+                <a href="https://github.com/4citeB4U0071/leolalsBookv2" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U0071/leolalsBookv2
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">agentx23</h3>
+                <a href="https://github.com/4citeB4U/agentx23" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/agentx23
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">ACDIAMONDZ</h3>
+                <a href="https://github.com/4citeB4U/ACDIAMONDZ" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/ACDIAMONDZ
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">TheMomentum</h3>
+                <a href="https://github.com/4citeB4U/TheMomentum" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/TheMomentum
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">THE-JUMPOFF</h3>
+                <a href="https://github.com/4citeB4U/THE-JUMPOFF" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/THE-JUMPOFF
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">cline</h3>
+                <a href="https://github.com/cline/cline" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> cline/cline
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">StatusCPRpitch</h3>
+                <a href="https://github.com/4citeB4U/StatusCPRpitch" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/StatusCPRpitch
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">StatusCPRTraining</h3>
+                <a href="https://github.com/4citeB4U/StatusCPRTraining" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/StatusCPRTraining
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">LEECRM</h3>
+                <a href="https://github.com/4citeB4U/LEECRM" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/LEECRM
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">rapidwebdevelopbusinesscard</h3>
+                <a href="https://github.com/4citeB4U/rapidwebdevelopbusinesscard" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/rapidwebdevelopbusinesscard
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">TheBrand</h3>
+                <a href="https://github.com/4citeB4U/TheBrand" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/TheBrand
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">TheInfluencer</h3>
+                <a href="https://github.com/4citeB4U/TheInfluencer" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/TheInfluencer
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">familyreunion</h3>
+                <a href="https://github.com/4citeB4U/familyreunion" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/familyreunion
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">Artistshowcase</h3>
+                <a href="https://github.com/4citeB4U/Artistshowcase" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/Artistshowcase
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">LEEWAYSTANDARDSdocs</h3>
+                <a href="https://github.com/4citeB4U/LEEWAYSTANDARDSdocs" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/LEEWAYSTANDARDSdocs
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">RapidWebDevelopLLCInvestorPitchDeck</h3>
+                <a href="https://github.com/4citeB4U/RapidWebDevelopLLCInvestorPitchDeck" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/RapidWebDevelopLLCInvestorPitchDeck
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">lexsvision</h3>
+                <a href="https://github.com/4citeB4U/lexsvision" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/lexsvision
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">Auto-Tireshop</h3>
+                <a href="https://github.com/4citeB4U/Auto-Tireshop" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/Auto-Tireshop
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">WaterHolePresentation</h3>
+                <a href="https://github.com/4citeB4U/WaterHolePresentation" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/WaterHolePresentation
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">Waterholecrm</h3>
+                <a href="https://github.com/4citeB4U/Waterholecrm" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/Waterholecrm
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">Thewaterholeprojectt</h3>
+                <a href="https://github.com/4citeB4U/Thewaterholeprojectt" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/Thewaterholeprojectt
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">leolav21</h3>
+                <a href="https://github.com/4citeB4U/leolav21" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/leolav21
+                </a>
+              </div>
+
+              <div class="project-item">
+                <h3 class="project-name">library-app</h3>
+                <a href="https://github.com/4citeB4U/library-app" class="project-link" target="_blank">
+                  <i class="fab fa-github"></i> 4citeB4U/library-app
+=======
+        </div>
+
+        <!-- Community Involvement Card -->
+        <div class="glass-card">
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="text-yellow-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <h2 class="text-xl font-semibold text-blue-200">Community Involvement</h2>
+            </div>
+            <div>
+              <div class="mb-4">
+                <h3 class="text-lg font-semibold text-blue-200 mb-1">Youth Mentor</h3>
+                <p class="text-gray-300">
+                  Volunteered as a mentor for at-risk youth in Milwaukee, offering guidance on education,
+                  employment, and personal development.
+                </p>
+              </div>
+              
+              <div class="mb-4">
+                <h3 class="text-lg font-semibold text-blue-200 mb-1">Neighborhood Clean-Up Leader</h3>
+                <p class="text-gray-300">
+                  Organized and led efforts to clean and improve local urban spaces,
+                  engaging residents in collaborative community betterment.
+                </p>
+              </div>
+              
+              <div>
+                <h3 class="text-lg font-semibold text-blue-200 mb-1">Church Volunteer</h3>
+                <p class="text-gray-300">
+                  Assisted with food drives and holiday events to support families in need.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certifications Card -->
+        <div class="glass-card">
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="text-yellow-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="8" r="7"></circle>
+                  <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+                </svg>
+              </div>
+              <h2 class="text-xl font-semibold text-blue-200">Certifications</h2>
+            </div>
+            <div>
+              <div class="mb-4">
+                <h3 class="text-lg font-semibold text-blue-200 mb-1">FEMA Emergency Management Institute</h3>
+                <ul class="list-disc pl-5 text-gray-300">
+                  <li>IS-100.C: Introduction to Incident Command System</li>
+                </ul>
+              </div>
+              
+              <div>
+                <h3 class="text-lg font-semibold text-blue-200 mb-1">U.S. Department of Transportation</h3>
+                <ul class="list-disc pl-5 text-gray-300">
+                  <li>SMS Awareness</li>
+                  <li>Fatigue and Sleep Apnea Awareness for Transit Employees</li>
+                  <li>Rail Nomenclature</li>
+                  <li>Curbing Transit Employee Distracted Driving</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="space-y-6">
+        <!-- Professional Experience Card -->
+        <div class="glass-card">
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="text-yellow-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                </svg>
+              </div>
+              <h2 class="text-xl font-semibold text-blue-200">Professional Experience</h2>
+            </div>
+            <div>
+              <div class="experience-item mb-6">
+                <h3>Owner/Manager</h3>
+                <div class="experience-company">Carriers Logistics LLC</div>
+                <div class="experience-period">Milwaukee, WI | 2008 – Present</div>
+                <ul class="list-disc pl-5 text-gray-300 space-y-1">
+                  <li>Developed and led community-driven services, including junk removal and affordable delivery solutions, fostering relationships with underserved populations.</li>
+                  <li>Mentored and trained employees, many of whom faced barriers to employment, to help them develop professional skills and confidence.</li>
+                  <li>Organized donation drives and community clean-up projects, directly improving neighborhood conditions.</li>
+                  <li>Incorporated AI-based tracking systems for fleet optimization and service delivery improvements.</li>
+                </ul>
+              </div>
+              
+              <div class="experience-item mb-6">
+                <h3>Senior Developer</h3>
+                <div class="experience-company">AI &amp; Automation Projects</div>
+                <div class="experience-period">Open-Source &amp; Independent | 2022 – Present</div>
+                <ul class="list-disc pl-5 text-gray-300 space-y-1">
+                  <li>Architected and developed <strong>Agent Lee</strong>, an AI assistant with voice, chat, and automation capabilities.</li>
+                  <li>Built AI-integrated systems using FastAPI, Docker, and Python for real-time interactions.</li>
+                  <li>Developed open-source repositories, including DirectHealthCare2U, Web Portfolio Creator, and AgentX23.</li>
+                </ul>
+              </div>
+              
+              <div class="experience-item mb-6">
+                <h3>Consultant</h3>
+                <div class="experience-company">International Profit Associates</div>
+                <div class="experience-period">Buffalo Grove, IL | 2004 – 2007</div>
+                <ul class="list-disc pl-5 text-gray-300 space-y-1">
+                  <li>Built and maintained relationships with clients from diverse socioeconomic backgrounds across Wisconsin.</li>
+                  <li>Provided tailored solutions to address organizational challenges, demonstrating empathy and understanding of unique needs.</li>
+                  <li>Delivered workshops on professional development, helping individuals and teams improve communication and operational efficiency.</li>
+                </ul>
+              </div>
+              
+              <div class="experience-item mb-6">
+                <h3>Night Shift Driver Supervisor</h3>
+                <div class="experience-company">Crothall Laundry Services</div>
+                <div class="experience-period">Oak Creek, WI | 2010 – 2014</div>
+                <ul class="list-disc pl-5 text-gray-300 space-y-1">
+                  <li>Supervised fleet operations, optimizing logistics routes for efficiency.</li>
+                  <li>Conducted mechanical repairs and preventative maintenance, reducing operational costs by 25%.</li>
+                </ul>
+              </div>
+              
+              <div class="experience-item mb-6">
+                <h3>Carpenter/Heavy Equipment Operator</h3>
+                <div class="experience-company">City of Milwaukee</div>
+                <div class="experience-period">Milwaukee, WI | 2006 – 2009</div>
+                <ul class="list-disc pl-5 text-gray-300 space-y-1">
+                  <li>Operated heavy equipment for urban infrastructure improvement projects across Milwaukee neighborhoods.</li>
+                  <li>Collaborated with the Neil Wright team on community development and renovation initiatives.</li>
+                  <li>Applied carpentry skills to enhance and restore public facilities serving underserved areas.</li>
+                  <li>Assisted in implementing projects designed to improve city accessibility and aesthetics.</li>
+                </ul>
+              </div>
+              
+              <div class="experience-item mb-6">
+                <h3>Team Manager</h3>
+                <div class="experience-company">Nevels Joe Landscape Co.</div>
+                <div class="experience-period">Grafton, WI | 2001 – 2004</div>
+                <ul class="list-disc pl-5 text-gray-300 space-y-1">
+                  <li>Managed teams of individuals from various backgrounds, fostering collaboration and mutual respect.</li>
+                  <li>Acted as a mentor to entry-level employees, providing guidance and encouragement to overcome personal and professional obstacles.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Featured Projects Card -->
+        <div class="glass-card">
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="text-yellow-300">
+                <svg viewBox="0 0 500 500" width="32" height="32">
+                  <circle cx="250" cy="250" r="250" fill="#1a2334"></circle>
+                  <circle cx="250" cy="250" r="230" stroke="#b28a3c" stroke-width="5" fill="none"></circle>
+                  <circle cx="250" cy="250" r="235" stroke="#d4a74a" stroke-width="2" fill="none"></circle>
+                  <circle cx="250" cy="250" r="190" stroke="#00a2ff" stroke-width="3" fill="none"></circle>
+                  <circle cx="250" cy="250" r="120" fill="#1a2334" stroke="#b28a3c" stroke-width="3"></circle>
+                  <text x="250" y="260" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#ffffff" text-anchor="middle">AL</text>
+                </svg>
+              </div>
+              <h2 class="text-xl font-semibold text-blue-200">Featured Projects</h2>
+            </div>
+            <div class="space-y-6">
+              <div class="project-card">
+                <h3 class="text-lg font-semibold text-blue-200 mb-1">Agent Lee AI Assistant</h3>
+                <p class="text-gray-300 mb-3">An AI assistant with voice, chat, and automation capabilities, optimized for professional and personal assistance.</p>
+                
+                <div class="mb-3 bg-gray-900/70 rounded-lg p-4 h-24 flex items-center justify-center">
+                  <div class="text-center">
+                    <span class="text-blue-200">Agent Lee Demo Interface</span>
+                  </div>
+                </div>
+                
+                <div class="flex flex-wrap gap-2 mb-3">
+                  <span class="tag">React</span>
+                  <span class="tag">Python</span>
+                  <span class="tag">FastAPI</span>
+                  <span class="tag">Docker</span>
+                  <span class="tag">AI</span>
+                  <span class="tag">RAG</span>
+                </div>
+                
+                <a href="https://github.com/4citeB4U/agentx23" class="text-blue-300 hover:text-blue-200 text-sm flex items-center gap-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                  View on GitHub
+                </a>
+              </div>
+              
+              <div class="project-card">
+                <h3 class="text-lg font-semibold text-blue-200 mb-1">DirectHealthCare2U</h3>
+                <p class="text-gray-300 mb-3">Healthcare-focused AI integration system that connects patients with medical resources.</p>
+                
+                <div class="flex flex-wrap gap-2 mb-3">
+                  <span class="tag">Healthcare</span>
+                  <span class="tag">AI</span>
+                  <span class="tag">Python</span>
+                  <span class="tag">FastAPI</span>
+                </div>
+                
+                <a href="https://github.com/4citeB4U/DirectHealthCare2U" class="text-blue-300 hover:text-blue-200 text-sm flex items-center gap-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                  View on GitHub
+>>>>>>> e987ad9ea31394d031afa9e5217c4761fd9c1eba
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+<<<<<<< HEAD
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <div class="diagonal-divider"></div>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">LEONARD LEE</div>
+        <p class="footer-text">
+          Compassionate and resourceful professional with over 15 years of experience in logistics, leadership, and community service.
+        </p>
+        <div class="qr-code">
+          <img src="qr_code.png" alt="Contact Information QR Code">
+        </div>
+        <div class="social-links">
+          <a href="https://github.com/4citeB4U" class="social-link" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="mailto:LeonardLee6@outlook.com" class="social-link">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="tel:+14143038580" class="social-link">
+            <i class="fas fa-phone"></i>
+          </a>
+        </div>
+        <p>&copy; 2025 Leonard Lee. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Translation and Agent Lee Scripts -->
+  <script src="translations.js"></script>
+  <script src="agent-lee.js"></script>
+
+  <script>
+    // Loader - fixed to ensure it always hides
+    window.addEventListener('load', function() {
+      // Immediately attempt to find and hide loader
+      const hideLoader = function() {
+        const loader = document.getElementById('loader');
+        if (loader) {
+          loader.style.opacity = '0';
+          setTimeout(function() {
+            loader.style.display = 'none';
+          }, 500);
+        }
+      };
+      
+      // Try immediately and again after a short delay
+      hideLoader();
+      setTimeout(hideLoader, 1000);
+      // Fallback in case something is still blocking
+      setTimeout(hideLoader, 3000);
+    });
+
+    // Dark Mode Toggle
+    const modeToggle = document.getElementById('modeToggle');
+    const body = document.body;
+    const icon = modeToggle.querySelector('i');
+
+    // Check for saved theme preference
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      body.classList.add('dark-mode');
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+    }
+
+    modeToggle.addEventListener('click', function() {
+      body.classList.toggle('dark-mode');
+      
+      if (body.classList.contains('dark-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+        localStorage.setItem('darkMode', 'enabled');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+        localStorage.setItem('darkMode', 'disabled');
+      }
+    });
+
+    // Print Button Functionality
+    document.getElementById('printButton').addEventListener('click', function() {
+      window.print();
+    });
+
+    // Scroll Animation
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.card, .section-title').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
+    });
+    
+    // Simple TTS Narrator - moved to window.onload to ensure all resources are loaded
+    window.addEventListener('load', function() {
+      // Initialize speech synthesis immediately to wake it up
+      try {
+        const initUtterance = new SpeechSynthesisUtterance('');
+        window.speechSynthesis.speak(initUtterance);
+        window.speechSynthesis.cancel(); // Cancel immediately
+        
+        // Create TTS Player UI with a slight delay to ensure speech engine is ready
+        setTimeout(createTTSPlayer, 500);
+      } catch (e) {
+        console.error("Error initializing speech synthesis:", e);
+      }
+    });
+    
+    // Also keep the DOMContentLoaded version as a backup
+    document.addEventListener('DOMContentLoaded', function() {
+      // Create TTS Player UI with a longer delay to ensure speech engine is ready
+      setTimeout(function() {
+        try {
+          if (!document.querySelector('.tts-player')) {
+            createTTSPlayer();
+          }
+        } catch (e) {
+          console.error("Error creating TTS player:", e);
+        }
+      }, 1500);
+      
+      // Ensure Agent Lee is always available by checking if it exists
+      window.addEventListener('beforeunload', function() {
+        localStorage.setItem('agent-lee-active', 'true');
+      });
+      
+      // Mobile-first responsiveness check
+      function checkResponsiveness() {
+        const viewportMeta = document.querySelector('meta[name="viewport"]');
+        if (viewportMeta) {
+          // Ensure the viewport meta tag is set for mobile-first design
+          viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+        }
+      }
+      
+      // Apply mobile responsiveness checks
+      checkResponsiveness();
+      window.addEventListener('resize', checkResponsiveness);
+    });
+    
+    function createTTSPlayer() {
+      // Create mobile-first styles for the entire application
+      const mobileStyle = document.createElement('style');
+      mobileStyle.textContent = `
+        @media (max-width: 768px) {
+          /* Responsive profile layout */
+          .profile-details {
+            margin-left: 0 !important;
+            text-align: center !important;
+          }
+          
+          .profile-img-container {
+            position: relative !important;
+            top: 0 !important;
+            left: 0 !important;
+            margin: 0 auto 20px !important;
+          }
+          
+          /* Responsive card layouts */
+          .grid-container {
+            grid-template-columns: 1fr !important;
+          }
+          
+          /* Fix table display on mobile */
+          .info-table {
+            display: block !important;
+            overflow-x: auto !important;
+          }
+          
+          /* Ensure Agent Lee is properly positioned on mobile */
+          .tts-player.minimized {
+            width: auto !important;
+            max-width: 120px !important;
+          }
+        }
+      `;
+      document.head.appendChild(mobileStyle);
+      
+      // Create the main container
+      const player = document.createElement('div');
+      player.className = 'tts-player';
+      player.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #1e293b;
+        border-radius: 16px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        padding: 16px;
+        max-width: 90vw;
+        width: 300px;
+        z-index: 9999;
+        border: 4px solid #3b82f6;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 9999;
+        font-family: var(--font-primary);
+        color: white;
+        width: 280px;
+        touch-action: none; /* Enable dragging on touch devices */
+      `;
+      
+      // Add a handle for dragging with Agent Lee avatar
+      const handle = document.createElement('div');
+      handle.className = 'tts-handle card-header';
+      handle.style.cssText = `
+        padding: 5px;
+        text-align: center;
+        cursor: move;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        margin-bottom: 10px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      `;
+      
+      // Add Agent Lee avatar
+      const avatar = document.createElement('div');
+      avatar.className = 'avatar';
+      avatar.style.cssText = `
+        width: 48px;
+        height: 48px;
+        background-color: #64748b;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        border: 2px solid #93c5fd;
+      `;
+      
+      // Create image element for Agent Lee avatar
+      const avatarImg = document.createElement('img');
+      avatarImg.src = 'l2u5shhjjj.png'; // Use the Agent Lee avatar
+      avatarImg.alt = 'Agent Lee';
+      avatarImg.style.cssText = `
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+      `;
+      avatar.appendChild(avatarImg);
+      
+      // Create agent details div
+      const agentDetails = document.createElement('div');
+      agentDetails.className = 'agent-details';
+      agentDetails.innerHTML = '<h3 style="color: #93c5fd; font-size: 18px; margin-bottom: 4px;">Agent Lee</h3><p style="color: #bfdbfe; font-size: 14px;">Voice Narrator</p>';
+      
+      // Add components to handle
+      handle.appendChild(avatar);
+      handle.appendChild(agentDetails);
+      player.appendChild(handle);
+      
+      // Create button container
+      const buttonContainer = document.createElement('div');
+      buttonContainer.style.cssText = `
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+      `;
+      
+      // Play button
+      const playButton = document.createElement('button');
+      playButton.innerHTML = '<i class="fas fa-play"></i> Play';
+      playButton.className = 'tts-button tts-play';
+      playButton.style.cssText = buttonStyle;
+      
+      // Pause button
+      const pauseButton = document.createElement('button');
+      pauseButton.innerHTML = '<i class="fas fa-pause"></i> Pause';
+      pauseButton.className = 'tts-button tts-pause';
+      pauseButton.style.cssText = buttonStyle;
+      pauseButton.style.display = 'none'; // Hide initially
+      
+      // Continue button
+      const continueButton = document.createElement('button');
+      continueButton.innerHTML = '<i class="fas fa-step-forward"></i> Continue';
+      continueButton.className = 'tts-button tts-continue';
+      continueButton.style.cssText = buttonStyle;
+      continueButton.style.display = 'none'; // Hide initially
+      
+      // Stop button
+      const stopButton = document.createElement('button');
+      stopButton.innerHTML = '<i class="fas fa-stop"></i> Stop';
+      stopButton.className = 'tts-button tts-stop';
+      stopButton.style.cssText = buttonStyle;
+      
+      // Close button
+      const closeButton = document.createElement('button');
+      closeButton.innerHTML = '<i class="fas fa-times"></i>';
+      closeButton.className = 'tts-button tts-close';
+      closeButton.style.cssText = `
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        padding: 5px;
+      `;
+      
+      // Volume control
+      const volumeControl = document.createElement('div');
+      volumeControl.className = 'tts-volume-control';
+      volumeControl.style.cssText = `
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+        width: 100%;
+      `;
+      
+      const volumeLabel = document.createElement('label');
+      volumeLabel.textContent = 'Volume:';
+      volumeLabel.style.cssText = `
+        font-size: 14px;
+        min-width: 60px;
+      `;
+      
+      const volumeSlider = document.createElement('input');
+      volumeSlider.type = 'range';
+      volumeSlider.min = '0';
+      volumeSlider.max = '1';
+      volumeSlider.step = '0.1';
+      volumeSlider.value = '1';
+      volumeSlider.className = 'tts-volume-slider';
+      volumeSlider.style.cssText = `
+        flex: 1;
+        accent-color: var(--color-secondary);
+      `;
+      
+      volumeControl.appendChild(volumeLabel);
+      volumeControl.appendChild(volumeSlider);
+      
+      // Voice selector
+      const voiceSelector = document.createElement('select');
+      voiceSelector.className = 'tts-voice-selector';
+      voiceSelector.style.cssText = `
+        width: 100%;
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        margin-top: 5px;
+        font-family: var(--font-primary);
+      `;
+      
+      // Minimize button
+      const minimizeButton = document.createElement('button');
+      minimizeButton.innerHTML = '<i class="fas fa-minus"></i>';
+      minimizeButton.className = 'tts-button tts-minimize';
+      minimizeButton.style.cssText = `
+        position: absolute;
+        top: 5px;
+        right: 30px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        padding: 5px;
+      `;
+      
+      // Add explanation for the narrator
+      const explanationText = document.createElement('div');
+      explanationText.className = 'tts-explanation';
+      explanationText.innerHTML = 'I can read the resume content aloud for you. Click <b>Play</b> to start, <b>Pause</b> to pause, and <b>Stop</b> to stop the narration.';
+      explanationText.style.cssText = `
+        font-size: 14px;
+        color: #bfdbfe;
+        background-color: #334155;
+        border-radius: 8px;
+        padding: 10px;
+        margin-bottom: 10px;
+        line-height: 1.4;
+      `;
+      
+      // Add status text
+      const statusText = document.createElement('div');
+      statusText.className = 'tts-status';
+      statusText.textContent = 'Ready';
+      statusText.style.cssText = `
+        font-size: 12px;
+        text-align: center;
+        background: #334155;
+        padding: 8px;
+        border-radius: 8px;
+        margin-top: 5px;
+        color: #93c5fd;
+      `;
+      
+      // Add a persistent help button that always appears even in minimized state
+      const helpButton = document.createElement('button');
+      helpButton.innerHTML = '<i class="fas fa-question-circle"></i>';
+      helpButton.className = 'tts-help';
+      helpButton.style.cssText = `
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+        background: none;
+        border: none;
+        color: #93c5fd;
+        font-size: 16px;
+        cursor: pointer;
+        padding: 5px;
+        z-index: 10000;
+      `;
+      
+      helpButton.addEventListener('click', function() {
+        alert("Agent Lee is your voice narrator assistant.\n\n" +
+              "• Drag the handle to move Agent Lee anywhere on screen\n" +
+              "• Use the resize handle (bottom-right corner) to adjust size\n" +
+              "• Click 'Play' to hear the entire resume read aloud\n" +
+              "• Click any section title to hear just that section\n" +
+              "• Use the volume slider to adjust volume\n" +
+              "• Click the minimize button to make Agent Lee smaller\n\n" +
+              "Agent Lee will stay on screen at all times to help you navigate the resume.");
+      });
+      
+      // Add elements to player
+      player.appendChild(handle);
+      player.appendChild(explanationText);
+      buttonContainer.appendChild(playButton);
+      buttonContainer.appendChild(pauseButton);
+      buttonContainer.appendChild(continueButton);
+      buttonContainer.appendChild(stopButton);
+      player.appendChild(buttonContainer);
+      player.appendChild(volumeControl);
+      player.appendChild(voiceSelector);
+      player.appendChild(statusText);
+      player.appendChild(closeButton);
+      player.appendChild(minimizeButton);
+      player.appendChild(helpButton);
+      
+      // Add player to document
+      document.body.appendChild(player);
+      
+      // Make the player draggable
+      makeDraggable(player, handle);
+      
+      // Initialize speech synthesis
+      const synth = window.speechSynthesis;
+      let utterance = null;
+      let currentText = '';
+      let isPaused = false;
+      let isMinimized = false;
+      let availableVoices = [];
+      
+      // Populate voice options when available
+      function populateVoices() {
+        availableVoices = synth.getVoices();
+        voiceSelector.innerHTML = '';
+        
+        // Find female voices first
+        const femaleVoices = availableVoices.filter(voice => {
+          const name = voice.name.toLowerCase();
+          return name.includes('female') || name.includes('woman') || 
+                 name.includes('girl') || name.includes('f') ||
+                 name.includes('samantha') || name.includes('karen') ||
+                 name.includes('moira') || name.includes('victoria');
+        });
+        
+        // Find English voices
+        const englishVoices = availableVoices.filter(voice => 
+          voice.lang.startsWith('en')
+        );
+        
+        // Prioritize female English voices, then female voices, then English voices, then all voices
+        const prioritizedVoices = [
+          ...femaleVoices.filter(v => v.lang.startsWith('en')),
+          ...femaleVoices,
+          ...englishVoices,
+          ...availableVoices
+        ];
+        
+        // Remove duplicates
+        const uniqueVoices = [];
+        const seen = new Set();
+        
+        prioritizedVoices.forEach(voice => {
+          if (!seen.has(voice.name)) {
+            seen.add(voice.name);
+            uniqueVoices.push(voice);
+            
+            const option = document.createElement('option');
+            option.textContent = `${voice.name} (${voice.lang})`;
+            option.value = voice.name;
+            voiceSelector.appendChild(option);
+          }
+        });
+        
+        // Try to select a female voice by default
+        if (femaleVoices.length > 0) {
+          voiceSelector.value = femaleVoices[0].name;
+        } else if (englishVoices.length > 0) {
+          voiceSelector.value = englishVoices[0].name;
+        }
+      }
+      
+      // Speech synthesis voices can load asynchronously
+      if (synth.onvoiceschanged !== undefined) {
+        synth.onvoiceschanged = populateVoices;
+      }
+      
+      // Try to populate voices immediately
+      populateVoices();
+      
+      // Function to get text from an element
+      function getTextFromElement(element) {
+        return Array.from(element.childNodes)
+          .filter(node => {
+            if (node.nodeType === Node.ELEMENT_NODE) {
+              const style = window.getComputedStyle(node);
+              return style.display !== 'none' && style.visibility !== 'hidden';
+            }
+            return true;
+          })
+          .map(node => {
+            if (node.nodeType === Node.TEXT_NODE) {
+              return node.textContent;
+            } else if (node.nodeType === Node.ELEMENT_NODE) {
+              return getTextFromElement(node);
+            }
+            return '';
+          })
+          .join(' ')
+          .replace(/\s+/g, ' ')
+          .trim();
+      }
+      
+      // Current chunk index and chunks array for breaking up text
+      let currentChunkIndex = 0;
+      let textChunks = [];
+      
+      // Function to split text into manageable chunks
+      function splitIntoChunks(text, chunkSize = 200) {
+        const chunks = [];
+        const sentences = text.split(/(?<=[.!?])\s+/); // Split by sentence boundaries
+        let currentChunk = "";
+        
+        for (const sentence of sentences) {
+          if (currentChunk.length + sentence.length < chunkSize) {
+            currentChunk += sentence + " ";
+          } else {
+            chunks.push(currentChunk.trim());
+            currentChunk = sentence + " ";
+          }
+        }
+        
+        if (currentChunk.trim().length > 0) {
+          chunks.push(currentChunk.trim());
+        }
+        
+        return chunks;
+      }
+      
+      // Function to speak the next chunk
+      function speakNextChunk() {
+        if (currentChunkIndex < textChunks.length) {
+          const chunk = textChunks[currentChunkIndex];
+          console.log(`Speaking chunk ${currentChunkIndex + 1}/${textChunks.length}: "${chunk.substring(0, 50)}..."`);
+          
+          utterance = new SpeechSynthesisUtterance(chunk);
+          
+          // Set selected voice
+          const selectedVoiceName = voiceSelector.value;
+          const selectedVoice = availableVoices.find(voice => voice.name === selectedVoiceName);
+          if (selectedVoice) {
+            utterance.voice = selectedVoice;
+          }
+          
+          // Set properties for better speech quality
+          utterance.rate = 0.9;  // Slightly slower
+          utterance.pitch = 1.0; // Normal pitch
+          utterance.volume = parseFloat(volumeSlider.value); // Use volume slider value
+          
+          // Handle when this chunk ends
+          utterance.onend = function() {
+            currentChunkIndex++;
+            if (currentChunkIndex < textChunks.length) {
+              // Continue to next chunk
+              speakNextChunk();
+            } else {
+              // Finished all chunks
+              statusText.textContent = 'Finished';
+              statusText.style.color = 'white';
+              playButton.style.display = 'block';
+              pauseButton.style.display = 'none';
+              continueButton.style.display = 'none';
+              isPaused = false;
+              currentChunkIndex = 0;
+            }
+          };
+          
+          utterance.onerror = function(event) {
+            console.error('Speech error:', event);
+            statusText.textContent = `Error at chunk ${currentChunkIndex + 1}!`;
+            statusText.style.color = '#ef4444'; // Red color for error state
+          };
+          
+          // Speak the current chunk
+          synth.speak(utterance);
+        }
+      }
+      
+      // Function to speak text
+      function speak(text, shouldRestart = true) {
+        if (shouldRestart) {
+          synth.cancel();
+          currentText = text;
+          
+          // Update explanation text with what's being read
+          explanationText.innerHTML = `<b>Agent Lee:</b> I'm reading the resume content for you now. You can pause or stop me at any time.`;
+          explanationText.style.color = '#4ade80';
+          
+          // Split text into chunks
+          textChunks = splitIntoChunks(text);
+          currentChunkIndex = 0;
+          
+          statusText.textContent = `Speaking (1/${textChunks.length})...`;
+          statusText.style.color = '#4ade80'; // Green color for active state
+          
+          // Update UI
+          playButton.style.display = 'none';
+          pauseButton.style.display = 'block';
+          continueButton.style.display = 'none';
+          
+          // Start speaking the first chunk
+          speakNextChunk();
+        } else {
+          // Continue from current position
+          explanationText.innerHTML = `<b>Agent Lee:</b> Continuing with the narration...`;
+          speakNextChunk();
+        }
+      }
+      
+      // Function to toggle minimized state
+      function toggleMinimize() {
+        if (isMinimized) {
+          // Expand
+          explanationText.style.display = 'block';
+          buttonContainer.style.display = 'flex';
+          volumeControl.style.display = 'flex';
+          voiceSelector.style.display = 'block';
+          statusText.style.display = 'block';
+          
+          // Store the current position
+          const currentPosition = {
+            top: player.style.top,
+            left: player.style.left
+          };
+          
+          // Restore to normal width
+          player.style.width = '300px';
+          minimizeButton.innerHTML = '<i class="fas fa-minus"></i>';
+          
+          // Ensure it stays within viewport after expanding
+          const rect = player.getBoundingClientRect();
+          if (rect.right > window.innerWidth) {
+            player.style.left = (window.innerWidth - rect.width) + 'px';
+          }
+          if (rect.bottom > window.innerHeight) {
+            player.style.top = (window.innerHeight - rect.height) + 'px';
+          }
+        } else {
+          // Minimize
+          explanationText.style.display = 'none';
+          buttonContainer.style.display = 'none';
+          volumeControl.style.display = 'none';
+          voiceSelector.style.display = 'none';
+          statusText.style.display = 'none';
+          
+          // Make compact but still visible
+          player.style.width = '120px';
+          player.style.height = 'auto';
+          minimizeButton.innerHTML = '<i class="fas fa-plus"></i>';
+          
+          // Add a visual hint that it's in minimized state
+          handle.style.backgroundColor = 'rgba(99, 102, 241, 0.2)';
+          handle.style.borderRadius = '8px';
+        }
+        
+        isMinimized = !isMinimized;
+      }
+      
+      // Add event listeners to section headers
+      document.querySelectorAll('.section-title, h3, .profile-name, .profile-title').forEach(el => {
+        el.style.cursor = 'pointer';
+        el.setAttribute('title', 'Click to hear this section read aloud');
+        
+        el.addEventListener('click', function() {
+          let textToRead = '';
+          
+          if (this.classList.contains('section-title')) {
+            // For section headers, read the entire section
+            const section = this.closest('.section');
+            const title = section.querySelector('.section-title');
+            const content = section.querySelector('.card-body');
+            
+            textToRead = title.textContent + ': ';
+            if (content) {
+              textToRead += getTextFromElement(content);
+            }
+          } else if (this.classList.contains('profile-name') || this.classList.contains('profile-title')) {
+            // For profile elements, read the profile details
+            const profileDetails = this.closest('.profile-details');
+            textToRead = getTextFromElement(profileDetails);
+          } else {
+            // For other headers, read their content and the next paragraph
+            textToRead = this.textContent;
+            let nextElement = this.nextElementSibling;
+            if (nextElement && nextElement.tagName !== 'H2' && nextElement.tagName !== 'H3') {
+              textToRead += '. ' + getTextFromElement(nextElement);
+            }
+          }
+          
+          speak(textToRead);
+        });
+      });
+      
+      // Play button: read the entire resume
+      playButton.addEventListener('click', function() {
+        // Add a "Getting Resume Content" message to show progress
+        statusText.textContent = 'Getting resume content...';
+        statusText.style.color = '#fbbf24'; // Yellow/orange color for in-progress state
+        
+        // Generate text in a non-blocking way
+        setTimeout(() => {
+          let textToRead = '';
+          
+          // Add an introduction
+          textToRead += "Leonard Lee's Resume. ";
+          
+          // Add profile information
+          const profileDetails = document.querySelector('.profile-details');
+          if (profileDetails) {
+            textToRead += 'Profile: ' + getTextFromElement(profileDetails) + '. ';
+          }
+          
+          // Add all sections
+          document.querySelectorAll('.section').forEach(section => {
+            const title = section.querySelector('.section-title');
+            const content = section.querySelector('.card-body');
+            
+            if (title) {
+              textToRead += title.textContent + ': ';
+            }
+            
+            if (content) {
+              textToRead += getTextFromElement(content) + '. ';
+            }
+          });
+          
+          // Add confirmation message for user to know when speech is about to start
+          console.log("Generated resume text:", textToRead.substring(0, 150) + "...");
+          console.log(`Total text length: ${textToRead.length} characters`);
+          
+          // First, speak a simple confirmation to test the voice
+          const confirmUtterance = new SpeechSynthesisUtterance("Beginning resume narration");
+          confirmUtterance.volume = parseFloat(volumeSlider.value);
+          
+          // Force browser to use selected voice
+          const selectedVoiceName = voiceSelector.value;
+          const selectedVoice = availableVoices.find(voice => voice.name === selectedVoiceName);
+          if (selectedVoice) {
+            confirmUtterance.voice = selectedVoice;
+          }
+          
+          // When confirmation is done, start the main narration
+          confirmUtterance.onend = function() {
+            speak(textToRead);
+          };
+          
+          synth.speak(confirmUtterance);
+        }, 100); // Short timeout to allow UI to update
+      });
+      
+      // Pause button: pause speech
+      pauseButton.addEventListener('click', function() {
+        if (synth.speaking) {
+          synth.pause();
+          pauseButton.style.display = 'none';
+          continueButton.style.display = 'block';
+        }
+      });
+      
+      // Continue button: resume speech
+      continueButton.addEventListener('click', function() {
+        if (synth.speaking && isPaused) {
+          synth.resume();
+          pauseButton.style.display = 'block';
+          continueButton.style.display = 'none';
+        }
+      });
+      
+      // Stop button: stop speech
+      stopButton.addEventListener('click', function() {
+        synth.cancel();
+        statusText.textContent = 'Stopped';
+        statusText.style.color = 'white';
+        playButton.style.display = 'block';
+        pauseButton.style.display = 'none';
+        continueButton.style.display = 'none';
+        isPaused = false;
+      });
+      
+      // Modified close button: minimize instead of removing
+      closeButton.addEventListener('click', function() {
+        synth.cancel();
+        // Don't remove player, just minimize it
+        if (!isMinimized) {
+          toggleMinimize();
+        }
+        // Show a notification to let user know Agent Lee is still available
+        const notification = document.createElement('div');
+        notification.textContent = 'Agent Lee is minimized but still available';
+        notification.style.cssText = `
+          position: fixed;
+          top: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: rgba(99, 102, 241, 0.9);
+          color: white;
+          padding: 10px 20px;
+          border-radius: 50px;
+          font-size: 14px;
+          z-index: 9999;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        `;
+        document.body.appendChild(notification);
+        setTimeout(() => {
+          notification.style.opacity = '0';
+          notification.style.transition = 'opacity 0.5s ease';
+          setTimeout(() => notification.remove(), 500);
+        }, 3000);
+      });
+      
+      // Minimize button: toggle minimized state
+      minimizeButton.addEventListener('click', toggleMinimize);
+      
+      // Voice selector: change voice
+      voiceSelector.addEventListener('change', function() {
+        if (synth.speaking) {
+          // If currently speaking, stop and restart with new voice
+          const currentPosition = utterance ? utterance.charIndex : 0;
+          const textToResume = currentText.substring(currentPosition);
+          
+          synth.cancel();
+          speak(textToResume, false);
+        }
+      });
+      
+      // Volume slider: change volume
+      volumeSlider.addEventListener('input', function() {
+        if (utterance) {
+          utterance.volume = parseFloat(this.value);
+        }
+        
+        // Test volume change immediately with a short beep
+        if (parseFloat(this.value) > 0) {
+          const testUtterance = new SpeechSynthesisUtterance(".");
+          testUtterance.volume = parseFloat(this.value);
+          testUtterance.rate = 0.1; // Very quick
+          testUtterance.pitch = 1.0;
+          
+          if (synth.speaking && !isPaused) {
+            // Don't interrupt if already speaking
+          } else {
+            // Play a quick sound to test volume
+            synth.cancel();
+            synth.speak(testUtterance);
+          }
+        }
+      });
+    }
+    
+    // Helper function to make an element draggable
+    function makeDraggable(element, handle) {
+      let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+      
+      // Set initial position
+      element.style.position = 'fixed';
+      
+      // Add resize handle for adjustable size
+      const resizeHandle = document.createElement('div');
+      resizeHandle.className = 'resize-handle';
+      resizeHandle.style.cssText = `
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 15px;
+        height: 15px;
+        cursor: nwse-resize;
+        z-index: 10000;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      `;
+      resizeHandle.innerHTML = '<i class="fas fa-grip-lines-diagonal"></i>';
+      element.appendChild(resizeHandle);
+      
+      // Make element resizable
+      let startX, startY, startWidth, startHeight;
+      
+      resizeHandle.addEventListener('mousedown', initResize);
+      resizeHandle.addEventListener('touchstart', initResizeMobile);
+      
+      function initResize(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        startX = e.clientX;
+        startY = e.clientY;
+        startWidth = parseInt(document.defaultView.getComputedStyle(element).width, 10);
+        startHeight = parseInt(document.defaultView.getComputedStyle(element).height, 10);
+        
+        document.addEventListener('mousemove', doResize);
+        document.addEventListener('mouseup', stopResize);
+      }
+      
+      function initResizeMobile(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        startWidth = parseInt(document.defaultView.getComputedStyle(element).width, 10);
+        startHeight = parseInt(document.defaultView.getComputedStyle(element).height, 10);
+        
+        document.addEventListener('touchmove', doResizeMobile);
+        document.addEventListener('touchend', stopResize);
+      }
+      
+      function doResize(e) {
+        const width = startWidth + (e.clientX - startX);
+        const height = startHeight + (e.clientY - startY);
+        
+        if (width > 200) {
+          element.style.width = width + 'px';
+        }
+        if (height > 150) {
+          element.style.height = height + 'px';
+        }
+      }
+      
+      function doResizeMobile(e) {
+        const width = startWidth + (e.touches[0].clientX - startX);
+        const height = startHeight + (e.touches[0].clientY - startY);
+        
+        if (width > 200) {
+          element.style.width = width + 'px';
+        }
+        if (height > 150) {
+          element.style.height = height + 'px';
+        }
+      }
+      
+      function stopResize() {
+        document.removeEventListener('mousemove', doResize);
+        document.removeEventListener('mouseup', stopResize);
+        document.removeEventListener('touchmove', doResizeMobile);
+        document.removeEventListener('touchend', stopResize);
+      }
+        
+        // Make sure Agent Lee always stays in the viewport
+        // This ensures it can never go off-screen on mobile devices
+        window.addEventListener('resize', function() {
+          const rect = element.getBoundingClientRect();
+          
+          // Check if the element is outside the viewport
+          if (rect.right > window.innerWidth) {
+            element.style.left = (window.innerWidth - rect.width) + 'px';
+          }
+          if (rect.bottom > window.innerHeight) {
+            element.style.top = (window.innerHeight - rect.height) + 'px';
+          }
+          if (rect.left < 0) {
+            element.style.left = '0px';
+          }
+          if (rect.top < 0) {
+            element.style.top = '0px';
+          }
+        });
+        
+        // Add touch-friendly hints
+        const hintTouch = document.createElement('div');
+        hintTouch.style.cssText = `
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: rgba(0, 0, 0, 0.7);
+          color: white;
+          padding: 8px 12px;
+          border-radius: 8px;
+          font-size: 12px;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          pointer-events: none;
+          z-index: 10001;
+        `;
+        hintTouch.textContent = 'Drag me • Resize me • I\'m your assistant';
+        element.appendChild(hintTouch);
+        
+        // Show hint briefly when page loads
+        setTimeout(() => {
+          hintTouch.style.opacity = '1';
+          setTimeout(() => {
+            hintTouch.style.opacity = '0';
+          }, 3000);
+        }, 1000);
+      }, 500);
+      
+      if (handle) {
+        // If a handle is specified, use it to move the element
+        handle.onmousedown = dragMouseDown;
+        handle.ontouchstart = dragTouchStart;
+      } else {
+        // Otherwise, move the element from anywhere inside it
+        element.onmousedown = dragMouseDown;
+        element.ontouchstart = dragTouchStart;
+      }
+      
+      function dragMouseDown(e) {
+        e.preventDefault();
+        // Stop floating animation when dragging starts
+        element.style.animation = 'none';
+        
+        // Get the mouse cursor position at startup
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
+      }
+      
+      function dragTouchStart(e) {
+        // Stop floating animation when dragging starts
+        element.style.animation = 'none';
+        
+        // Get the touch position at startup
+        pos3 = e.touches[0].clientX;
+        pos4 = e.touches[0].clientY;
+        document.ontouchend = closeDragElement;
+        document.ontouchmove = elementTouchDrag;
+      }
+      
+      function elementDrag(e) {
+        e.preventDefault();
+        // Calculate the new cursor position
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        
+        // Calculate new position
+        const newTop = element.offsetTop - pos2;
+        const newLeft = element.offsetLeft - pos1;
+        
+        // Keep element within viewport boundaries
+        const elementWidth = element.offsetWidth;
+        const elementHeight = element.offsetHeight;
+        
+        // Constrain to viewport bounds
+        const boundedTop = Math.max(0, Math.min(window.innerHeight - elementHeight, newTop));
+        const boundedLeft = Math.max(0, Math.min(window.innerWidth - elementWidth, newLeft));
+        
+        // Move the element
+        element.style.top = boundedTop + "px";
+        element.style.left = boundedLeft + "px";
+      }
+      
+      function elementTouchDrag(e) {
+        // Calculate the new touch position
+        pos1 = pos3 - e.touches[0].clientX;
+        pos2 = pos4 - e.touches[0].clientY;
+        pos3 = e.touches[0].clientX;
+        pos4 = e.touches[0].clientY;
+        
+        // Calculate new position
+        const newTop = element.offsetTop - pos2;
+        const newLeft = element.offsetLeft - pos1;
+        
+        // Keep element within viewport boundaries
+        const elementWidth = element.offsetWidth;
+        const elementHeight = element.offsetHeight;
+        
+        // Constrain to viewport bounds
+        const boundedTop = Math.max(0, Math.min(window.innerHeight - elementHeight, newTop));
+        const boundedLeft = Math.max(0, Math.min(window.innerWidth - elementWidth, newLeft));
+        
+        // Move the element
+        element.style.top = boundedTop + "px";
+        element.style.left = boundedLeft + "px";
+      }
+      
+      function closeDragElement() {
+        // Stop moving when mouse/touch is released
+        document.onmouseup = null;
+        document.onmousemove = null;
+        document.ontouchend = null;
+        document.ontouchmove = null;
+        
+        // Check if the element is still within the viewport
+        const rect = element.getBoundingClientRect();
+        
+        // If any part is outside the viewport, bring it back
+        if (rect.right > window.innerWidth) {
+          element.style.left = (window.innerWidth - rect.width) + 'px';
+        }
+        if (rect.bottom > window.innerHeight) {
+          element.style.top = (window.innerHeight - rect.height) + 'px';
+        }
+        if (rect.left < 0) {
+          element.style.left = '0px';
+        }
+        if (rect.top < 0) {
+          element.style.top = '0px';
+        }
+      }
+    }
+    
+    // CSS for buttons
+    const buttonStyle = `
+      background-color: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: white;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      flex: 1;
+      font-size: 15px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    `;
+    
+    // No test button needed
+=======
+
+        <!-- Brand Assets Card -->
+        <div class="glass-card">
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="text-yellow-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                  <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+                  <path d="M2 2l7.586 7.586"></path>
+                  <circle cx="11" cy="11" r="2"></circle>
+                </svg>
+              </div>
+              <h2 class="text-xl font-semibold text-blue-200">Agent Lee Brand Assets</h2>
+            </div>
+            
+            <div class="toggle-container">
+              <label class="toggle-switch">
+                <input type="checkbox" id="toggleBrandCode" aria-label="Toggle brand assets code display">
+                <span class="toggle-slider"></span>
+              </label>
+              <span class="text-gray-300 text-sm">Show Code</span>
+            </div>
+            
+            <div id="brandAssetContent">
+              <!-- Brand Logo Display -->
+              <div class="mb-6 text-center">
+                <h3 class="text-lg font-semibold text-blue-200 mb-3">Agent Lee Primary Logo</h3>
+                <div class="mx-auto w-48 h-48 relative">
+                  <svg viewBox="0 0 500 500" class="w-full h-full">
+                    <defs>
+                      <radialgradient id="bgGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                        <stop offset="0%" stop-color="#1a2334" stop-opacity="1"></stop>
+                        <stop offset="100%" stop-color="#0a0f18" stop-opacity="1"></stop>
+                      </radialgradient>
+                    </defs>
+                    <circle cx="250" cy="250" r="250" fill="url(#bgGradient)"></circle>
+                    <circle cx="250" cy="250" r="230" stroke="#b28a3c" stroke-width="5" fill="none" class="spin"></circle>
+                    <circle cx="250" cy="250" r="235" stroke="#d4a74a" stroke-width="2" fill="none"></circle>
+                    <circle cx="250" cy="250" r="190" stroke="#00a2ff" stroke-width="3" fill="none" class="spin-reverse"></circle>
+                    <circle cx="250" cy="250" r="120" fill="#1a2334" stroke="#b28a3c" stroke-width="3"></circle>
+                    <text x="250" y="230" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#ffffff" text-anchor="middle">AGENT</text>
+                    <text x="250" y="280" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#ffffff" text-anchor="middle">LEE</text>
+                  </svg>
+                </div>
+              </div>
+              
+              <!-- Additional Logos -->
+              <div class="mb-6">
+                <h3 class="text-lg font-semibold text-blue-200 mb-3">Logo Variations</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  <!-- AL Compact Logo -->
+                  <div>
+                    <div class="mx-auto w-32 h-32 relative">
+                      <svg viewBox="0 0 500 500" class="w-full h-full">
+                        <circle cx="250" cy="250" r="250" fill="#1a2334"></circle>
+                        <circle cx="250" cy="250" r="230" stroke="#b28a3c" stroke-width="5" fill="none"></circle>
+                        <circle cx="250" cy="250" r="235" stroke="#d4a74a" stroke-width="2" fill="none"></circle>
+                        <circle cx="250" cy="250" r="190" stroke="#00a2ff" stroke-width="3" fill="none"></circle>
+                        <circle cx="250" cy="250" r="120" fill="#1a2334" stroke="#b28a3c" stroke-width="3"></circle>
+                        <text x="250" y="260" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#ffffff" text-anchor="middle">AL</text>
+                      </svg>
+                    </div>
+                    <p class="text-center text-gray-300 text-sm mt-2">Compact "AL" Logo</p>
+                  </div>
+                  
+                  <!-- Face Logo -->
+                  <div>
+                    <div class="mx-auto w-32 h-32 relative">
+                      <svg viewBox="0 0 500 500" class="w-full h-full">
+                        <circle cx="250" cy="250" r="250" fill="#1a2334"></circle>
+                        <circle cx="250" cy="250" r="230" stroke="#b28a3c" stroke-width="5" fill="none"></circle>
+                        <circle cx="250" cy="250" r="235" stroke="#d4a74a" stroke-width="2" fill="none"></circle>
+                        <!-- Simplified face -->
+                        <circle cx="180" cy="200" r="25" fill="#00a2ff"></circle>
+                        <circle cx="320" cy="200" r="25" fill="#00a2ff"></circle>
+                        <path d="M 180 280 Q 250 340 320 280" stroke="#d4a74a" stroke-width="6" fill="none"></path>
+                      </svg>
+                    </div>
+                    <p class="text-center text-gray-300 text-sm mt-2">Agent Lee Face</p>
+                  </div>
+                  
+                  <!-- Badge Logo -->
+                  <div>
+                    <div class="mx-auto w-32 h-32 relative">
+                      <svg viewBox="0 0 500 500" class="w-full h-full">
+                        <polygon points="250,50 350,150 350,350 250,450 150,350 150,150" fill="#1a2334" stroke="#d4a74a" stroke-width="5"></polygon>
+                        <text x="250" y="230" font-family="Arial, sans-serif" font-size="30" font-weight="bold" fill="#ffffff" text-anchor="middle">AGENT</text>
+                        <text x="250" y="280" font-family="Arial, sans-serif" font-size="50" font-weight="bold" fill="#ffffff" text-anchor="middle">LEE</text>
+                        <circle cx="250" cy="250" r="120" fill="none" stroke="#00a2ff" stroke-width="3"></circle>
+                      </svg>
+                    </div>
+                    <p class="text-center text-gray-300 text-sm mt-2">Badge Variant</p>
+                  </div>
+                  
+                  <!-- Minimal Logo -->
+                  <div>
+                    <div class="mx-auto w-32 h-32 relative">
+                      <svg viewBox="0 0 500 500" class="w-full h-full">
+                        <circle cx="250" cy="250" r="200" fill="none" stroke="#00a2ff" stroke-width="5"></circle>
+                        <text x="250" y="270" font-family="Arial, sans-serif" font-size="90" font-weight="bold" fill="#d4a74a" text-anchor="middle">AL</text>
+                      </svg>
+                    </div>
+                    <p class="text-center text-gray-300 text-sm mt-2">Minimal Variant</p>
+                  </div>
+                  
+                  <!-- Text Logo -->
+                  <div>
+                    <div class="mx-auto w-32 h-32 relative flex items-center justify-center">
+                      <svg viewBox="0 0 500 200" class="w-full">
+                        <text x="250" y="100" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#ffffff" text-anchor="middle">AGENT LEE</text>
+                        <line x1="100" y1="130" x2="400" y2="130" stroke="#00a2ff" stroke-width="5"></line>
+                        <line x1="150" y1="150" x2="350" y2="150" stroke="#d4a74a" stroke-width="3"></line>
+                      </svg>
+                    </div>
+                    <p class="text-center text-gray-300 text-sm mt-2">Text-only Variant</p>
+                  </div>
+                  
+                  <!-- Icon Logo -->
+                  <div>
+                    <div class="mx-auto w-32 h-32 relative">
+                      <svg viewBox="0 0 500 500" class="w-full h-full">
+                        <rect x="100" y="100" width="300" height="300" rx="30" fill="#1a2334"></rect>
+                        <text x="250" y="270" font-family="Arial, sans-serif" font-size="120" font-weight="bold" fill="#ffffff" text-anchor="middle">AL</text>
+                        <rect x="100" y="100" width="300" height="300" rx="30" fill="none" stroke="#00a2ff" stroke-width="10"></rect>
+                      </svg>
+                    </div>
+                    <p class="text-center text-gray-300 text-sm mt-2">App Icon Variant</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Brand Code (Hidden by default) -->
+              <div id="brandCodeContainer" class="code-container hidden">
+                <pre class="code" style="color: #e2e8f0;">
+&lt;!-- Primary Agent Lee Logo --&gt;
+&lt;svg viewBox="0 0 500 500"&gt;
+  &lt;defs&gt;
+    &lt;radialgradient id="bgGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%"&gt;
+      &lt;stop offset="0%" stop-color="#1a2334" stop-opacity="1"&gt;&lt;/stop&gt;
+      &lt;stop offset="100%" stop-color="#0a0f18" stop-opacity="1"&gt;&lt;/stop&gt;
+    &lt;/radialgradient&gt;
+  &lt;/defs&gt;
+  &lt;circle cx="250" cy="250" r="250" fill="url(#bgGradient)"&gt;&lt;/circle&gt;
+  &lt;circle cx="250" cy="250" r="230" stroke="#b28a3c" stroke-width="5" fill="none" class="spin"&gt;&lt;/circle&gt;
+  &lt;circle cx="250" cy="250" r="235" stroke="#d4a74a" stroke-width="2" fill="none"&gt;&lt;/circle&gt;
+  &lt;circle cx="250" cy="250" r="190" stroke="#00a2ff" stroke-width="3" fill="none" class="spin-reverse"&gt;&lt;/circle&gt;
+  &lt;circle cx="250" cy="250" r="120" fill="#1a2334" stroke="#b28a3c" stroke-width="3"&gt;&lt;/circle&gt;
+  &lt;text x="250" y="230" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#ffffff" text-anchor="middle"&gt;AGENT&lt;/text&gt;
+  &lt;text x="250" y="280" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#ffffff" text-anchor="middle"&gt;LEE&lt;/text&gt;
+&lt;/svg&gt;
+
+&lt;!-- Compact AL Logo --&gt;
+&lt;svg viewBox="0 0 500 500"&gt;
+  &lt;circle cx="250" cy="250" r="250" fill="#1a2334"&gt;&lt;/circle&gt;
+  &lt;circle cx="250" cy="250" r="230" stroke="#b28a3c" stroke-width="5" fill="none"&gt;&lt;/circle&gt;
+  &lt;circle cx="250" cy="250" r="235" stroke="#d4a74a" stroke-width="2" fill="none"&gt;&lt;/circle&gt;
+  &lt;circle cx="250" cy="250" r="190" stroke="#00a2ff" stroke-width="3" fill="none"&gt;&lt;/circle&gt;
+  &lt;circle cx="250" cy="250" r="120" fill="#1a2334" stroke="#b28a3c" stroke-width="3"&gt;&lt;/circle&gt;
+  &lt;text x="250" y="260" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#ffffff" text-anchor="middle"&gt;AL&lt;/text&gt;
+&lt;/svg&gt;
+
+&lt;!-- Agent Lee Face Logo --&gt;
+&lt;svg viewBox="0 0 500 500"&gt;
+  &lt;circle cx="250" cy="250" r="250" fill="#1a2334"&gt;&lt;/circle&gt;
+  &lt;circle cx="250" cy="250" r="230" stroke="#b28a3c" stroke-width="5" fill="none"&gt;&lt;/circle&gt;
+  &lt;circle cx="250" cy="250" r="235" stroke="#d4a74a" stroke-width="2" fill="none"&gt;&lt;/circle&gt;
+  &lt;!-- Simplified face --&gt;
+  &lt;circle cx="180" cy="200" r="25" fill="#00a2ff"&gt;&lt;/circle&gt;
+  &lt;circle cx="320" cy="200" r="25" fill="#00a2ff"&gt;&lt;/circle&gt;
+  &lt;path d="M 180 280 Q 250 340 320 280" stroke="#d4a74a" stroke-width="6" fill="none"&gt;&lt;/path&gt;
+&lt;/svg&gt;
+
+/* Required CSS animations */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+.spin {
+  animation: spin 10s linear infinite;
+}
+
+.spin-reverse {
+  animation: spin-reverse 15s linear infinite;
+}
+                </pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Design Specifications Card -->
+        <div class="glass-card">
+          <div class="p-5">
+            <div class="flex items-center gap-2 mb-4">
+              <div class="text-yellow-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                </svg>
+              </div>
+              <h2 class="text-xl font-semibold text-blue-200">Design Specifications</h2>
+            </div>
+            
+            <div class="toggle-container">
+              <label class="toggle-switch">
+                <input type="checkbox" id="toggleDesignCode" aria-label="Toggle design specifications code display">
+                <span class="toggle-slider"></span>
+              </label>
+              <span class="text-gray-300 text-sm">Show Code</span>
+            </div>
+            
+            <div id="designSpecContent">
+              <!-- Design Specs Visual -->
+              <div class="mb-6">
+                <h3 class="text-lg font-semibold text-blue-200 mb-3">Brand Color Palette</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full" style="background-color: #0a0c10;"></div>
+                    <span class="text-sm text-gray-300 mt-2">#0a0c10</span>
+                    <span class="text-xs text-gray-400">Background</span>
+                  </div>
+                  <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full" style="background-color: #00a2ff;"></div>
+                    <span class="text-sm text-gray-300 mt-2">#00a2ff</span>
+                    <span class="text-xs text-gray-400">Primary</span>
+                  </div>
+                  <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full" style="background-color: #d4a74a;"></div>
+                    <span class="text-sm text-gray-300 mt-2">#d4a74a</span>
+                    <span class="text-xs text-gray-400">Accent</span>
+                  </div>
+                  <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-full" style="background-color: #ffffff;"></div>
+                    <span class="text-sm text-gray-300 mt-2">#ffffff</span>
+                    <span class="text-xs text-gray-400">Text</span>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Agent Lee Character Design -->
+              <div class="mb-6">
+                <h3 class="text-lg font-semibold text-blue-200 mb-3">Agent Lee Character</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <!-- Character Face -->
+                  <div>
+                    <div class="mx-auto w-48 h-48 bg-gray-900 rounded-lg p-4 flex items-center justify-center">
+                      <svg viewBox="0 0 500 500" class="w-full h-full">
+                        <defs>
+                          <radialgradient id="faceGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                            <stop offset="0%" stop-color="#1a2334" stop-opacity="1"></stop>
+                            <stop offset="100%" stop-color="#0a0c10" stop-opacity="1"></stop>
+                          </radialgradient>
+                        </defs>
+                        <!-- Face shape -->
+                        <circle cx="250" cy="250" r="200" fill="url(#faceGradient)"></circle>
+                        <circle cx="250" cy="250" r="200" fill="none" stroke="#d4a74a" stroke-width="3"></circle>
+                        
+                        <!-- Eyes -->
+                        <circle cx="175" cy="200" r="30" fill="#00a2ff"></circle>
+                        <circle cx="325" cy="200" r="30" fill="#00a2ff"></circle>
+                        <circle cx="175" cy="200" r="15" fill="#ffffff"></circle>
+                        <circle cx="325" cy="200" r="15" fill="#ffffff"></circle>
+                        
+                        <!-- Mouth -->
+                        <path d="M 175 320 Q 250 380 325 320" stroke="#d4a74a" stroke-width="8" fill="none"></path>
+                        
+                        <!-- Details -->
+                        <line x1="210" y1="160" x2="170" y2="140" stroke="#ffffff" stroke-width="3"></line>
+                        <line x1="290" y1="160" x2="330" y2="140" stroke="#ffffff" stroke-width="3"></line>
+                      </svg>
+                    </div>
+                    <p class="text-center text-gray-300 text-sm mt-2">Character Face Design</p>
+                  </div>
+                  
+                  <!-- Character Expressions -->
+                  <div>
+                    <div class="grid grid-cols-2 gap-2">
+                      <!-- Happy Expression -->
+                      <div>
+                        <div class="w-24 h-24 mx-auto bg-gray-900 rounded-lg p-2 flex items-center justify-center">
+                          <svg viewBox="0 0 500 500" class="w-full h-full">
+                            <circle cx="250" cy="250" r="200" fill="#1a2334"></circle>
+                            <!-- Happy eyes -->
+                            <path d="M 175 190 Q 185 170 195 190" stroke="#00a2ff" stroke-width="8" fill="none"></path>
+                            <path d="M 305 190 Q 315 170 325 190" stroke="#00a2ff" stroke-width="8" fill="none"></path>
+                            <!-- Happy mouth -->
+                            <path d="M 175 300 Q 250 360 325 300" stroke="#d4a74a" stroke-width="8" fill="none"></path>
+                          </svg>
+                        </div>
+                        <p class="text-center text-gray-300 text-xs mt-1">Happy</p>
+                      </div>
+                      
+                      <!-- Thinking Expression -->
+                      <div>
+                        <div class="w-24 h-24 mx-auto bg-gray-900 rounded-lg p-2 flex items-center justify-center">
+                          <svg viewBox="0 0 500 500" class="w-full h-full">
+                            <circle cx="250" cy="250" r="200" fill="#1a2334"></circle>
+                            <!-- Thinking eyes -->
+                            <circle cx="175" cy="200" r="25" fill="#00a2ff"></circle>
+                            <circle cx="325" cy="200" r="10" fill="#00a2ff"></circle>
+                            <!-- Thinking mouth -->
+                            <path d="M 200 320 L 300 320" stroke="#d4a74a" stroke-width="8" fill="none"></path>
+                            <!-- Thought bubble -->
+                            <circle cx="400" cy="150" r="20" fill="none" stroke="#ffffff" stroke-width="3"></circle>
+                          </svg>
+                        </div>
+                        <p class="text-center text-gray-300 text-xs mt-1">Thinking</p>
+                      </div>
+                      
+                      <!-- Surprised Expression -->
+                      <div>
+                        <div class="w-24 h-24 mx-auto bg-gray-900 rounded-lg p-2 flex items-center justify-center">
+                          <svg viewBox="0 0 500 500" class="w-full h-full">
+                            <circle cx="250" cy="250" r="200" fill="#1a2334"></circle>
+                            <!-- Surprised eyes -->
+                            <circle cx="175" cy="200" r="30" fill="#00a2ff"></circle>
+                            <circle cx="325" cy="200" r="30" fill="#00a2ff"></circle>
+                            <!-- Surprised mouth -->
+                            <circle cx="250" cy="320" r="30" fill="none" stroke="#d4a74a" stroke-width="8"></circle>
+                          </svg>
+                        </div>
+                        <p class="text-center text-gray-300 text-xs mt-1">Surprised</p>
+                      </div>
+                      
+                      <!-- Confused Expression -->
+                      <div>
+                        <div class="w-24 h-24 mx-auto bg-gray-900 rounded-lg p-2 flex items-center justify-center">
+                          <svg viewBox="0 0 500 500" class="w-full h-full">
+                            <circle cx="250" cy="250" r="200" fill="#1a2334"></circle>
+                            <!-- Confused eyes -->
+                            <circle cx="175" cy="200" r="25" fill="#00a2ff"></circle>
+                            <circle cx="325" cy="200" r="25" fill="#00a2ff"></circle>
+                            <!-- Raised eyebrow -->
+                            <path d="M 150 160 L 200 140" stroke="#ffffff" stroke-width="4" fill="none"></path>
+                            <!-- Confused mouth -->
+                            <path d="M 200 320 Q 250 300 300 320" stroke="#d4a74a" stroke-width="8" fill="none"></path>
+                          </svg>
+                        </div>
+                        <p class="text-center text-gray-300 text-xs mt-1">Confused</p>
+                      </div>
+                    </div>
+                    <p class="text-center text-gray-300 text-sm mt-2">Emotion Variations</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- UI Component Examples -->
+              <div class="mb-6">
+                <h3 class="text-lg font-semibold text-blue-200 mb-3">UI Component Examples</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <!-- Glass Card Example -->
+                  <div class="bg-gray-900 p-4 rounded-lg">
+                    <div class="glass-card p-4 text-center">
+                      <h4 class="text-blue-200 text-sm font-semibold mb-2">Glass Card Component</h4>
+                      <p class="text-gray-300 text-xs">Frosted glass effect with border</p>
+                    </div>
+                    <p class="text-center text-gray-300 text-xs mt-2">Glass Card</p>
+                  </div>
+                  
+                  <!-- Button Examples -->
+                  <div class="bg-gray-900 p-4 rounded-lg flex flex-col items-center justify-center space-y-3">
+                    <button class="bg-blue-700 text-white px-4 py-2 rounded-md text-sm">Primary Button</button>
+                    <button class="bg-transparent border border-yellow-400 text-yellow-400 px-4 py-2 rounded-md text-sm">Secondary Button</button>
+                    <p class="text-center text-gray-300 text-xs mt-2">Button Styles</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Design Specs Code (Hidden by default) -->
+              <div id="designCodeContainer" class="code-container hidden">
+                <pre class="code" style="color: #e2e8f0;">
+/* Agent Lee Design System - Core Variables */
+
+:root {
+  /* Color Palette */
+  --background-dark: #0a0c10;
+  --background-light: #1a2334;
+  --primary-blue: #00a2ff;
+  --secondary-blue: #3b82f6;
+  --accent-gold: #d4a74a;
+  --accent-gold-dark: #b28a3c;
+  --text-white: #ffffff;
+  --text-light-gray: #d1d5db;
+  --text-blue: #bfdbfe;
+  --text-yellow: #fcd34d;
+  
+  /* Glass Card Effects */
+  --glass-background: rgba(31, 41, 55, 0.4);
+  --glass-border: rgba(55, 65, 81, 0.5);
+  --glass-blur: 12px;
+  
+  /* Animations */
+  --animation-slow: 15s;
+  --animation-medium: 10s;
+  --animation-fast: 2s;
+  
+  /* Spacing Units */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  
+  /* Typography */
+  --font-family: 'Inter', sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+}
+
+/* Glass Card Component */
+.glass-card {
+  background-color: var(--glass-background);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  transition: all 1s ease-out;
+}
+
+/* Button Components */
+.button-primary {
+  background-color: var(--secondary-blue);
+  color: var(--text-white);
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.button-primary:hover {
+  background-color: var(--primary-blue);
+  box-shadow: 0 0 15px rgba(0, 162, 255, 0.5);
+}
+
+.button-secondary {
+  background-color: transparent;
+  border: 1px solid var(--accent-gold);
+  color: var(--text-yellow);
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.button-secondary:hover {
+  background-color: rgba(212, 167, 74, 0.2);
+  box-shadow: 0 0 15px rgba(212, 167, 74, 0.3);
+}
+
+/* Agent Lee Character SVG */
+&lt;svg viewBox="0 0 500 500"&gt;
+  &lt;defs&gt;
+    &lt;radialgradient id="faceGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%"&gt;
+      &lt;stop offset="0%" stop-color="#1a2334" stop-opacity="1"&gt;&lt;/stop&gt;
+      &lt;stop offset="100%" stop-color="#0a0c10" stop-opacity="1"&gt;&lt;/stop&gt;
+    &lt;/radialgradient&gt;
+  &lt;/defs&gt;
+  &lt;!-- Face shape --&gt;
+  &lt;circle cx="250" cy="250" r="200" fill="url(#faceGradient)"&gt;&lt;/circle&gt;
+  &lt;circle cx="250" cy="250" r="200" fill="none" stroke="#d4a74a" stroke-width="3"&gt;&lt;/circle&gt;
+  
+  &lt;!-- Eyes --&gt;
+  &lt;circle cx="175" cy="200" r="30" fill="#00a2ff"&gt;&lt;/circle&gt;
+  &lt;circle cx="325" cy="200" r="30" fill="#00a2ff"&gt;&lt;/circle&gt;
+  &lt;circle cx="175" cy="200" r="15" fill="#ffffff"&gt;&lt;/circle&gt;
+  &lt;circle cx="325" cy="200" r="15" fill="#ffffff"&gt;&lt;/circle&gt;
+  
+  &lt;!-- Mouth --&gt;
+  &lt;path d="M 175 320 Q 250 380 325 320" stroke="#d4a74a" stroke-width="8" fill="none"&gt;&lt;/path&gt;
+  
+  &lt;!-- Details --&gt;
+  &lt;line x1="210" y1="160" x2="170" y2="140" stroke="#ffffff" stroke-width="3"&gt;&lt;/line&gt;
+  &lt;line x1="290" y1="160" x2="330" y2="140" stroke="#ffffff" stroke-width="3"&gt;&lt;/line&gt;
+&lt;/svg&gt;
+
+/* Animation Classes */
+.spin {
+  animation: spin var(--animation-medium) linear infinite;
+}
+
+.spin-reverse {
+  animation: spin-reverse var(--animation-slow) linear infinite;
+}
+
+.pulse {
+  animation: pulse var(--animation-fast) infinite;
+}
+                </pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Footer -->
+  <footer class="relative z-10 pb-8 pt-4 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center text-gray-500 text-sm">
+        <p>&copy; 2025 Leonard Lee. All rights reserved.</p>
+        <div class="flex justify-center gap-4 mt-2">
+          <a href="https://github.com/4citeB4U" class="text-gray-400 hover:text-blue-300 transition-colors flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-300">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+            GitHub
+          </a>
+          <a href="mailto:LeonardLee6@outlook.com" class="text-gray-400 hover:text-blue-300 transition-colors flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-yellow-300">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            Email
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Show the cards with animation
+      const cards = document.querySelectorAll('.glass-card');
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, 100 + (index * 200));
+      });
+      
+      // Generate dynamic particles with more dramatic movement
+      const particlesContainer = document.querySelector('.particles-container');
+      const particleColors = ['#00a2ff', '#54b4ff', '#d4a74a', '#ffffff', '#4287f5', '#00e5ff', '#ffd700', '#ff6b6b'];
+      const particleCount = 100; // Increased particle count for more visual impact
+      
+      // Clear any existing particles first
+      particlesContainer.innerHTML = '';
+      
+      // Create particle animation keyframes dynamically
+      let styleSheet = document.createElement('style');
+      document.head.appendChild(styleSheet);
+      
+      // Create a special 3D text animation for "Lee"
+      const createNameParticle = () => {
+        // Create the "Lee" text element
+        const nameParticle = document.createElement('div');
+        nameParticle.className = 'name-particle';
+        nameParticle.textContent = 'Lee';
+        
+        // Random starting position
+        const startLeft = Math.random() * 80 + 10; // 10% to 90% of screen width
+        const startTop = Math.random() * 80 + 10; // 10% to 90% of screen height
+        
+        // Create unique animation name
+        const animationName = `float-name-${Math.floor(Math.random() * 10000)}`;
+        const duration = Math.random() * 8 + 5; // 5-13 seconds for animation
+        
+        // Create keyframes for 3D effect (getting bigger and moving toward viewer)
+        const keyframes = `
+          @keyframes ${animationName} {
+            0% {
+              transform: translate(0, 0) scale(0.1);
+              opacity: 0;
+            }
+            10% {
+              opacity: 0.2;
+            }
+            80% {
+              opacity: 0.8;
+            }
+            100% {
+              transform: translate(0, 0) scale(2.5);
+              opacity: 0;
+            }
+          }
+        `;
+        
+        // Add the keyframes to the stylesheet
+        if (styleSheet.sheet) {
+          styleSheet.sheet.insertRule(keyframes, 0);
+        } else {
+          // Fallback for browsers that don't support CSSStyleSheet
+          styleSheet.appendChild(document.createTextNode(keyframes));
+        }
+        
+        // Random color from palette
+        const nameColor = particleColors[Math.floor(Math.random() * particleColors.length)];
+        
+        // Apply styles and animation
+        nameParticle.style.cssText = `
+          position: absolute;
+          top: ${startTop}%;
+          left: ${startLeft}%;
+          font-family: 'Inter', sans-serif;
+          font-weight: 700;
+          font-size: 1.5rem;
+          color: ${nameColor};
+          text-shadow: 0 0 10px ${nameColor};
+          z-index: 1;
+          pointer-events: none;
+          animation: ${animationName} ${duration}s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        `;
+        
+        particlesContainer.appendChild(nameParticle);
+        
+        // Remove the element after animation completes
+        setTimeout(() => {
+          nameParticle.remove();
+        }, duration * 1000);
+      };
+      
+      // Periodically create "Lee" name particles
+      const createNameParticles = () => {
+        createNameParticle();
+        // Random interval between 1.5 and 5 seconds for next name appearance
+        const nextInterval = Math.random() * 3500 + 1500;
+        setTimeout(createNameParticles, nextInterval);
+      };
+      
+      // Start name particle creation after a short delay
+      setTimeout(createNameParticles, 2000);
+      
+      // Create scrolling candidate message
+      const createScrollingMessage = () => {
+        // Create message container
+        const messageContainer = document.createElement('div');
+        messageContainer.className = 'scrolling-message';
+        
+        // Create and populate message content
+        const messageContent = document.createElement('div');
+        messageContent.className = 'scrolling-message-content';
+        
+        // Array of messages about why Leonard is the best candidate
+        const messages = [
+          `<strong class="text-yellow-300">Why Leonard Lee is Exceptional:</strong><br><br>
+          
+          ✓ 15+ years in logistics and leadership<br><br>
+          
+          ✓ Mentors employees facing employment barriers<br><br>
+          
+          ✓ AI development expertise<br><br>
+          
+          ✓ Deep understanding of community needs<br><br>
+          
+          ✓ Strong problem-solving abilities<br><br>
+          
+          ✓ Class A CDL with endorsements<br><br>
+          
+          ✓ Committed to community development<br><br>
+          
+          ✓ Connects with diverse backgrounds<br><br>
+          
+          ✓ Exceptional resource management<br><br>
+          
+          ✓ Compassionate leadership approach`,
+          
+          `<strong class="text-yellow-300">Leonard Lee: Visionary Leader</strong><br><br>
+          
+          Technical expertise with compassion:<br><br>
+          
+          ✓ Founded successful logistics company<br><br>
+          
+          ✓ Developed practical AI solutions<br><br>
+          
+          ✓ Created Agent Lee AI platform<br><br>
+          
+          ✓ Experienced with diverse communities<br><br>
+          
+          ✓ Committed to ethical practices<br><br>
+          
+          ✓ Proven mentorship abilities<br><br>
+          
+          ✓ Adaptable problem-solver<br><br>
+          
+          ✓ Combines technical & community skills`
+        ];
+        
+        // Set random message from the array
+        messageContent.innerHTML = messages[Math.floor(Math.random() * messages.length)];
+        
+        // Add content to container
+        messageContainer.appendChild(messageContent);
+        
+        // Add to document
+        document.body.appendChild(messageContainer);
+        
+        // Fade in the message
+        setTimeout(() => {
+          messageContainer.style.opacity = '1';
+        }, 500);
+        
+        // Remove after animation completes
+        setTimeout(() => {
+          messageContainer.style.opacity = '0';
+          setTimeout(() => {
+            messageContainer.remove();
+          }, 1000);
+        }, 26000); // 25s for animation + 1s buffer
+        
+        // Schedule next message exactly every minute (60 seconds)
+        setTimeout(createScrollingMessage, 60000);
+      };
+      
+      // Start scrolling messages after a delay
+      setTimeout(createScrollingMessage, 8000);
+      
+      // Create regular particles
+      for (let i = 0; i < particleCount; i++) {
+        const size = Math.random() * 12 + 3; // Size between 3-15px - bigger particles
+        const color = particleColors[Math.floor(Math.random() * particleColors.length)];
+        const opacity = Math.random() * 0.7 + 0.3; // Opacity between 0.3-1.0
+        const left = Math.random() * 100;
+        const top = Math.random() * 100;
+        const glow = size > 6 ? `box-shadow: 0 0 ${size * 3}px ${color};` : ''; // Stronger glow
+        
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        // Create unique animation for this particle with more dramatic movement
+        const animationName = `float-${i}`;
+        const duration = Math.random() * 30 + 20; // Longer animations (20-50s)
+        const xRange = Math.random() * 200 - 100; // Movement range -100px to 100px
+        const yRange = Math.random() * 200 - 100; // Movement range -100px to 100px
+        
+        // More complex animation with 5 keyframes for more varied movement
+        const keyframes = `
+          @keyframes ${animationName} {
+            0% { transform: translate(0, 0); }
+            20% { transform: translate(${xRange * 0.3}px, ${yRange * 0.5}px); }
+            40% { transform: translate(${xRange * 0.1}px, ${yRange * -0.6}px); }
+            60% { transform: translate(${xRange * -0.5}px, ${yRange * 0.2}px); }
+            80% { transform: translate(${xRange * 0.7}px, ${yRange * -0.3}px); }
+            100% { transform: translate(0, 0); }
+          }
+        `;
+        
+        // Add the keyframes to the stylesheet
+        if (styleSheet.sheet) {
+          styleSheet.sheet.insertRule(keyframes, 0);
+        } else {
+          // Fallback for browsers that don't support CSSStyleSheet
+          styleSheet.appendChild(document.createTextNode(keyframes));
+        }
+        
+        // Apply styles and animation to the particle
+        particle.style.cssText = `
+          width: ${size}px;
+          height: ${size}px;
+          background-color: ${color};
+          opacity: ${opacity};
+          top: ${top}%;
+          left: ${left}%;
+          ${glow}
+          animation: ${animationName} ${duration}s ease-in-out infinite;
+          z-index: 1;
+        `;
+        
+        particlesContainer.appendChild(particle);
+      }
+      
+      // ENHANCED NARRATOR FUNCTIONALITY WITH ANDROID SUPPORT
+      // This implementation addresses cross-platform compatibility issues
+      
+      // Initialize speech synthesis
+      const synth = window.speechSynthesis;
+      let selectedVoice = null;
+      let isSpeaking = false;
+      let speechQueue = [];
+      let userInteracted = false;
+      
+      // Detect if running on Android
+      const isAndroid = /Android/i.test(navigator.userAgent);
+      console.log("Device detection: " + (isAndroid ? "Android" : "Non-Android"));
+      
+      // Function to find appropriate voice based on platform
+      async function findBestVoice() {
+        return new Promise((resolve) => {
+          function processList(voiceList) {
+            if (!voiceList || voiceList.length === 0) {
+              console.error("No voices available");
+              resolve(null);
+              return;
+            }
+            
+            console.log("Available voices:", voiceList.map(v => `${v.name} (${v.lang})`).join(", "));
+            let voice;
+            
+            // Different voice selection strategy based on platform
+            if (isAndroid) {
+              // On Android, prioritize Google voices
+              voice = 
+                voiceList.find(v => v.name.includes('Google') && v.lang.includes('en')) ||
+                voiceList.find(v => v.name.includes('Google')) ||
+                voiceList.find(v => v.lang.includes('en')) ||
+                voiceList[0];
+                
+              console.log("Selected Android voice:", voice?.name || "None found");
+            } else {
+              // On desktop, prioritize Microsoft voices
+              voice = 
+                voiceList.find(v => v.name.includes('Microsoft Mark')) ||
+                voiceList.find(v => v.name.includes('Microsoft David')) ||
+                voiceList.find(v => v.name.includes('Microsoft Zira')) ||
+                voiceList.find(v => v.lang.includes('en-US')) ||
+                voiceList.find(v => v.lang.includes('en')) ||
+                voiceList[0];
+                
+              console.log("Selected desktop voice:", voice?.name || "None found");
+            }
+            
+            resolve(voice);
+          }
+          
+          // Get voices - if empty, wait for voiceschanged event
+          let voices = synth.getVoices();
+          
+          if (voices && voices.length > 0) {
+            processList(voices);
+          } else {
+            // Set a timeout in case voiceschanged never fires
+            const timeoutId = setTimeout(() => {
+              console.warn("Voice list timeout - trying with whatever is available");
+              processList(synth.getVoices() || []);
+            }, 1000);
+            
+            // Wait for voices to load
+            synth.addEventListener('voiceschanged', () => {
+              clearTimeout(timeoutId);
+              voices = synth.getVoices();
+              processList(voices);
+            }, { once: true });
+          }
+        });
+      }
+      
+      // Function to ensure user interaction has occurred
+      function ensureUserInteraction() {
+        if (userInteracted) return true;
+        
+        if (isAndroid) {
+          alert("Tap the screen once to enable narration on Android.");
+          return false;
+        }
+        
+        return true;
+      }
+      
+      // Listen for any user interaction to enable speech
+      document.addEventListener('click', function() {
+        userInteracted = true;
+        console.log("User interaction detected - speech enabled");
+        
+        // Try a quick test speech if on Android
+        if (isAndroid && !selectedVoice) {
+          setTimeout(async () => {
+            try {
+              const testVoice = await findBestVoice();
+              if (testVoice) {
+                const testUtterance = new SpeechSynthesisUtterance("Speech enabled.");
+                testUtterance.voice = testVoice;
+                testUtterance.volume = 0.3; // Quieter test
+                synth.cancel();
+                setTimeout(() => synth.speak(testUtterance), 100);
+                selectedVoice = testVoice;
+              }
+            } catch (error) {
+              console.error("Test speech failed:", error);
+            }
+          }, 500);
+        }
+      }, { once: true });
+      
+      // Function to cancel all speech
+      function stopSpeaking() {
+        synth.cancel();
+        speechQueue = [];
+        isSpeaking = false;
+        console.log("Narrator stopped");
+      }
+      
+      // Speak next item in queue with improved reliability
+      function speakNextInQueue() {
+        if (speechQueue.length === 0 || !isSpeaking) {
+          isSpeaking = false;
+          return;
+        }
+        
+        const textToSpeak = speechQueue.shift();
+        const utterance = new SpeechSynthesisUtterance(textToSpeak);
+        
+        if (selectedVoice) {
+          utterance.voice = selectedVoice;
+        }
+        
+        utterance.rate = isAndroid ? 0.95 : 0.9; // Slightly adjust for platform
+        utterance.pitch = 1.0;
+        utterance.volume = 1.0;
+        
+        // Continue with next item when this one finishes
+        utterance.onend = () => {
+          setTimeout(() => {
+            if (isSpeaking) {
+              speakNextInQueue();
+            }
+          }, 500); // Small pause between speech segments
+        };
+        
+        // Handle errors gracefully
+        utterance.onerror = (event) => {
+          console.error('Speech error:', event);
+          // Try to continue despite errors
+          if (isSpeaking) {
+            setTimeout(speakNextInQueue, 500);
+          }
+        };
+        
+        // Prevent interruption by canceling previous speech
+        synth.cancel();
+        
+        // Actually speak the text after a small delay
+        setTimeout(() => {
+          try {
+            synth.speak(utterance);
+          } catch (error) {
+            console.error('Error speaking:', error);
+            speakNextInQueue(); // Try to continue with next item
+          }
+        }, 100);
+      }
+      
+      // Start narrating the page with better error handling
+      document.getElementById('startNarrator').addEventListener('click', async () => {
+        // Ensure user has interacted with the page (important for Android)
+        if (!ensureUserInteraction()) {
+          return; // Wait for user interaction
+        }
+        
+        // Platform-specific guidance
+        if (isAndroid) {
+          alert("Android detected. If narration doesn't work, please:\n1. Make sure Google Text-to-Speech is enabled in your Accessibility settings\n2. Try using Firefox for Android instead of Chrome\n3. Increase your device volume");
+        }
+        
+        // If already speaking, stop first
+        if (isSpeaking) {
+          stopSpeaking();
+        }
+        
+        // Ensure we have a voice
+        if (!selectedVoice) {
+          try {
+            selectedVoice = await findBestVoice();
+            if (!selectedVoice) {
+              if (isAndroid) {
+                alert("No voice found. Please check your Android Text-to-Speech settings and try Firefox instead of Chrome.");
+              } else {
+                alert("Could not find a voice for narration. Please try a different browser.");
+              }
+              return;
+            }
+          } catch (error) {
+            console.error('Error finding voice:', error);
+            alert("Error initializing speech. Please try a different browser.");
+            return;
+          }
+        }
+        
+        // Reset state
+        speechQueue = [];
+        
+        // Add introduction
+        speechQueue.push("Leonard Lee Resume. Compassionate and Resourceful Professional.");
+        
+        // Collect page content
+        const sections = [
+          // Header content
+          document.querySelector('header p'),
+          
+          // Section headers (Technical Skills, Education, etc.)
+          ...document.querySelectorAll('h2.text-blue-200'),
+          
+          // Other important content
+          ...document.querySelectorAll('.skill-section h3'),
+          ...document.querySelectorAll('.experience-item h3'),
+          ...document.querySelectorAll('.experience-company'),
+          ...document.querySelectorAll('.project-card h3'),
+          ...document.querySelectorAll('.project-card p'),
+          ...document.querySelectorAll('li')
+        ];
+        
+        // Add content to speech queue, filtering empty items
+        sections.forEach(section => {
+          if (section && section.textContent.trim()) {
+            speechQueue.push(section.textContent.trim());
+          }
+        });
+        
+        // Start speaking
+        isSpeaking = true;
+        
+        // Speak after a small delay to ensure browser is ready
+        setTimeout(() => {
+          speakNextInQueue();
+        }, 250);
+      });
+      
+      // Stop narration
+      document.getElementById('stopNarrator').addEventListener('click', () => {
+        stopSpeaking();
+      });
+      
+      // Toggle code display for brand assets
+      document.getElementById('toggleBrandCode').addEventListener('change', function() {
+        const codeContainer = document.getElementById('brandCodeContainer');
+        if (this.checked) {
+          codeContainer.classList.remove('hidden');
+        } else {
+          codeContainer.classList.add('hidden');
+        }
+      });
+      
+      // Toggle code display for design specs
+      document.getElementById('toggleDesignCode').addEventListener('change', function() {
+        const codeContainer = document.getElementById('designCodeContainer');
+        if (this.checked) {
+          codeContainer.classList.remove('hidden');
+        } else {
+          codeContainer.classList.add('hidden');
+        }
+      });
+    });
+>>>>>>> e987ad9ea31394d031afa9e5217c4761fd9c1eba
+  </script>
+</body>
+</html>

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Artist Empowerment Platform with Digital Business Card + Agent Lee</title>
+<meta name="theme-color" content="#6366f1" />
+<meta name="description" content="Digital business card and Agent Lee assistant for Leonard J. Lee, Founder of RapidWebDevelop" />
+<link rel="manifest" href="manifest.json" />
+<style>
+  html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f0e6d2;
+    background: url('kfwm1t9ipv.png') no-repeat center center fixed;
+    background-size: cover;
+    overflow: hidden;
+    user-select: none;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    top:0; left:0; right:0; bottom:0;
+    background: rgba(0,0,0,0.6);
+    z-index: 0;
+    pointer-events: none;
+  }
+  .container {
+    height: 100vh;
+    width: 100vw;
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .flip-notice {
+    position: absolute;
+    top: 24px; left: 50%;
+    transform: translateX(-50%);
+    background: rgba(40, 40, 60, 0.98);
+    color: #fff;
+    padding: 13px 32px;
+    border-radius: 24px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+    z-index: 3;
+    box-shadow: 0 0 25px #4f57e7bb;
+    border: 3px solid #6366f1;
+    user-select: none;
+    pointer-events: none;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { opacity: 0.83; }
+    50% { opacity: 1; }
+    100% { opacity: 0.83; }
+  }
+  .flip-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Card covers 1/3 of the screen width, nearly full height */
+    width: 33vw;
+    height: 94vh;
+    min-width: 300px;
+    max-width: 420px;
+    max-height: 99vh;
+    min-height: 440px;
+    background: none;
+    position: relative;
+    perspective: 1800px;
+    outline: 0;
+    user-select: none;
+    margin: 0 auto;
+    border-radius: 0;
+    box-shadow: none;
+    transition: none;
+  }
+  .flip-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.9s cubic-bezier(.4,0,.2,1);
+    transform-style: preserve-3d;
+    cursor: pointer;
+    border-radius: 0;
+  }
+  .flipped .flip-card { transform: rotateY(180deg); }
+
+  .flip-side {
+    position: absolute;
+    width: 100%; height: 100%;
+    left: 0; top: 0;
+    backface-visibility: hidden;
+    user-select: none;
+    border-radius: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    background: none;
+    padding: 0;
+    margin: 0;
+  }
+  .flip-side.front {
+    background: none;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+  }
+  .flip-side.front img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;   /* Always show full card, never crop */
+    object-position: center center;
+    user-select: none;
+    display: block;
+    border-radius: 0;
+    box-shadow: none;
+    outline: 0;
+    background: none;
+    margin: 0;
+    padding: 0;
+  }
+  .flip-side.back {
+    background: linear-gradient(120deg, #1e293bbb 5%, #6366f1cc 100%);
+    color: #e0e7ff;
+    transform: rotateY(180deg);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 0;
+  }
+  .agent-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 0 auto 10px auto;
+    justify-content: center;
+    padding: 38px 0 0 0;
+    user-select:none;
+  }
+  .agent-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 3px solid #6366f1;
+    box-shadow: 0 0 8px #6366f1, 0 2px 6px #0007;
+    object-fit: cover;
+  }
+  .agent-name {
+    font-size: 2.1rem;
+    font-weight: 900;
+    line-height: 1.2;
+    background: linear-gradient(135deg, #6366f1 0%, #d946ef 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    user-select:none;
+    letter-spacing: 0.5px;
+  }
+  .agent-role {
+    color: #cec5ee;
+    font-size: 1rem;
+    margin-top: -5px;
+    font-weight: 400;
+  }
+  .agent-content-wrap {
+    flex: 1 1 auto;
+    width: 92%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 auto;
+  }
+  .agent-chat-output {
+    flex-grow: 0;
+    background: #334155cc;
+    border-radius: 12px;
+    padding: 10px 12px 8px 12px;
+    font-size: 1rem;
+    overflow-y: auto;
+    margin: 0 0 13px 0;
+    color: #ffe9fa;
+    width: 100%;
+    min-height: 28px;
+    max-height: 54px;
+    font-weight: 500;
+    text-shadow: 0 1px 4px #31285702;
+    box-shadow: 0 2px 17px #6366f117;
+  }
+  .agent-chat-output p { margin-bottom: 0; user-select: none; }
+  .agent-questions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px;
+    margin-bottom: 13px;
+    width: 100%;
+  }
+  .agent-questions button {
+    background: linear-gradient(120deg, #334155 70%, #6366f1cc 100%);
+    border: none;
+    padding: 10px 5px;
+    border-radius: 12px;
+    color: #e3e5ff;
+    font-weight: 700;
+    cursor: pointer;
+    user-select:none;
+    font-size: 1.05rem;
+    transition: background-color 0.3s, color 0.3s;
+    word-break: break-word;
+  }
+  .agent-questions button:hover,
+  .agent-questions button:focus {
+    background: #6366f1;
+    color: #e0e7ff;
+    outline: 0;
+  }
+  .agent-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 2px;
+    margin-bottom: 11px;
+    width: 100%;
+  }
+  .agent-controls button, .agent-controls a {
+    background: linear-gradient(120deg, #475569 85%, #8b5cf6bb 100%);
+    border: none;
+    padding: 10px 11px;
+    border-radius: 11px;
+    color: #e9d4fe;
+    font-weight: 700;
+    cursor: pointer;
+    user-select:none;
+    flex: 1 1 120px;
+    font-size: 0.98rem;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+    min-width: 98px;
+  }
+  .agent-controls button:hover,
+  .agent-controls button:focus,
+  .agent-controls a:hover,
+  .agent-controls a:focus {
+    background: #6366f1;
+    color: #fff;
+    outline: 0;
+  }
+  #qrCode {
+    margin-top: 7px;
+    align-self: center;
+    width: 112px;
+    height: 112px;
+  }
+  @media (max-width: 1000px) {
+    .flip-container {
+      width: 42vw;
+      height: 91vh;
+      max-width: 98vw;
+      min-width: 220px;
+      min-height: 66vw;
+    }
+  }
+  @media (max-width: 800px) {
+    .flip-container { width: 62vw; height: 88vh; }
+    .agent-header { padding-top: 15px; }
+    .agent-content-wrap { width: 97%; }
+  }
+  @media (max-width: 500px) {
+    .flip-container { width: 96vw; min-width: 95vw; max-width: 99vw; height: 93vh; min-height: 70vw; }
+    .flip-side { border-radius: 0; }
+    .agent-header { padding-top: 9px; }
+    .agent-content-wrap { width: 99%; }
+    .agent-controls button, .agent-controls a { flex: 1 1 99vw; padding: 8px 6px; }
+    .agent-questions button { font-size: 0.99rem; padding: 8px 5px; }
+    #qrCode { width:80px; height:80px; }
+  }
+</style>
+</head>
+<body>
+<div class="container" role="main" aria-label="Artist Empowerment Platform">
+  <div class="flip-notice">Tap card to flip</div>
+  <div tabindex="0" class="flip-container" id="flipContainer" aria-pressed="false" role="button" aria-label="Flip business card to Agent Lee assistant">
+    <div class="flip-card" id="flipCard">
+
+      <!-- Front side: business card image -->
+      <div class="flip-side front" aria-hidden="false">
+        <img src="b4p52fn695.png" alt="Digital Business Card Front" />
+      </div>
+
+      <!-- Back side: Agent Lee AI assistant -->
+      <div class="flip-side back" aria-hidden="true" role="region" aria-label="Agent Lee assistant card">
+        <div class="agent-header">
+          <img src="s970brirc7.jpg" alt="Leonard Lee" class="agent-avatar" style="transform: rotate(90deg);" />
+          <div>
+            <div class="agent-name">Agent Lee</div>
+            <div class="agent-role">Your AI Guide</div>
+          </div>
+        </div>
+        <div class="agent-content-wrap">
+          <div class="agent-chat-output" id="agentChat" aria-live="polite" aria-atomic="false">
+            <p>Click a question to hear Agent Lee speak.</p>
+          </div>
+          <div class="agent-questions" role="list" aria-label="Agent Lee questions">
+            <button role="listitem" type="button" data-question="who is leonard j. lee?">Who is Leonard J. Lee?</button>
+            <button role="listitem" type="button" data-question="why did leonard create rapid web development?">Why did Leonard create Rapid Web Development?</button>
+            <button role="listitem" type="button" data-question="what makes leonard different?">What makes Leonard different?</button>
+            <button role="listitem" type="button" data-question="what is rapid web development?">What is Rapid Web Development?</button>
+            <button role="listitem" type="button" data-question="what is the leeway movement?">What is the LEEWAY movement?</button>
+            <button role="listitem" type="button" data-question="why is artist empowerment important?">Why is artist empowerment important?</button>
+            <button role="listitem" type="button" data-question="how is this different from shopify?">How is this different from Shopify?</button>
+            <button role="listitem" type="button" data-question="what happens when i join rapid web development?">What happens when I join Rapid Web Development?</button>
+          </div>
+          <div class="agent-controls" role="region" aria-label="Agent Lee controls">
+            <button type="button" id="listenBtn" aria-label="Listen to Agent Lee">🎤 Listen</button>
+            <button type="button" id="stopBtn" aria-label="Stop Agent Lee Speech" disabled>⏹️ Stop</button>
+            <button type="button" id="finishBtn" aria-label="Finish Interaction">✅ Finish</button>
+            <a href="#" id="saveBtn" download="AgentLee.vcf" class="button" aria-label="Save Contact">💾 Save Contact</a>
+            <button type="button" id="emailBtn" aria-label="Send Email to Agent Lee">📧 Email</button>
+            <button type="button" id="phoneBtn" aria-label="Call Agent Lee">📱 Phone</button>
+            <button type="button" id="textBtn" aria-label="Text Agent Lee">💬 Text</button>
+            <button type="button" id="nearbyBtn" aria-label="Share with Nearby Devices">📡 Nearby Share</button>
+            <button type="button" id="nfcBtn" aria-label="Generate NFC Payload">📳 NFC Tag</button>
+          </div>
+          <div id="qrCode" aria-label="QR code linking to Leonard's website or contact"></div>
+          <a href="https://rapidwebdevelop.com" target="_blank" style="display:block; margin:15px auto 20px; text-align:center; background:#6366f1; color:#fff; padding:12px 20px; border-radius:10px; text-decoration:none; font-weight:700; width:80%; max-width:250px;">Visit Website</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.min.js"></script>
+<script>
+  // Manual flip logic: click on container flips, click again unflips
+  const flipContainer = document.getElementById('flipContainer');
+  let isFlipped = false;
+  flipContainer.addEventListener('click', function(e) {
+    // Only flip if not clicking a button or interactive element inside the back
+    if (
+      e.target.closest('.agent-questions') ||
+      e.target.closest('.agent-controls') ||
+      e.target.closest('a') ||
+      e.target.closest('button')
+    ) return;
+    isFlipped = !isFlipped;
+    flipContainer.classList.toggle('flipped', isFlipped);
+  });
+
+  // Agent Lee answers
+  const answers = {
+    "who is leonard j. lee?": "Ah, now that's a story worth telling. Leonard J. Lee is more than a founder — he's what I call a vibe coder. He created me and this platform to help artists stop waiting for permission and start building their future.",
+    "why did leonard create rapid web development?": "Because he saw too many gifted artists getting locked out of the industry they power. Leonard wanted to build a weapon of mass ownership disguised as a website.",
+    "what makes leonard different?": "Most devs write scripts. Leonard writes scriptures. He listens to artists before writing a single line. Everything he builds speaks with you, not at you.",
+    "what is rapid web development?": "It's about speed, freedom, and full ownership. Launch a platform in a day — merch, music, video, fan messaging, NFTs — all in one file, no middlemen.",
+    "what is the leeway movement?": "LEEWAY is not a tool; it's a territory, a belief system wrapped in code. Full control over your art, merch, message, and mission.",
+    "why is artist empowerment important?": "Because the industry is still rigged with 360 deals, low streaming payouts, contract traps. Artist empowerment means taking your future back.",
+    "how is this different from shopify?": "Those are boxes. We are blueprints. Templates with purpose, embedding AI, merch, music players, voice control, email marketing, and community tools.",
+    "what happens when i join rapid web development?": "You get a site, but more than that: a system, community, cause, and me—Agent Lee—guiding you every step. You take keys to your own kingdom."
+  };
+
+  const chatOutput = document.getElementById('agentChat');
+  const buttons = document.querySelectorAll('.agent-questions button');
+  const listenBtn = document.getElementById('listenBtn');
+  const stopBtn = document.getElementById('stopBtn');
+  const finishBtn = document.getElementById('finishBtn');
+  const saveBtn = document.getElementById('saveBtn');
+  const emailBtn = document.getElementById('emailBtn');
+  const phoneBtn = document.getElementById('phoneBtn');
+  const textBtn = document.getElementById('textBtn');
+  const nearbyBtn = document.getElementById('nearbyBtn');
+  const nfcBtn = document.getElementById('nfcBtn');
+
+  function speak(text) {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
+    window.speechSynthesis.speak(utterance);
+  }
+
+  function addMessage(text) {
+    chatOutput.innerHTML = `<p>${text}</p>`;
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const q = btn.getAttribute('data-question').toLowerCase();
+      const answer = answers[q] || "Sorry, I don't have an answer for that.";
+      addMessage(answer);
+      speak(answer);
+    });
+  });
+
+  listenBtn.onclick = () => {
+    speak("Hello! I am Agent Lee. Ask me a question by clicking a button.");
+    addMessage("Hello! I am Agent Lee. Ask me a question by clicking a button.");
+  };
+  stopBtn.onclick = () => {
+    window.speechSynthesis.cancel();
+  };
+  finishBtn.onclick = () => {
+    speak("Okay, I'm here when you need me.");
+    addMessage("Okay, I'm here when you need me.");
+  };
+  saveBtn.onclick = () => {
+    const vcard = [
+      'BEGIN:VCARD', 'VERSION:3.0',
+      'FN:Leonard J. Lee', 'ORG:RapidWebDevelop', 'TITLE:Artist Empowerment Platform',
+      'TEL;WORK;VOICE:414-626-9992', 'EMAIL;WORK:agentlee@rapidwebdevelop.com',
+      'ADR;WORK:;;Milwaukee, WI 53206', 'URL:https://rapidwebdevelop.com', 'END:VCARD'
+    ].join('\n');
+    const blob = new Blob([vcard], {type: 'text/vcard'});
+    const url = URL.createObjectURL(blob);
+    saveBtn.href = url;
+  };
+  emailBtn.onclick = () => {
+    window.location.href = 'mailto:agentlee@rapidwebdevelop.com';
+  };
+  phoneBtn.onclick = () => {
+    window.location.href = 'tel:4146269992';
+  };
+  textBtn.onclick = () => {
+    window.location.href = 'sms:4146269992';
+  };
+
+  // QR Code generation
+  const qr = qrcode(0, 'M');
+  const profileURL = 'https://rapidwebdevelop.com';
+  qr.addData(profileURL);
+  qr.make();
+  document.getElementById('qrCode').innerHTML = qr.createSvgTag();
+
+  // Service Worker for offline PWA
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').then(() => {
+      console.log('Service Worker Registered');
+    });
+  }
+
+  // Create toast notification function for better feedback
+  function showToast(message, success = true) {
+    const toast = document.createElement('div');
+    toast.textContent = message;
+    toast.style.cssText = `
+      position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+      background: ${success ? '#10b981' : '#ef4444'}; color: white; padding: 12px 24px;
+      border-radius: 8px; z-index: 1000; font-weight: 700; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    `;
+    document.body.appendChild(toast);
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transition = 'opacity 0.5s ease';
+      setTimeout(() => document.body.removeChild(toast), 500);
+    }, 3000);
+  }
+
+  // Prepare contact data for sharing
+  function getContactData() {
+    return {
+      vcard: [
+        'BEGIN:VCARD', 'VERSION:3.0',
+        'FN:Leonard J. Lee', 'ORG:RapidWebDevelop', 'TITLE:Artist Empowerment Platform',
+        'TEL;WORK;VOICE:414-626-9992', 'EMAIL;WORK:agentlee@rapidwebdevelop.com',
+        'ADR;WORK:;;Milwaukee, WI 53206', 'URL:https://rapidwebdevelop.com', 'END:VCARD'
+      ].join('\n'),
+      profileURL: 'https://rapidwebdevelop.com',
+      name: 'Leonard J. Lee',
+      title: 'Artist Empowerment Platform',
+      email: 'agentlee@rapidwebdevelop.com',
+      phone: '414-626-9992'
+    };
+  }
+
+  // Enhanced Nearby Share functionality
+  nearbyBtn.onclick = async () => {
+    if (!('share' in navigator)) {
+      showToast('Sharing is not supported on this browser', false);
+      return;
+    }
+    
+    try {
+      const contactData = getContactData();
+      
+      // Create vCard file for sharing
+      const vcardBlob = new Blob([contactData.vcard], { type: 'text/vcard' });
+      const file = new File([vcardBlob], 'LeonardLee.vcf', { type: 'text/vcard' });
+      
+      // Share options - enhanced with more context
+      const shareData = {
+        title: 'Leonard Lee - Artist Empowerment',
+        text: 'Connect with Leonard J. Lee from RapidWebDevelop for artist empowerment solutions.',
+        url: contactData.profileURL,
+        files: [file]
+      };
+      
+      // Check if file sharing is supported
+      if (navigator.canShare && navigator.canShare(shareData)) {
+        await navigator.share(shareData);
+        showToast('Successfully shared contact information!');
+      } else {
+        // Fallback to basic sharing without files
+        await navigator.share({
+          title: shareData.title,
+          text: shareData.text,
+          url: shareData.url
+        });
+        showToast('Shared website link (contact sharing not supported)');
+      }
+    } catch (e) {
+      console.error('Sharing failed:', e);
+      if (e.name !== 'AbortError') { // Don't show error for user cancellation
+        showToast('Sharing failed: ' + e.message, false);
+      }
+    }
+  };
+
+  // Enhanced NFC functionality with more options
+  nfcBtn.onclick = () => {
+    const contactData = getContactData();
+    
+    // Create dropdown with options for NFC content
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8); z-index: 1000; display: flex;
+      align-items: center; justify-content: center;
+    `;
+    
+    const popup = document.createElement('div');
+    popup.style.cssText = `
+      background: #1e293b; border-radius: 12px; padding: 20px;
+      max-width: 90%; width: 320px; box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    `;
+    
+    popup.innerHTML = `
+      <h3 style="color: #fff; margin-top: 0; text-align: center; font-size: 1.2rem;">Select NFC Content</h3>
+      <div style="display: flex; flex-direction: column; gap: 10px; margin: 15px 0;">
+        <button class="nfc-option" data-content="${contactData.profileURL}">Website URL</button>
+        <button class="nfc-option" data-content="tel:${contactData.phone}">Phone Number</button>
+        <button class="nfc-option" data-content="mailto:${contactData.email}">Email Address</button>
+        <button class="nfc-option" data-content="MECARD:N:${contactData.name};TEL:${contactData.phone};EMAIL:${contactData.email};URL:${contactData.profileURL};;">Contact Card (MECARD)</button>
+      </div>
+      <button id="closeNfcPopup" style="width: 100%; background: #475569; border: none; color: white; padding: 10px; border-radius: 8px; margin-top: 10px;">Cancel</button>
+    `;
+    
+    // Style the NFC options
+    const optionStyle = `
+      background: #334155; border: none; padding: 12px;
+      border-radius: 8px; color: #e0e7ff; font-weight: 600;
+      cursor: pointer; text-align: left;
+    `;
+    
+    overlay.appendChild(popup);
+    document.body.appendChild(overlay);
+    
+    // Apply styles to buttons
+    const buttons = popup.querySelectorAll('.nfc-option');
+    buttons.forEach(btn => {
+      btn.style.cssText = optionStyle;
+      btn.onmouseenter = () => btn.style.background = '#6366f1';
+      btn.onmouseleave = () => btn.style.background = '#334155';
+      
+      btn.addEventListener('click', () => {
+        const content = btn.getAttribute('data-content');
+        navigator.clipboard.writeText(content).then(() => {
+          document.body.removeChild(overlay);
+          showToast('NFC payload copied! Use in your NFC writing app');
+        }).catch(() => {
+          document.body.removeChild(overlay);
+          showToast('Failed to copy NFC payload', false);
+        });
+      });
+    });
+    
+    // Close popup on cancel
+    document.getElementById('closeNfcPopup').addEventListener('click', () => {
+      document.body.removeChild(overlay);
+    });
+    
+    // Close popup if clicking outside
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        document.body.removeChild(overlay);
+      }
+    });
+  };
+</script>
+</body>
+</html>

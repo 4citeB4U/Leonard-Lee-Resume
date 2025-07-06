@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Leonard Lee - Professional Resume. Founder of RapidWebDevelop LLC and Creator of Agent Lee AI Assistant. Expert in web development, AI integration, and digital empowerment solutions.">
   <meta name="keywords" content="Leonard Lee, RapidWebDevelop, Agent Lee, AI Assistant, Web Development, LEEWAY Standards, Digital Solutions, Resume">
   <meta name="author" content="Leonard Lee">
@@ -273,6 +273,23 @@
       font-size: 1.5rem;
       color: var(--color-dark);
       transition: var(--transition);
+    }
+    
+    .dark-mode .mode-toggle i {
+      color: var(--color-light);
+    }
+    
+    /* Screen reader only text */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
     
     /* Content Section - Improved spacing for mobile */
@@ -1514,10 +1531,11 @@
         color: black !important;
       }
       
-      .dark-mode {
+      body.dark-mode {
         --color-dark: #000000 !important;
         --color-light: #ffffff !important;
         background-color: white !important;
+        color: black !important;
       }
       
       .mode-toggle, 
@@ -2407,7 +2425,7 @@
           <div class="card-body" style="text-align: center;">
             <div style="display: flex; flex-direction: column; align-items: center; gap: 2rem;">
               <div style="max-width: 400px; width: 100%;">
-                <img src="b4p52fn695.png" alt="Artist Empowerment Platform Promotional Poster" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.3);">
+                <img src="b4p52fn695.png" alt="Artist Platform" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.3);">
               </div>
               <a href="gwglulpjnx.html" class="project-link" style="background-color: var(--color-primary); color: white; padding: 1rem 2rem; border-radius: 12px; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; transition: var(--transition);">
                 <i class="fas fa-id-card"></i> View My Interactive Business Card
@@ -2484,14 +2502,17 @@
           <img src="qr_code.png" alt="Contact Information QR Code">
         </div>
         <div class="social-links">
-          <a href="https://github.com/4citeB4U" class="social-link" target="_blank" rel="noopener" title="GitHub Profile">
+          <a href="https://github.com/4citeB4U" class="social-link" target="_blank" rel="noopener" title="GitHub Profile" aria-label="GitHub Profile">
             <i class="fab fa-github"></i>
+            <span class="sr-only">GitHub</span>
           </a>
-          <a href="mailto:LeonardLee6@outlook.com" class="social-link" title="Email Contact">
+          <a href="mailto:LeonardLee6@outlook.com" class="social-link" title="Email Contact" aria-label="Email Contact">
             <i class="fas fa-envelope"></i>
+            <span class="sr-only">Email</span>
           </a>
-          <a href="tel:+14143038580" class="social-link" title="Phone Contact">
+          <a href="tel:+14143038580" class="social-link" title="Phone Contact" aria-label="Phone Contact">
             <i class="fas fa-phone"></i>
+            <span class="sr-only">Phone</span>
           </a>
         </div>
         <p>&copy; 2025 Leonard Lee. All rights reserved.</p>
@@ -2565,7 +2586,8 @@
     const icon = modeToggle.querySelector('i');
     
     // Check for saved theme preference
-    if (localStorage.getItem('darkMode') === 'enabled') {
+    const savedTheme = localStorage.getItem('darkMode');
+    if (savedTheme === 'enabled') {
       body.classList.add('dark-mode');
       icon.classList.remove('fa-moon');
       icon.classList.add('fa-sun');
@@ -2578,10 +2600,12 @@
         icon.classList.remove('fa-moon');
         icon.classList.add('fa-sun');
         localStorage.setItem('darkMode', 'enabled');
+        console.log('Dark mode enabled');
       } else {
         icon.classList.remove('fa-sun');
         icon.classList.add('fa-moon');
         localStorage.setItem('darkMode', 'disabled');
+        console.log('Dark mode disabled');
       }
     });
     

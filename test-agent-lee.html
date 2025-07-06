@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Lee Test</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primary: #6366f1;
+            --color-primary-light: #818cf8;
+            --color-secondary: #f59e0b;
+            --font-primary: 'Arial', sans-serif;
+        }
+        
+        body {
+            font-family: var(--font-primary);
+            margin: 0;
+            padding: 20px;
+            background: #f0f0f0;
+            min-height: 100vh;
+        }
+        
+        .test-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .test-button {
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .test-button:hover {
+            background: var(--color-primary-light);
+        }
+        
+        .console-log {
+            background: #000;
+            color: #0f0;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            margin: 1rem 0;
+            min-height: 100px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-content">
+        <h1>Agent Lee Test Page</h1>
+        <p>This is a simple test page to verify Agent Lee functionality.</p>
+        
+        <button class="test-button" onclick="testAgentLee()">Test Agent Lee Creation</button>
+        <button class="test-button" onclick="clearConsole()">Clear Console</button>
+        
+        <div id="console-output" class="console-log"></div>
+    </div>
+
+    <script src="agent-lee.js"></script>
+    <script>
+        // Override console.log to show in our test area
+        const originalConsoleLog = console.log;
+        const originalConsoleError = console.error;
+        const consoleOutput = document.getElementById('console-output');
+        
+        console.log = function(...args) {
+            originalConsoleLog.apply(console, args);
+            consoleOutput.innerHTML += '<div style="color: #0f0;">' + args.join(' ') + '</div>';
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        };
+        
+        console.error = function(...args) {
+            originalConsoleError.apply(console, args);
+            consoleOutput.innerHTML += '<div style="color: #f00;">' + args.join(' ') + '</div>';
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        };
+        
+        function testAgentLee() {
+            console.log('Testing Agent Lee...');
+            console.log('Agent Lee instance:', window.agentLee);
+            
+            const agentInterface = document.getElementById('agent-lee-interface');
+            console.log('Agent Lee interface element:', agentInterface);
+            
+            const toggleBtn = document.getElementById('agent-lee-toggle');
+            console.log('Agent Lee toggle button:', toggleBtn);
+            
+            if (toggleBtn) {
+                console.log('Toggle button found - simulating click...');
+                toggleBtn.click();
+            } else {
+                console.error('Toggle button not found!');
+            }
+        }
+        
+        function clearConsole() {
+            consoleOutput.innerHTML = '';
+        }
+        
+        // Initial test
+        setTimeout(() => {
+            console.log('Page loaded, testing Agent Lee...');
+            testAgentLee();
+        }, 1000);
+    </script>
+</body>
+</html>

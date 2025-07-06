@@ -279,17 +279,221 @@
       color: var(--color-light);
     }
     
-    /* Screen reader only text */
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
+    /* Agent Lee Avatar Styles */
+    .agent-lee-avatar {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 2rem;
+      border-radius: 50%;
+      border: 4px solid var(--color-primary);
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+      z-index: 10;
+      position: relative;
       overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
+    }
+    
+    .agent-lee-avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    
+    .agent-lee-avatar i {
+      font-size: 3rem;
+      color: white;
+    }
+    
+    /* Agent Lee Floating Interface Styles */
+    #agent-lee-interface {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      font-family: var(--font-primary);
+    }
+    
+    .agent-lee-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .agent-lee-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(99, 102, 241, 0.4);
+    }
+    
+    .agent-lee-btn-avatar {
+      width: 90%;
+      height: 90%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    
+    .visitor-indicator {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: var(--color-secondary);
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .agent-lee-panel {
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      width: 320px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .dark-mode .agent-lee-panel {
+      background: var(--color-light);
+      color: var(--color-dark);
+    }
+    
+    .agent-lee-panel.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .agent-lee-header {
+      background: var(--color-primary);
+      color: white;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .agent-lee-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .agent-lee-content {
+      padding: 1rem;
+    }
+    
+    .agent-lee-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .agent-lee-action-btn {
+      background: var(--color-primary);
+      color: white;
+      border: none;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .agent-lee-action-btn:hover {
+      background: var(--color-primary-light);
+      transform: translateY(-2px);
+    }
+    
+    .agent-lee-faq {
+      max-height: 200px;
+      overflow-y: auto;
+      margin-bottom: 1rem;
+    }
+    
+    .agent-lee-faq-item {
+      margin-bottom: 0.5rem;
+      padding: 0.5rem;
+      background: var(--color-light);
+      border-radius: 8px;
+      border-left: 3px solid var(--color-primary);
+    }
+    
+    .dark-mode .agent-lee-faq-item {
+      background: #334155;
+    }
+    
+    .agent-lee-faq-question {
+      font-weight: 600;
+      color: var(--color-primary);
+      margin-bottom: 0.25rem;
+    }
+    
+    .agent-lee-faq-answer {
+      font-size: 0.9rem;
+      color: var(--color-gray);
+    }
+    
+    .frequent-visitor-badge {
+      background: linear-gradient(135deg, var(--color-secondary), #f97316);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 1rem;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    .hmv-mode-indicator {
+      background: linear-gradient(135deg, #dc2626, #ef4444);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 1rem;
     }
     
     /* Content Section - Improved spacing for mobile */
@@ -1756,7 +1960,9 @@
             <div class="agent-lee-bg-shape agent-lee-bg-shape-3"></div>
           </div>
           
-          <img src="l2u5shhjjj.png" alt="Agent Lee" class="agent-lee-portrait">
+          <div class="agent-lee-avatar">
+            <img src="agentlee_avatar.png" alt="Agent Lee AI Assistant Avatar" class="agent-lee-avatar-img">
+          </div>
           
           <h3 class="agent-lee-title">Agent Lee</h3>
           <p class="agent-lee-subtitle">The Multi-Faceted AI Assistant</p>
@@ -1989,8 +2195,7 @@
                 <tr>
                   <th>Agent Lee AI Assistant</th>
                   <td>
-                    An AI assistant with voice, chat, and automation capabilities, embedded with context-persistent technology. 
-                    Agent Lee provides natural language help, quick actions, and context-aware suggestions for artists and users.
+                    An AI assistant with voice, chat, and automation capabilities, embedded with context-persistent technology.                     Agent Lee provides natural language help, quick actions, and context-aware suggestions for artists and users.
                   </td>
                 </tr>
                 <tr>
@@ -2613,6 +2818,22 @@
     document.getElementById('printButton').addEventListener('click', function() {
       window.print();
     });
+    
+    // Test Agent Lee after page loads
+    setTimeout(() => {
+      console.log('Testing Agent Lee presence...');
+      const agentInterface = document.getElementById('agent-lee-interface');
+      console.log('Agent Lee interface:', agentInterface);
+      
+      const toggleBtn = document.getElementById('agent-lee-toggle');
+      console.log('Agent Lee toggle button:', toggleBtn);
+      
+      if (toggleBtn) {
+        console.log('Agent Lee button found and ready!');
+      } else {
+        console.error('Agent Lee button not found!');
+      }
+    }, 2000);
   </script>
 </body>
 </html>

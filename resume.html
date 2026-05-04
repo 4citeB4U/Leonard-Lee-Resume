@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leonard Lee | One-Page Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --page: #f8fafc;
+      --text: #111827;
+      --muted: #475569;
+      --accent: #2563eb;
+      --border: #dbe3f0;
+      --shadow: 0 16px 48px rgba(15, 23, 42, 0.08);
+      --font-sans: 'Inter', system-ui, sans-serif;
+      --font-display: 'Outfit', system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--page);
+      color: var(--text);
+      font-family: var(--font-sans);
+    }
+
+    body { padding: 2rem; }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--bg);
+      border-radius: 1.5rem;
+      box-shadow: var(--shadow);
+      padding: 2.5rem;
+    }
+
+    h1, h2, h3 { margin: 0; font-family: var(--font-display); }
+    h1 { font-size: 3rem; letter-spacing: -0.04em; }
+    h2 {
+      margin-top: 2rem;
+      font-size: 1rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    h3 { font-size: 1.05rem; }
+    p, li { line-height: 1.6; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-bottom: 0.75rem;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: var(--accent);
+      color: white;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      margin: 0.75rem 0 1rem;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.65rem 1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 1rem;
+    }
+
+    .hero-card {
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      padding: 1rem;
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+      overflow: hidden;
+    }
+
+    .hero-card img {
+      display: block;
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      object-position: center;
+      transform: rotate(90deg) scale(1.24);
+      transform-origin: center;
+      border-radius: 1rem;
+    }
+
+    .section { margin-top: 2rem; }
+    .summary, .card {
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.25rem 1.4rem;
+      background: #ffffff;
+    }
+
+    .summary { background: #f8fbff; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .chip-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .chip {
+      padding: 0.8rem 0.9rem;
+      border-radius: 999px;
+      background: #eff6ff;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-align: center;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: baseline;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 0.94rem;
+      white-space: nowrap;
+    }
+
+    .list {
+      margin: 0.8rem 0 0;
+      padding-left: 1.2rem;
+      color: var(--muted);
+    }
+
+    .card + .card { margin-top: 1rem; }
+
+    .footer {
+      margin-top: 2rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 820px) {
+      body { padding: 1rem; }
+      .page { padding: 1.25rem; }
+      .hero, .grid-2, .chip-grid, .contact-grid { grid-template-columns: 1fr; }
+      .row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .meta { white-space: normal; }
+      h1 { font-size: 2.3rem; }
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: white;
+      }
+      .page {
+        max-width: none;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 0;
+      }
+      .hero-card { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <article class="page">
+    <section class="hero">
+      <div>
+        <span class="badge">AI Systems Architect</span>
+        <h1>Leonard Lee</h1>
+        <p class="subtitle">AI Systems Architect | Full Stack Engineer | Founder</p>
+        <p>Builder of agent-first platforms, governance runtimes, and browser-native AI experiences that connect technical execution with real-world operational leadership.</p>
+        <div class="contact-grid">
+          <div>Milwaukee, WI</div>
+          <div>leonardlee6@outlook.com</div>
+          <div>424-303-8580</div>
+          <div>github.com/4citeB4U</div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <img src="s970brirc7.jpg" alt="Leonard Lee portrait">
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Professional Summary</h2>
+      <div class="summary">
+        <p>Full-stack developer, AI systems architect, operations leader, and business owner of Leeway Industries, serving as head of Leeway Innovations with 15+ years of leadership and operational experience. Creator of the Agent Lee ecosystem and the LeeWay Standards framework, focused on autonomous agent systems, AI governance, real-time voice interfaces, and production-ready web applications.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Core Skills</h2>
+      <div class="chip-grid">
+        <span class="chip">Agent Systems</span>
+        <span class="chip">AI Governance</span>
+        <span class="chip">WebRTC and Voice</span>
+        <span class="chip">React and Frontend</span>
+        <span class="chip">Runtime Verification</span>
+        <span class="chip">IndexedDB</span>
+        <span class="chip">Deployment</span>
+        <span class="chip">Operational Leadership</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Project Experience</h2>
+      <div class="card">
+        <div class="row">
+          <h3>Agent Lee System</h3>
+          <span class="meta">Flagship AI Platform</span>
+        </div>
+        <ul class="list">
+          <li>Built a fully autonomous multi-agent operating system with real-time orchestration and governance enforcement.</li>
+          <li>Implemented structured memory and execution layers for safe agent behavior.</li>
+          <li>Integrated voice, WebRTC, and interactive control surfaces for system guidance.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="row">
+          <h3>LEEWAY Framework</h3>
+          <span class="meta">Governance Architecture</span>
+        </div>
+        <ul class="list">
+          <li>Designed a compliance-first web framework with audit scoring, verification, and drift protection.</li>
+          <li>Delivered modular architecture for AI-enabled client-side applications.</li>
+          <li>Created remediation flows and runtime safety checks that demonstrate LeeWay Standards production readiness.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="row">
+          <h3>Voice AI and Real-Time Systems</h3>
+          <span class="meta">Web Applications</span>
+        </div>
+        <ul class="list">
+          <li>Built browser-based voice assistant experiences with persistent memory and real-time chat.</li>
+          <li>Developed messaging and collaboration workflows with offline-aware synchronization.</li>
+          <li>Created CRM and animation-driven interfaces that demonstrate product polish and business value.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Professional Experience</h2>
+      <div class="card">
+        <div class="row">
+          <h3>Founder, Business Owner, and Innovation Lead</h3>
+          <span class="meta">Leeway Industries / Leeway Innovations / RapidWebDevelop / Agent Lee</span>
+        </div>
+        <p>Leading business strategy, product direction, and engineering for AI systems, client-facing web platforms, and operational technology while preserving a strong full-stack and operations leadership profile. Built LeeWay Standards-aligned delivery systems and coaching programs for teams adopting AI safely.</p>
+        <ul class="list">
+          <li>Managed full-stack delivery, system deployment, and AI integration for multiple launches.</li>
+          <li>Headed Leeway Innovations and mentored teams through governance-focused AI implementation.</li>
+          <li>Translated operational logistics experience into scalable technical systems shaped by LeeWay Standards.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="row">
+          <h3>Operations and Infrastructure Leadership</h3>
+          <span class="meta">15+ Years</span>
+        </div>
+        <ul class="list">
+          <li>Managed teams, logistics workflows, and infrastructure systems in demanding environments.</li>
+          <li>Improved execution quality, reliability, and coordination through process design.</li>
+          <li>Bridged technical thinking with practical delivery and operational accountability.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Key Achievements</h2>
+      <div class="grid-2">
+        <div class="card"><p>Built a fully self-contained AI agent ecosystem from scratch.</p></div>
+        <div class="card"><p>Designed a governance-first AI architecture with runtime verification.</p></div>
+        <div class="card"><p>Delivered production-ready systems without heavy backend dependency.</p></div>
+        <div class="card"><p>Created LeeWay Standards coaching and Masterclass assets for AI adoption.</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Education</h2>
+      <div class="card">
+        <p>Associate of Applied Science (AAS) - Business, Milwaukee Area Technical College</p>
+        <p class="meta">Graduated August 2019 | GPA 3.8</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      &copy; 2026 Leonard Lee. Powered by Leeway Innovations. A Leeway Industries product.
+    </footer>
+  </article>
+</body>
+</html>

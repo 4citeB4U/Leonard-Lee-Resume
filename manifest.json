@@ -1,0 +1,15 @@
+{
+  "name": "Leonard Lee Resume",
+  "short_name": "Leonard Lee",
+  "start_url": "./gwglulpjnx.html",
+  "display": "standalone",
+  "background_color": "#111827",
+  "theme_color": "#6366f1",
+  "icons": [
+    {
+      "src": "agentlee_avatar.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

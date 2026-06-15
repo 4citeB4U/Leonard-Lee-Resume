@@ -5,6 +5,7 @@ class AgentLee {
     this.isNarrating = false;
     this.currentSection = null;
     this.utterance = null;
+    this.selectedVoice = null;
     this.visitCount = this.getVisitCount();
     this.timeSpent = 0;
     this.sectionsViewed = new Set();
@@ -12,13 +13,15 @@ class AgentLee {
     this.hmvMode = false;
 
     this.faqData = {
-      "what is agent lee?": "I'm Agent Lee, Leonard Lee's AI assistant. I guide visitors through his AI projects, systems story, and portfolio experience.",
-      "what does agent lee do?": "I provide narration, guided responses, section reading, and a lightweight assistant experience that can scale into a broader agent workflow.",
+      "what is agent lee?": "I'm Agent Lee, Leonard Lee's AI assistant. I guide visitors through the resume, the systems story, and the proof behind the work.",
+      "what does agent lee do?": "I provide narration, guided responses, section reading, and a polished assistant experience that can scale into a broader agent workflow.",
+      "what is this resume?": "This is Leonard Lee's LeeWay Professional Evidence Record. It presents his identity, governance model, project proof, ecosystem repositories, and leadership history in the same order the website uses.",
+      "give me a resume tour": "I can walk you through the resume section by section, starting with identity, then governance, skills, projects, repository evidence, show work, leadership, achievements, and education.",
       "what is rapidwebdevelop?": "RapidWebDevelop LLC is Leonard's company focused on digital ownership, web experiences, and governance-first AI systems.",
       "what is leeway?": "LEEWAY is Leonard's standards framework for web engineering and AI governance, designed to support safe, scalable agent systems.",
       "how can agent lee help me?": "I can guide you through this resume, explain Leonard's technical strengths, and connect his projects to practical business outcomes.",
-      "tell me about leonard lee": "Leonard Lee is a full-stack developer and AI systems architect focused on agent-first applications, voice interfaces, governance layers, and product-ready systems.",
-      "what is hmv mode?": "HMV mode is my enhanced audio narration setting for a more polished speaking experience.",
+      "tell me about leonard lee": "Leonard Lee is a full-stack developer and AI systems architect with 15+ years of leadership and operations experience, focused on agent-first applications, voice interfaces, governance layers, and product-ready systems.",
+      "what is hmv mode?": "Natural Voice mode is my smoother narration setting - steady, clear, and polished for presentations.",
       "am i a frequent visitor?": this.isFrequentVisitor
         ? "Yes. You're a frequent visitor, and I can tailor responses for return visits."
         : "This looks like one of your first visits. Welcome."
@@ -29,6 +32,7 @@ class AgentLee {
 
   init() {
     this.trackVisit();
+    this.initializeVoiceSelection();
     this.createAgentLeeInterface();
     this.addEventListeners();
     this.startEngagementTracking();
@@ -88,6 +92,151 @@ class AgentLee {
     }
   }
 
+  initializeVoiceSelection() {
+    if (!("speechSynthesis" in window)) {
+      return;
+    }
+
+    const refreshVoice = () => {
+      this.selectedVoice = this.pickPreferredVoice();
+    };
+
+    refreshVoice();
+    if (typeof window.speechSynthesis.onvoiceschanged !== "undefined") {
+      window.speechSynthesis.onvoiceschanged = refreshVoice;
+    }
+  }
+
+  getVoiceProfile() {
+    const fallback = {
+      rate: this.hmvMode ? 0.87 : 0.95,
+      pitch: this.hmvMode ? 0.96 : 1.02,
+      volume: 0.92,
+      voiceName: "Google US English"
+    };
+
+    if (typeof window.getVoiceSettings === "function") {
+      const settings = window.getVoiceSettings();
+      return {
+        ...fallback,
+        ...settings,
+        rate: this.hmvMode ? 0.87 : (settings.rate || fallback.rate),
+        pitch: this.hmvMode ? 0.96 : (settings.pitch || fallback.pitch),
+        volume: settings.volume || fallback.volume
+      };
+    }
+
+    return fallback;
+  }
+
+  pickPreferredVoice() {
+    const voices = window.speechSynthesis?.getVoices?.() || [];
+    if (!voices.length) {
+      return null;
+    }
+
+    const profile = this.getVoiceProfile();
+    const preferredNames = [
+      profile.voiceName,
+      "Microsoft Aria Online (Natural)",
+      "Microsoft Jenny Online (Natural)",
+      "Google US English",
+      "Google UK English Female",
+      "Samantha",
+      "Daniel"
+    ].filter(Boolean).map((name) => name.toLowerCase());
+
+    return voices
+      .map((voice) => {
+        const name = voice.name.toLowerCase();
+        const lang = (voice.lang || "").toLowerCase();
+        let score = 0;
+
+        if (lang.startsWith("en")) score += 3;
+        if (preferredNames.some((preferred) => name.includes(preferred))) score += 6;
+        if (name.includes("natural")) score += 2;
+        if (!voice.default) score += 1;
+        if (!voice.localService) score += 1;
+
+        return { voice, score };
+      })
+      .sort((a, b) => b.score - a.score)[0]?.voice || null;
+  }
+
+  getResumeTourSteps() {
+    return [
+      {
+        selector: "#summary",
+        text: "Identity check. Leonard Lee is a full-stack developer, AI systems architect, operations leader, and business owner of Leeway Industries and Leeway Innovations. The story is clean: governance-first engineering, real-world operations, and AI product delivery working together."
+      },
+      {
+        selector: "#leeway",
+        text: "LEEWAY Standards is the framework behind the build. It keeps the execution disciplined, the systems safe, and the agent runtime organized so the work stays sharp from concept to deployment."
+      },
+      {
+        selector: "#skills",
+        text: "Core skills cover JavaScript, React, Node.js, WebRTC, IndexedDB, multi-agent orchestration, LLM integration, AI governance, modular architecture, and operations leadership."
+      },
+      {
+        selector: "#projects",
+        text: "Project experience centers on Agent Lee, the LEEWAY Framework, and AI-enhanced web applications. That means voice, memory, orchestration, and polished browser-native experiences, all on the table."
+      },
+      {
+        selector: "#readme",
+        text: "README and Registry turns the ecosystem into evidence. Featured repositories include LeeWay Standards, Agent Lee, LEEWAY-VSCODE, Leeway Runtime Fabric, LeeWay Ecosystem, LeeWay Edge RTC, AgentLeeVoice, and CEREBRAL_OS."
+      },
+      {
+        selector: "#agents",
+        text: "Agent families and the MCP execution layer show the broader machine behind the curtain, with the Core 7 families and the service layer keeping the ecosystem moving in sync."
+      },
+      {
+        selector: "#show-work",
+        text: "Show Work highlights live artifacts like the digital business card, Beast AI Agentic Content Foundry, LEEWAY Author Marketing Agent, and the Creative Writing and Marketing Agent."
+      },
+      {
+        selector: "#experience",
+        text: "Professional experience brings more than 15 years of operations and infrastructure leadership, turning logistics discipline into dependable systems delivery."
+      },
+      {
+        selector: "#achievements",
+        text: "Key achievements include building a self-contained AI ecosystem, designing governance-first architecture with runtime verification, and shipping production-ready systems without a heavy backend dependency."
+      },
+      {
+        selector: "#education",
+        text: "Education is an Associate of Applied Science in Business from Bryant and Stratton College, Bayshore Campus in Wisconsin, with an August 2019 graduation and a 3.8 GPA."
+      },
+      {
+        selector: ".positioning",
+        text: "The positioning closes the loop: Leonard Lee stands as an AI systems builder, LeeWay Standards architect, Leeway Industries owner, and operational technologist with proof to back the claim."
+      }
+    ];
+  }
+
+  narrateResumeTour() {
+    const steps = this.getResumeTourSteps();
+    let index = 0;
+
+    const narrateNext = () => {
+      if (!this.isNarrating || index >= steps.length) {
+        this.stopNarration();
+        return;
+      }
+
+      const step = steps[index];
+      const section = step.selector ? document.querySelector(step.selector) : null;
+      if (section) {
+        this.highlightSection(section);
+      }
+
+      this.speak(step.text, () => {
+        index += 1;
+        window.setTimeout(narrateNext, this.hmvMode ? 850 : 650);
+      });
+    };
+
+    narrateNext();
+  }
+
   createAgentLeeInterface() {
     console.log("Creating Agent Lee interface...");
 
@@ -108,22 +257,23 @@ class AgentLee {
         <div class="agent-lee-content">
           <div class="agent-lee-actions">
             <button id="start-narration" class="agent-lee-action-btn">
-              <i class="fas fa-play"></i> Start Narration
+              <i class="fas fa-play"></i> Resume Tour
             </button>
             <button id="stop-narration" class="agent-lee-action-btn" style="display: none;">
               <i class="fas fa-stop"></i> Stop Narration
             </button>
             <button id="read-section" class="agent-lee-action-btn">
-              <i class="fas fa-volume-up"></i> Read Current Section
+              <i class="fas fa-volume-up"></i> Explain Current Section
             </button>
             <button id="hmv-toggle" class="agent-lee-action-btn ${this.hmvMode ? "active" : ""}">
-              <i class="fas fa-microphone"></i> HMV Mode
+              <i class="fas fa-microphone"></i> Natural Voice
             </button>
           </div>
           <div class="agent-lee-faq">
             <h5>Ask Agent Lee:</h5>
             <div class="faq-questions">
               <button class="faq-btn" data-question="what is agent lee?">What is Agent Lee?</button>
+              <button class="faq-btn" data-question="give me a resume tour">Resume Tour</button>
               <button class="faq-btn" data-question="what does agent lee do?">What does Agent Lee do?</button>
               <button class="faq-btn" data-question="what is rapidwebdevelop?">What is RapidWebDevelop?</button>
               <button class="faq-btn" data-question="tell me about leonard lee">About Leonard Lee</button>
@@ -442,30 +592,12 @@ class AgentLee {
     if (startBtn) startBtn.style.display = "none";
     if (stopBtn) stopBtn.style.display = "block";
 
-    const introText = "Hello. I'm Agent Lee, and I'll guide you through Leonard Lee's resume, systems work, and leadership story.";
-    this.speak(introText, () => this.narrateSections());
+    const introText = "What's good. I'm Agent Lee, and I'll keep this tour smooth, sharp, and professional while I walk you through Leonard Lee's resume story.";
+    this.speak(introText, () => this.narrateResumeTour());
   }
 
   narrateSections() {
-    const sections = document.querySelectorAll("section");
-    let currentIndex = 0;
-
-    const narrateNext = () => {
-      if (currentIndex < sections.length && this.isNarrating) {
-        const section = sections[currentIndex];
-        const title = section.querySelector(".section-title, h2")?.textContent || "Section";
-        const content = this.extractSectionText(section);
-        this.highlightSection(section);
-        this.speak(`Now viewing ${title}. ${content}`, () => {
-          currentIndex += 1;
-          window.setTimeout(narrateNext, 750);
-        });
-      } else {
-        this.stopNarration();
-      }
-    };
-
-    narrateNext();
+    this.narrateResumeTour();
   }
 
   readCurrentSection() {
@@ -530,10 +662,16 @@ class AgentLee {
       speechSynthesis.cancel();
     }
 
+    this.selectedVoice = this.pickPreferredVoice() || this.selectedVoice;
     this.utterance = new SpeechSynthesisUtterance(text);
-    this.utterance.rate = this.hmvMode ? 0.84 : 0.92;
-    this.utterance.pitch = this.hmvMode ? 0.92 : 1;
-    this.utterance.volume = 0.85;
+    const profile = this.getVoiceProfile();
+    this.utterance.rate = profile.rate;
+    this.utterance.pitch = profile.pitch;
+    this.utterance.volume = profile.volume;
+    this.utterance.lang = this.selectedVoice?.lang || "en-US";
+    if (this.selectedVoice) {
+      this.utterance.voice = this.selectedVoice;
+    }
 
     if (callback) {
       this.utterance.onend = callback;
@@ -546,6 +684,7 @@ class AgentLee {
     this.isNarrating = false;
     if (this.utterance) {
       speechSynthesis.cancel();
+      this.utterance = null;
     }
 
     const startBtn = document.getElementById("start-narration");
@@ -560,7 +699,7 @@ class AgentLee {
 
   answerQuestion(question) {
     const answer = this.getKnowledgeResponse(question);
-    const finalAnswer = answer || "I'm sorry, I don't have information about that yet. Try asking about Agent Lee, RapidWebDevelop, Leonard's experience, or LEEWAY.";
+    const finalAnswer = answer || "I'm sorry, I don't have information about that yet. Try asking about Agent Lee, the resume tour, RapidWebDevelop, Leonard's experience, or LEEWAY.";
     this.appendChatMessage("Agent Lee", finalAnswer);
     this.showResponse(finalAnswer);
     this.speak(finalAnswer);

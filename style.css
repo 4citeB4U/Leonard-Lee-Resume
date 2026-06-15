@@ -1086,7 +1086,207 @@ section {
     break-before: page;
     page-break-before: always;
   }
-}
+
+  .print-resume {
+    display: block;
+    color: #0f172a;
+    font-family: "Consolas", "SFMono-Regular", "Courier New", monospace;
+  }
+
+  .print-file-bar {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 0.45rem;
+    padding: 0.45rem 0.75rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.7rem;
+    background: linear-gradient(180deg, #f8fbff, #eef4ff);
+    color: #334155;
+    font-size: 8.25pt;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .print-file-name {
+    color: #0f172a;
+    font-weight: 700;
+  }
+
+  .print-file-scope {
+    color: #64748b;
+    text-align: right;
+  }
+
+  .print-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 112px;
+    gap: 0.85rem;
+    align-items: start;
+    margin-bottom: 0.45rem;
+    padding: 0.8rem 0.85rem;
+    border: 1px solid #cbd5e1;
+    border-left: 4px solid #1e3a8a;
+    border-radius: 0.85rem;
+    background: #ffffff;
+  }
+
+  .print-header-main {
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  .print-brand-logo {
+    width: 104px;
+    margin-bottom: 0.1rem;
+  }
+
+  .print-photo {
+    width: 112px;
+    height: 112px;
+    object-fit: cover;
+    object-position: center;
+    transform: rotate(90deg) scale(1.18);
+    transform-origin: center;
+    border-radius: 0.7rem;
+  }
+
+  .print-subtitle {
+    font-weight: 700;
+    color: #1d4ed8;
+    font-size: 9.3pt;
+  }
+
+  .print-contact {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.1rem 0.85rem;
+    margin-top: 0.08rem;
+    font-size: 8.8pt;
+    color: #475569;
+  }
+
+  .print-section {
+    position: relative;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-top: 0.45rem;
+    padding: 0.78rem 0.85rem 0.7rem;
+    border: 1px solid #dbe3f0;
+    border-left: 4px solid var(--file-accent, #1d4ed8);
+    border-radius: 0.8rem;
+    background: #ffffff;
+  }
+
+  .print-section-file {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.6rem;
+    align-items: center;
+    margin-bottom: 0.28rem;
+    font-size: 7.9pt;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.11em;
+  }
+
+  .print-section-file code {
+    padding: 0.18rem 0.35rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.35rem;
+    background: #f8fafc;
+    color: #0f172a;
+  }
+
+  .print-section h2 {
+    margin-bottom: 0.28rem;
+    padding: 0;
+    border: 0;
+    font-family: "Outfit", "Inter", Arial, sans-serif;
+    font-size: 10.2pt;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .print-note {
+    margin-top: 0.35rem;
+    padding-left: 0.65rem;
+    border-left: 2px solid #cbd5e1;
+    color: #475569;
+    font-size: 8.6pt;
+    font-style: italic;
+  }
+
+  .print-columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.7rem;
+    align-items: start;
+    margin-top: 0.45rem;
+  }
+
+  .print-tag-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.22rem 0.5rem;
+    font-size: 8.55pt;
+  }
+
+  .print-tag-list span {
+    padding: 0.18rem 0.4rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 0.35rem;
+    background: #f8fafc;
+    color: #0f172a;
+  }
+
+  .print-entry {
+    padding: 0.52rem 0.58rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.65rem;
+    background: #f8fafc;
+  }
+
+  .print-entry + .print-entry {
+    margin-top: 0.55rem;
+  }
+
+  .print-entry-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.6rem;
+    align-items: baseline;
+    margin-bottom: 0.2rem;
+  }
+
+  .print-entry-head span {
+    color: #64748b;
+    font-size: 8.3pt;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .print-section ul {
+    margin: 0.16rem 0 0 1rem;
+    padding: 0;
+  }
+
+  .print-section li + li {
+    margin-top: 0.08rem;
+  }
+
+  .print-section p,
+  .print-section li,
+  .print-section span {
+    color: #1e293b;
+  }
+
+  .print-page-break {
+    break-before: page;
+    page-break-before: always;
+  }
+  }
 
 @media (max-width: 1024px) {
   .container {

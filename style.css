@@ -918,7 +918,7 @@ section {
 @media print {
   @page {
     size: letter;
-    margin: 0.4in 0.45in;
+    margin: 0.38in 0.45in;
   }
 
   * {
@@ -930,7 +930,12 @@ section {
 
   .background-canvas,
   .agentlee-launch,
-  .download-actions {
+  .download-actions,
+  .hero,
+  .lift-frame,
+  .positioning,
+  .site-footer,
+  .print-page {
     display: none !important;
   }
 
@@ -938,8 +943,8 @@ section {
     background: #fff;
     color: #111827;
     font-family: "Inter", Arial, sans-serif;
-    font-size: 10pt;
-    line-height: 1.3;
+    font-size: 9.6pt;
+    line-height: 1.22;
   }
 
   .container {
@@ -948,253 +953,138 @@ section {
   }
 
   .print-resume {
-    display: none !important;
-  }
-
-  .hero,
-  .leeway-file,
-  .file-meta,
-  .hero-stat,
-  .summary-card,
-  .project-card,
-  .skill-card,
-  .positioning,
-  .registry-card,
-  .info-card,
-  .show-work-card,
-  .achievement-card,
-  .callout-card {
-    background: #fff !important;
-    border-color: #cbd5e1 !important;
-  }
-
-  .hero,
-  .file-meta,
-  .hero-stat,
-  .summary-card,
-  .project-card,
-  .skill-card,
-  .positioning,
-  .registry-card,
-  .info-card,
-  .show-work-card,
-  .achievement-card,
-  .callout-card,
-  .leeway-file {
-    box-shadow: none !important;
-  }
-
-  .hero {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 220px;
-    gap: 0.9rem;
-    padding: 1rem 0 1.1rem;
-    break-after: avoid;
-  }
-
-  .hero h1,
-  .section-title,
-  .project-title,
-  .skill-card h3,
-  .registry-card h3,
-  .info-card h3,
-  .show-work-card h3,
-  .achievement-card,
-  .positioning h2 {
+    display: block;
     color: #111827;
   }
 
-  .hero-summary,
-  .project-list li,
-  .summary-text,
-  .prose-card p,
-  .info-card p,
-  .show-work-card p,
-  .small-meta,
-  .hero-stat span,
-  .contact-item,
-  .dot-item,
-  .manifest-lines span,
-  .site-footer,
-  .site-footer p {
-    color: #334155;
+  .print-resume h1,
+  .print-resume h2,
+  .print-resume h3 {
+    color: #111827;
+    font-family: "Outfit", "Inter", Arial, sans-serif;
   }
 
-  .hero-logo {
-    width: min(220px, 70%);
+  .print-resume h1 {
+    font-size: 23pt;
+    line-height: 1;
+    letter-spacing: -0.03em;
   }
 
-  .hero-image {
-    height: 220px;
-    box-shadow: none;
+  .print-resume h2 {
+    margin-bottom: 0.18rem;
+    padding-bottom: 0.12rem;
+    border-bottom: 1px solid #94a3b8;
+    font-size: 10.5pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
-  .hero-stat-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .contact-item {
-    background: #f8fafc;
-    border-color: #cbd5e1;
-    text-decoration: none;
-  }
-
-  .contact-item-qr {
-    background: #f8fafc;
-  }
-
-  .contact-item-qr img {
-    width: 64px;
-    height: 64px;
-  }
-
-  section {
-    padding: 0.95rem 0 0;
-  }
-
-  .lift-frame {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-    break-inside: avoid;
-    page-break-inside: avoid;
-    margin-top: 1rem;
-  }
-
-  .leeway-file {
-    padding: 3.5rem 1rem 1rem;
-  }
-
-  .leeway-file::before {
-    background:
-      radial-gradient(circle at 0.95rem 50%, var(--file-accent, var(--secondary)) 0 0.3rem, transparent 0.34rem),
-      #eef4ff;
-    border-color: color-mix(in srgb, var(--file-accent, var(--secondary)) 32%, #cbd5e1);
-    color: #0f172a;
-  }
-
-  .leeway-file::after {
-    color: #64748b;
-  }
-
-  .leeway-file .section-header::after {
-    color: #94a3b8;
-  }
-
-  .section-header {
-    margin-bottom: 1rem;
-  }
-
-  .section-title {
-    padding: 0.6rem 0.85rem;
-    border: 1px solid #cbd5e1;
-    background: #f8fafc;
-    font-size: 1.3rem;
-  }
-
-  .section-title::after {
-    background: linear-gradient(90deg, var(--file-accent, var(--secondary)), rgba(148, 163, 184, 0.35));
-  }
-
-  .section-title i,
-  .project-title,
-  .skill-card h3,
-  .registry-card h3,
-  .info-card h3,
-  .show-work-card h3,
-  .positioning h2 {
-    color: color-mix(in srgb, var(--file-accent, var(--secondary)) 40%, #111827);
-  }
-
-  .summary-card,
-  .project-card,
-  .skill-card,
-  .registry-card,
-  .info-card,
-  .show-work-card,
-  .achievement-card,
-  .callout-card {
-    border: 1px solid #cbd5e1;
-  }
-
-  .summary-card {
-    padding: 1rem;
-  }
-
-  .summary-text {
+  .print-resume h3 {
     font-size: 10pt;
   }
 
-  .callout-grid,
-  .info-grid,
-  .manifest-grid,
-  .show-work-grid,
-  .skills-grid,
-  .achievements-grid,
-  .agent-registry,
-  .print-columns {
-    gap: 0.9rem;
+  .print-resume p,
+  .print-resume li,
+  .print-resume span {
+    color: #1f2937;
   }
 
-  .callout-grid,
-  .info-grid,
-  .manifest-grid,
-  .agent-registry,
-  .print-columns {
+  .print-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 112px;
+    gap: 0.85rem;
+    align-items: start;
+    margin-bottom: 0.4rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid #1e3a8a;
+  }
+
+  .print-header-main {
+    gap: 0.2rem;
+  }
+
+  .print-brand-logo {
+    width: 108px;
+    margin-bottom: 0.1rem;
+  }
+
+  .print-photo {
+    width: 112px;
+    height: 112px;
+    object-fit: cover;
+    object-position: center;
+    transform: rotate(90deg) scale(1.2);
+    transform-origin: center;
+    border-radius: 0.7rem;
+  }
+
+  .print-subtitle {
+    font-weight: 700;
+    font-size: 9.9pt;
+  }
+
+  .print-contact {
+    margin-top: 0.1rem;
+    font-size: 8.9pt;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.1rem 0.8rem;
   }
 
-  .skills-grid,
-  .show-work-grid {
+  .print-section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-top: 0.32rem;
+  }
+
+  .print-section p {
+    margin-top: 0.1rem;
+  }
+
+  .print-columns {
+    display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+    align-items: start;
   }
 
-  .manifest-lines div {
-    background: #f8fafc;
-    border-color: #cbd5e1;
+  .print-tag-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.25rem 0.6rem;
+    font-size: 8.9pt;
   }
 
-  .manifest-links a,
-  .link-row a,
-  .download-btn {
-    background: #e2e8f0;
-    border: 1px solid #cbd5e1;
-    color: #111827;
+  .print-tag-list span {
+    display: inline-block;
   }
 
-  .show-work-card {
-    border-left-width: 5px;
+  .print-entry + .print-entry {
+    margin-top: 0.55rem;
   }
 
-  .show-work-preview img {
-    height: 150px;
+  .print-entry-head {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.4rem;
+    align-items: baseline;
   }
 
-  .positioning {
-    margin-top: 1rem;
-    padding: 1rem;
+  .print-entry-head span {
+    font-size: 8.6pt;
+    color: #475569;
+    text-align: right;
   }
 
-  .pos-chip,
-  .skill-tag,
-  .registry-chip {
-    background: #f8fafc;
-    border-color: #cbd5e1;
-    color: #111827;
+  .print-section ul {
+    margin: 0.18rem 0 0 1rem;
+    padding: 0;
   }
 
-  .site-footer {
-    padding: 1rem 0 0;
+  .print-section li + li {
+    margin-top: 0.1rem;
   }
 
-  .site-footer > p {
-    margin-top: 0.5rem;
-  }
-
-  .download-actions,
-  .agentlee-launch,
-  .background-canvas {
-    display: none !important;
+  .print-page-break {
+    break-before: page;
+    page-break-before: always;
   }
 }
 

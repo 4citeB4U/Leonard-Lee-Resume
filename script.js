@@ -119,6 +119,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const backgroundRoot = document.getElementById("metallic-background");
   const revealTargets = document.querySelectorAll(".lift-frame");
 
+  setupResumeQr();
+
   if (downloadBtn) {
     downloadBtn.addEventListener("click", () => {
       window.print();
@@ -144,6 +146,60 @@ document.addEventListener("DOMContentLoaded", () => {
     revealTargets.forEach((target) => target.classList.add("visible"));
   }
 });
+
+function setupResumeQr() {
+  const liveQr = document.querySelector(".contact-item-qr");
+  if (liveQr) {
+    liveQr.remove();
+  }
+
+  const printHeader = document.querySelector(".print-header");
+  const printPhoto = printHeader?.querySelector(".print-photo");
+  if (!printHeader || !printPhoto || printHeader.querySelector(".print-qr-block")) {
+    return;
+  }
+
+  const qrUrl = "https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https%3A%2F%2F4citeb4u.github.io%2FLeonard-Lee-Resume%2F";
+  const aside = document.createElement("div");
+  aside.style.display = "grid";
+  aside.style.justifyItems = "center";
+  aside.style.alignSelf = "start";
+  aside.style.gap = "0.28rem";
+
+  const qrBlock = document.createElement("div");
+  qrBlock.className = "print-qr-block";
+  qrBlock.style.display = "grid";
+  qrBlock.style.justifyItems = "center";
+  qrBlock.style.gap = "0.12rem";
+  qrBlock.style.width = "100%";
+  qrBlock.style.maxWidth = "104px";
+  qrBlock.style.padding = "0.28rem 0.3rem 0.24rem";
+  qrBlock.style.border = "1px solid #cbd5e1";
+  qrBlock.style.borderRadius = "0.65rem";
+  qrBlock.style.background = "linear-gradient(180deg, #f8fbff, #eef4ff)";
+
+  const qrImage = document.createElement("img");
+  qrImage.src = qrUrl;
+  qrImage.alt = "QR code to the live Leonard Lee resume";
+  qrImage.className = "print-qr";
+  qrImage.style.width = "74px";
+  qrImage.style.height = "74px";
+  qrImage.style.display = "block";
+
+  const qrCaption = document.createElement("span");
+  qrCaption.className = "print-qr-caption";
+  qrCaption.textContent = "Scan live resume";
+  qrCaption.style.color = "#475569";
+  qrCaption.style.fontSize = "6.9pt";
+  qrCaption.style.fontWeight = "700";
+  qrCaption.style.letterSpacing = "0.08em";
+  qrCaption.style.textTransform = "uppercase";
+  qrCaption.style.textAlign = "center";
+
+  qrBlock.append(qrImage, qrCaption);
+  printPhoto.replaceWith(aside);
+  aside.append(printPhoto, qrBlock);
+}
 
 function setupMetallicBackground(container) {
   const canvas = document.createElement("canvas");

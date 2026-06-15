@@ -172,7 +172,7 @@ function setupResumeQr() {
   qrBlock.style.justifyItems = "center";
   qrBlock.style.gap = "0.12rem";
   qrBlock.style.width = "100%";
-  qrBlock.style.maxWidth = "104px";
+  qrBlock.style.maxWidth = "94px";
   qrBlock.style.padding = "0.28rem 0.3rem 0.24rem";
   qrBlock.style.border = "1px solid #cbd5e1";
   qrBlock.style.borderRadius = "0.65rem";
@@ -182,8 +182,8 @@ function setupResumeQr() {
   qrImage.src = qrUrl;
   qrImage.alt = "QR code to the live Leonard Lee resume";
   qrImage.className = "print-qr";
-  qrImage.style.width = "74px";
-  qrImage.style.height = "74px";
+  qrImage.style.width = "67px";
+  qrImage.style.height = "67px";
   qrImage.style.display = "block";
 
   const qrCaption = document.createElement("span");

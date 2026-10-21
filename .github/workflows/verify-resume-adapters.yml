@@ -1,0 +1,48 @@
+# LEEWAY HEADER — DO NOT REMOVE
+# REGION: LEEWAY_PROJECTION / CI
+# TAG: LEEWAY-RESUME-TEST-WORKFLOW-20261021
+# WHO: Leonard Jerome Lee (Creator); AI assistant (test integration)
+# WHAT: Source-level validation for public resume and Agent Lee adapters
+# WHEN: 2026-10-21
+# WHERE: .github/workflows/verify-resume-adapters.yml
+# WHY: Provide executable tests for the protected website projection
+# HOW: GitHub-hosted Node runtime, syntax checks and deterministic VM tests
+# AUTHORIZED ROLE: Creator-requested repository validation, no production execution claim
+# LICENSE: All rights reserved
+name: Verify resume and Agent Lee adapter
+on:
+  push:
+    paths:
+      - 'index.html'
+      - 'agent-lee.js'
+      - 'resume-fabric-adapters.js'
+      - 'resume-management.html'
+      - 'resume-general.html'
+      - 'career-resumes.css'
+      - 'tests/resume-fabric.test.cjs'
+      - '.github/workflows/verify-resume-adapters.yml'
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'agent-lee.js'
+      - 'resume-fabric-adapters.js'
+      - 'resume-management.html'
+      - 'resume-general.html'
+      - 'career-resumes.css'
+      - 'tests/resume-fabric.test.cjs'
+      - '.github/workflows/verify-resume-adapters.yml'
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check source syntax
+        run: |
+          node --check agent-lee.js
+          node --check resume-fabric-adapters.js
+          node --check tests/resume-fabric.test.cjs
+      - name: Test source contracts
+        run: node --test tests/resume-fabric.test.cjs

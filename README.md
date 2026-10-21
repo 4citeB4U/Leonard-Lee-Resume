@@ -102,7 +102,7 @@ This repo is the AI portfolio command center. Use it to:
 
 ## Three Resume Versions (2026-10-21)
 
-This repository keeps the original technology portfolio and adds two targeted, print-friendly employment resumes.
+The original technology portfolio remains the **only visible homepage resume**. Two alternative, print-friendly employment resumes are retained as **direct-link backups** for applications. They are intentionally not shown in the public landing-page navigation.
 
 | Resume | Intended applications | File |
 | --- | --- | --- |
@@ -113,6 +113,15 @@ This repository keeps the original technology portfolio and adds two targeted, p
 Each resume contains **414-303-8580** and **LeonardLee6@outlook.com**. New resumes use [career-resumes.css](career-resumes.css) with mobile-friendly and printable layouts; choose **Print / Save PDF** on those pages.
 
 **Source/evidence discipline:** role names, companies and dates are drawn from [leonard_lee_resume.csv](leonard_lee_resume.csv) already in this repository. These entries are owner-maintained resume history, **not independent employer verification**. Do not invent metrics, certification status, or driving endorsements. Verify employment dates, licensing/endorsements and training records before distributing to employers. No existing technical resume files were replaced.
+
+
+## Website Agent Lee: canonical Voice Fabric and Digital Brain
+
+The existing `index.html` layout remains the visible technical resume. The Agent Lee panel in `agent-lee.js` delegates speech to the existing `LeeWay-Voice-Fabric/src/voice-sdk.js` through `resume-fabric-adapters.js`, using the **central** `profiles/agent-lee-active-voice.v1.json` package identity. The UI discloses Voice Fabric connection, selected provider where reported, and failed/unavailable status. There is **no independent browser speech synthesis** fallback in the resume. Audio completion does not prove the listener heard it.
+
+The same adapter retrieves public project data from RapidWebDevelop's Digital Brain (`brain/public-project-adapter.js`, `brain/generated-projects.json` and public GitHub inventory). It provides cited public-project summaries and a link to the relevant Digital Brain/project source. This is a deterministic catalog-based answer layer, **not** a claim that the entire Digital Brain runtime or arbitrary LLM/model capabilities are running on the resume website. Live health, audio playback and cross-site knowledge parity need browser/device acceptance tests.
+
+Tests: `node --check agent-lee.js`, `node --check resume-fabric-adapters.js`, then `node --test tests/resume-fabric.test.cjs` (also wired to GitHub Actions). The main `index.html` never exposes a resume selector; print the backups using the direct links above.
 
 ## 📌 Live Demo
 

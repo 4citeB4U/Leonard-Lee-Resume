@@ -100,6 +100,20 @@ This repo is the AI portfolio command center. Use it to:
 - `DEPLOYMENT-GUIDE.md` — deployment and launch notes
 - assets/ — visual portfolio assets and share materials
 
+## Three Resume Versions (2026-10-21)
+
+This repository keeps the original technology portfolio and adds two targeted, print-friendly employment resumes.
+
+| Resume | Intended applications | File |
+| --- | --- | --- |
+| Technology & Professional | AI systems, development, technology leadership, consulting | [index.html](index.html) (existing, preserved) |
+| Management & Operations | Operations manager, logistics supervisor, fleet and transportation leadership | [resume-management.html](resume-management.html) |
+| General Employment | Transportation, delivery, warehouse, maintenance, construction and customer service | [resume-general.html](resume-general.html) |
+
+Each resume contains **414-303-8580** and **LeonardLee6@outlook.com**. New resumes use [career-resumes.css](career-resumes.css) with mobile-friendly and printable layouts; choose **Print / Save PDF** on those pages.
+
+**Source/evidence discipline:** role names, companies and dates are drawn from [leonard_lee_resume.csv](leonard_lee_resume.csv) already in this repository. These entries are owner-maintained resume history, **not independent employer verification**. Do not invent metrics, certification status, or driving endorsements. Verify employment dates, licensing/endorsements and training records before distributing to employers. No existing technical resume files were replaced.
+
 ## 📌 Live Demo
 
 Visit the public live page: [https://4citeb4u.github.io/Leonard-Lee-Resume](https://4citeb4u.github.io/Leonard-Lee-Resume)

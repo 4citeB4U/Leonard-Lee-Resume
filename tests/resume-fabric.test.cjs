@@ -105,3 +105,28 @@ test("answers render as text, not untrusted HTML", () => {
   assert.match(agent,/document\.createTextNode\(String\(text\)\)/);
   assert.doesNotMatch(agent,/message\.innerHTML/);
 });
+
+test("recovered management and commercial driver history is represented without rewriting the technical resume", () => {
+  const management = read("resume-management.html");
+  const general = read("resume-general.html");
+  for (const page of [management, general]) {
+    for (const employer of ["Crothall Laundry", "Superior Health Linens",
+      "Bay &amp; Bay", "Nicole&#39;s Healthcare Service"]) {
+      // HTML ampersands may be rendered as entities by the generator.
+      const plain = page.replace(/&amp;/g, "&").replace(/&#39;/g, "'");
+      assert.ok(plain.includes(employer.replace(/&amp;/g, "&").replace(/&#39;/g, "'")), employer);
+    }
+    assert.match(page, /2019/);
+    assert.match(page, /2024/);
+    assert.match(page, /414-303-8580/);
+    assert.doesNotMatch(page, /###-##|2912 North 23rd|2912 N 23rd|last 4 digits/i);
+  }
+  assert.match(management, /Senior Area Manager/);
+  assert.match(management, /Night Supervisor for Drivers/);
+  assert.match(management, /Osirus International/);
+  assert.match(general, /Lupus Express/);
+  assert.match(general, /Robert L\. Gast/);
+  assert.match(general, /Metro Air Service/);
+  assert.match(general, /Dana Transport/);
+  assert.doesNotMatch(management, /Crothall Laundry Service<\/p>[\s\S]*?<h3>Night Shift Driver Supervisor/);
+});

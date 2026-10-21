@@ -1,0 +1,52 @@
+/*
+LEEWAY HEADER — DO NOT REMOVE
+REGION: PROFESSIONAL_ARTIFACTS / CAREER_RESUME_TRACKS
+TAG: LEEWAY-RESUME-CSS-20261021
+WHO: Leonard Lee (owner); AI drafting assistant (implementation)
+WHAT: Shared print-friendly style for management and general employment resumes
+WHEN: 2026-10-21
+WHERE: 4citeB4U/Leonard-Lee-Resume / career-resumes.css
+WHY: Present existing employment history for different applicant audiences
+HOW: Accessible, static CSS; one-column ATS-friendly HTML; no remote dependencies
+AUTHORIZED ROLE: Creator-requested resume addition, review branch
+LICENSE: All rights reserved; no independent license grant asserted
+*/
+:root{--ink:#182438;--muted:#46546a;--accent:#184d76;--line:#d5dee7;--bg:#eef2f6}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:var(--ink);font-size:15px;line-height:1.48}
+a{color:var(--accent);text-underline-offset:2px}
+a:focus-visible,button:focus-visible{outline:3px solid #e4a540;outline-offset:3px}
+.page-frame{max-width:930px;margin:0 auto;padding:20px 18px 38px}
+.track-nav{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin:0 0 16px;padding:12px 16px;background:#142b46;color:#fff;border-radius:10px}
+.track-nav .brand{font-weight:bold;letter-spacing:.06em;font-size:.84rem}
+.track-links{display:flex;flex-wrap:wrap;gap:8px}
+.track-links a{padding:7px 11px;border:1px solid #7a90a8;border-radius:6px;color:#f6f9fd;text-decoration:none;font-size:.88rem}
+.track-links a[aria-current="page"]{color:#162b46;background:#fff;border-color:#fff;font-weight:bold}
+.track-links a:hover{background:#345b7d}
+.track-links a[aria-current="page"]:hover{background:#fff}
+.action-row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 14px;color:var(--muted);font-size:.89rem}
+button.print{appearance:none;background:var(--accent);color:#fff;border:0;border-radius:6px;font:inherit;font-weight:bold;padding:9px 15px;cursor:pointer}
+.sheet{background:#fff;margin:0 auto;padding:41px 49px;border:1px solid #d4dce6;box-shadow:0 10px 36px rgba(22,37,57,.09)}
+.resume-head{text-align:left;border-bottom:3px solid var(--accent);padding-bottom:16px}
+.eyebrow{font-size:.75rem;text-transform:uppercase;font-weight:bold;letter-spacing:.13em;color:var(--accent)}
+h1{font-size:2.35rem;line-height:1.06;letter-spacing:-.03em;margin:6px 0}
+.headline{font-size:1.04rem;font-weight:bold;color:var(--accent);margin:0 0 10px}
+.contact{display:flex;gap:5px 14px;flex-wrap:wrap;color:var(--muted);font-size:.87rem}
+.contact a{color:inherit}
+h2{font-size:.94rem;text-transform:uppercase;letter-spacing:.075em;border-bottom:1px solid var(--line);padding-bottom:5px;margin:25px 0 10px;color:var(--accent)}
+p{margin:5px 0 12px}
+.skill-line{margin:0;color:#293a50}
+.role{margin:14px 0 19px;break-inside:avoid-page}
+.role-top{display:flex;justify-content:space-between;gap:6px 16px;align-items:baseline;flex-wrap:wrap}
+.role h3{font-size:.99rem;margin:0}
+.organization{font-weight:bold;color:#344458;font-size:.93rem;margin:1px 0 4px}
+.date{font-size:.86rem;color:#4b5869;white-space:nowrap}
+ul{padding-left:21px;margin:6px 0 0}
+li{margin:3px 0}
+.edu h3{font-size:.97rem;margin:2px 0}
+.edu p,.credentials p{margin:3px 0}
+.resume-footer{max-width:930px;margin:15px auto 0;color:#506074;font-size:.78rem;text-align:center}
+@media(max-width:650px){.page-frame{padding:10px 8px}.sheet{padding:26px 21px}.track-nav{border-radius:5px}.contact{display:block}.contact span,.contact a{display:inline-block;margin-right:10px}.role-top{display:block}h1{font-size:2rem}}
+@page{size:letter;margin:.55in}
+@media print{body{background:#fff;font-size:10pt;line-height:1.32}.page-frame{max-width:none;padding:0}.sheet{border:0;box-shadow:none;padding:0}.track-nav,.action-row,.resume-footer{display:none!important}a{color:inherit;text-decoration:none}h1{font-size:22pt}h2{margin:15px 0 6px;font-size:10pt}.role{margin:8px 0 11px;break-inside:avoid}.role h3{font-size:10pt}.organization,.date,.contact{font-size:9pt}.resume-head{padding-bottom:9px}ul{margin-top:4px}li{margin:1px 0}p{margin:3px 0 7px}}

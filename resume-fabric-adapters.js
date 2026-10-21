@@ -130,7 +130,9 @@ EVIDENCE: Repository contracts inspected; this adapter does not claim live audio
     if (!record || record.is_private || record.private || record.visibility === "PRIVATE") return;
     const url = allowedUrl(record.repo || record.html_url || record.repository_url);
     if (!url || !url.startsWith("https://github.com/4citeB4U/")) return;
-    const key = url.toLowerCase().replace(/\/$/, "");
+    const key = record.id && String(record.id).startsWith("proj::")
+      ? "curated:" + String(record.id)
+      : url.toLowerCase().replace(/\/$/, "");
     const item = {
       name: String(record.label || record.name || "").slice(0, 140),
       description: String(record.desc || record.description || "").slice(0, 1200),

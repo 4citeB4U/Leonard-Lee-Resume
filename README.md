@@ -115,6 +115,19 @@ Each resume contains **414-303-8580** and **LeonardLee6@outlook.com**. New resum
 **Source/evidence discipline:** role names, companies and dates are drawn from [leonard_lee_resume.csv](leonard_lee_resume.csv) already in this repository. These entries are owner-maintained resume history, **not independent employer verification**. Do not invent metrics, certification status, or driving endorsements. Verify employment dates, licensing/endorsements and training records before distributing to employers. No existing technical resume files were replaced.
 
 
+## Employment-history reconciliation — October 21, 2026
+
+**The existing technology homepage remains unchanged.** The two standalone printable backup resumes now draw on much more of Leonard Lee's historical experience in commercial trucking, ownership, management, and field work.
+
+**Newly recovered private source records (not committed here):**
+- An owner-authored management CV from an April 2017 Gmail attachment, which identifies Osirus International LLC and associated operating businesses, International Profit Associates Senior Area Manager (Lower Eastern Wisconsin), Nevels Joe Landscape project crew leadership, and multiple trucking/carrier relationships.
+- Signed November 2024 IntelliApp carrier applications, which list Bay & Bay lease owner-operator, Crothall company driver, Superior Health Linens night driver supervisor, Lupus Express, Trans X, Metro Air Service, Dana Transport, Nicole's Healthcare Service manager, Hertz Rental manager and other assignments.
+- Bay & Bay 2020 trip-and-pay records and 2021 payment correspondence; January 2026 Robert L. Gast freight settlement records.
+
+**Conflict-resolution and privacy rules:** A 2024 applicant-entered employer history is first-party *self-report*, not verification by the employers. The 2024 application lists Crothall as Company Driver (2013–2018) and Superior Health Linens as Night Supervisor for Drivers (2019–2020). An older resume instead calls Crothall a night-shift driver supervisor (2010–2014). The backup pages distinguish these rather than combining titles as one verified job. Historic Couriers Logistics versus Carriers Logistics legal identity, reported dates, overlapping assignments, and CDL/medical/endorsement validity remain subject to independent confirmation. Job applications to prospective carriers never become employment entries merely because a signed copy exists.
+
+**Privacy:** Source applications include sensitive personal information. No scanned application, employer contact list, SSN fragment, license number, birth date, home address, private settlement amount or protected personnel record is to be added to this public GitHub repository. A comprehensive source ledger belongs in a private, owner-controlled location.
+
 ## Website Agent Lee: canonical Voice Fabric and Digital Brain
 
 The existing `index.html` layout remains the visible technical resume. The Agent Lee panel in `agent-lee.js` delegates speech to the existing `LeeWay-Voice-Fabric/src/voice-sdk.js` through `resume-fabric-adapters.js`, using the **central** `profiles/agent-lee-active-voice.v1.json` package identity. The UI discloses Voice Fabric connection, selected provider where reported, and failed/unavailable status. There is **no independent browser speech synthesis** fallback in the resume. Audio completion does not prove the listener heard it.

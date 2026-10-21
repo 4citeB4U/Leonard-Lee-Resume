@@ -1,3 +1,16 @@
+/*
+LEEWAY HEADER — DO NOT REMOVE
+REGION: LEEWAY_PROJECTION / RESUME_AGENT
+TAG: LEEWAY-RESUME-AGENT-WIRING-20261021
+WHO: Leonard Jerome Lee (Creator); AI assistant (integration author)
+WHAT: Wire existing resume avatar to the canonical Voice Fabric and Digital Brain adapters.
+WHEN: 2026-10-21
+WHERE: Leonard-Lee-Resume/agent-lee.js
+WHY: Retire independent browser-TTS speech and fixed-only project knowledge.
+HOW: Consume LeeWayResumeVoice and LeeWayResumeKnowledge, safely render responses.
+AUTHORIZED ROLE: Creator-requested website projection; does not modify central voice or brain authorities.
+LICENSE: All rights reserved; no new license grant.
+*/
 // Agent Lee AI Assistant - Interactive Narrator and Guide
 
 class AgentLee {
@@ -17,7 +30,9 @@ class AgentLee {
       "what does agent lee do?": "I provide narration, guided responses, section reading, and a polished assistant experience that can scale into a broader agent workflow.",
       "what is this resume?": "This is Leonard Lee's LeeWay Professional Evidence Record. It presents his identity, governance model, project proof, ecosystem repositories, and leadership history in the same order the website uses.",
       "give me a resume tour": "I can walk you through the resume section by section, starting with identity, then governance, skills, projects, repository evidence, show work, leadership, achievements, and education.",
-      "what is rapidwebdevelop?": "RapidWebDevelop LLC is Leonard's company focused on digital ownership, web experiences, and governance-first AI systems.",
+      "what is rapidwebdevelop?": "RapidWebDevelop LLC is Leonard's company focused on digital ownership, web experiences, and governance-first AI systems. Its public Digital Brain is available at rapidwebdevelop.com.",
+      "where does agent lee's voice come from?": "Speech on this resume is requested from the canonical LeeWay Voice Fabric, not independent browser speech synthesis. Connection and provider status appear in this panel.",
+      "where is the digital brain?": "Visit rapidwebdevelop.com to explore the canonical LeeWay Digital Brain, published project records, and their source/evidence links.",
       "what is leeway?": "LEEWAY is Leonard's standards framework for web engineering and AI governance, designed to support safe, scalable agent systems.",
       "how can agent lee help me?": "I can guide you through this resume, explain Leonard's technical strengths, and connect his projects to practical business outcomes.",
       "tell me about leonard lee": "Leonard Lee is a full-stack developer and AI systems architect with 15+ years of leadership and operations experience, focused on agent-first applications, voice interfaces, governance layers, and product-ready systems.",
@@ -36,6 +51,13 @@ class AgentLee {
     this.createAgentLeeInterface();
     this.addEventListeners();
     this.startEngagementTracking();
+    this.knowledgeReady = window.LeeWayResumeKnowledge?.load?.().then((result) => {
+      const el = document.getElementById("agent-lee-knowledge-source");
+      if (el) el.textContent = result.state === "CATALOG_CONNECTED"
+        ? "Project knowledge: RapidWebDevelop Digital Brain (" + result.count + " public records loaded)"
+        : "Project knowledge: Digital Brain sources unavailable; verified local FAQ only.";
+      return result;
+    });
   }
 
   getVisitCount() {
@@ -93,74 +115,12 @@ class AgentLee {
   }
 
   initializeVoiceSelection() {
-    if (!("speechSynthesis" in window)) {
-      return;
-    }
-
-    const refreshVoice = () => {
-      this.selectedVoice = this.pickPreferredVoice();
+    // Agent Lee never owns a duplicate TTS engine. This page is a projection of Voice Fabric.
+    if (!window.LeeWayResumeVoice) return;
+    window.LeeWayResumeVoice.onState = ({ state, detail }) => {
+      const el = document.getElementById("agent-lee-voice-source");
+      if (el) el.textContent = "LeeWay Voice Fabric · " + state + " · " + detail;
     };
-
-    refreshVoice();
-    if (typeof window.speechSynthesis.onvoiceschanged !== "undefined") {
-      window.speechSynthesis.onvoiceschanged = refreshVoice;
-    }
-  }
-
-  getVoiceProfile() {
-    const fallback = {
-      rate: this.hmvMode ? 0.87 : 0.95,
-      pitch: this.hmvMode ? 0.96 : 1.02,
-      volume: 0.92,
-      voiceName: "Google US English"
-    };
-
-    if (typeof window.getVoiceSettings === "function") {
-      const settings = window.getVoiceSettings();
-      return {
-        ...fallback,
-        ...settings,
-        rate: this.hmvMode ? 0.87 : (settings.rate || fallback.rate),
-        pitch: this.hmvMode ? 0.96 : (settings.pitch || fallback.pitch),
-        volume: settings.volume || fallback.volume
-      };
-    }
-
-    return fallback;
-  }
-
-  pickPreferredVoice() {
-    const voices = window.speechSynthesis?.getVoices?.() || [];
-    if (!voices.length) {
-      return null;
-    }
-
-    const profile = this.getVoiceProfile();
-    const preferredNames = [
-      profile.voiceName,
-      "Microsoft Aria Online (Natural)",
-      "Microsoft Jenny Online (Natural)",
-      "Google US English",
-      "Google UK English Female",
-      "Samantha",
-      "Daniel"
-    ].filter(Boolean).map((name) => name.toLowerCase());
-
-    return voices
-      .map((voice) => {
-        const name = voice.name.toLowerCase();
-        const lang = (voice.lang || "").toLowerCase();
-        let score = 0;
-
-        if (lang.startsWith("en")) score += 3;
-        if (preferredNames.some((preferred) => name.includes(preferred))) score += 6;
-        if (name.includes("natural")) score += 2;
-        if (!voice.default) score += 1;
-        if (!voice.localService) score += 1;
-
-        return { voice, score };
-      })
-      .sort((a, b) => b.score - a.score)[0]?.voice || null;
   }
 
   getResumeTourSteps() {
@@ -279,9 +239,15 @@ class AgentLee {
               <button class="faq-btn" data-question="tell me about leonard lee">About Leonard Lee</button>
             </div>
           </div>
+          <div id="agent-lee-voice-source" class="agent-lee-provenance" role="status">
+            Voice source: LeeWay Voice Fabric · NOT_CONNECTED · No alternate browser voice will be substituted.
+          </div>
+          <div id="agent-lee-knowledge-source" class="agent-lee-provenance" role="status">
+            Project knowledge: connecting to RapidWebDevelop Digital Brain public sources.
+          </div>
           <div class="agent-lee-chat">
             <div class="agent-lee-chat-window" id="agent-lee-chat-window">
-              <div class="agent-lee-chat-message bot-message">Hi, I'm Agent Lee. Ask me about Leonard's AI work, coaching, or agent systems.</div>
+              <div class="agent-lee-chat-message bot-message">I'm Agent Lee. Voice output is governed by LeeWay Voice Fabric. I use public project records from the RapidWebDevelop Digital Brain to help answer project questions.</div>
             </div>
             <div class="agent-lee-chat-input">
               <input id="agent-lee-user-input" type="text" placeholder="Ask Agent Lee anything..." aria-label="Ask Agent Lee anything">
@@ -384,6 +350,16 @@ class AgentLee {
         margin: 1rem 0 0.75rem;
         color: var(--secondary, #2563eb);
         font-size: 1rem;
+      }
+
+      .agent-lee-provenance {
+        margin-top: 0.7rem;
+        padding: 0.5rem 0.7rem;
+        border-left: 3px solid #2563eb;
+        background: #f0f7ff;
+        color: #20364c;
+        font-size: 0.76rem;
+        line-height: 1.4;
       }
 
       .agent-lee-chat {
@@ -581,8 +557,8 @@ class AgentLee {
   }
 
   startFullNarration() {
-    if (!("speechSynthesis" in window)) {
-      this.showResponse("Sorry, your browser doesn't support speech synthesis.");
+    if (!window.LeeWayResumeVoice) {
+      this.showResponse("LeeWay Voice Fabric adapter is unavailable. The resume remains readable.");
       return;
     }
 
@@ -654,38 +630,24 @@ class AgentLee {
   }
 
   speak(text, callback) {
-    if (!("speechSynthesis" in window)) {
-      return;
+    const bridge = window.LeeWayResumeVoice;
+    if (!bridge) {
+      this.showResponse("LeeWay Voice Fabric is not connected; text remains available.");
+      if (this.isNarrating) this.stopNarration();
+      return Promise.resolve(false);
     }
-
-    if (this.utterance) {
-      speechSynthesis.cancel();
-    }
-
-    this.selectedVoice = this.pickPreferredVoice() || this.selectedVoice;
-    this.utterance = new SpeechSynthesisUtterance(text);
-    const profile = this.getVoiceProfile();
-    this.utterance.rate = profile.rate;
-    this.utterance.pitch = profile.pitch;
-    this.utterance.volume = profile.volume;
-    this.utterance.lang = this.selectedVoice?.lang || "en-US";
-    if (this.selectedVoice) {
-      this.utterance.voice = this.selectedVoice;
-    }
-
-    if (callback) {
-      this.utterance.onend = callback;
-    }
-
-    speechSynthesis.speak(this.utterance);
+    return bridge.speak(String(text), callback).then((ok) => {
+      if (!ok && this.isNarrating) {
+        this.stopNarration();
+        this.showResponse("LeeWay Voice Fabric could not complete the narration. No other voice was substituted.");
+      }
+      return ok;
+    });
   }
 
   stopNarration() {
     this.isNarrating = false;
-    if (this.utterance) {
-      speechSynthesis.cancel();
-      this.utterance = null;
-    }
+    window.LeeWayResumeVoice?.stop?.();
 
     const startBtn = document.getElementById("start-narration");
     const stopBtn = document.getElementById("stop-narration");
@@ -697,10 +659,17 @@ class AgentLee {
     });
   }
 
-  answerQuestion(question) {
-    const answer = this.getKnowledgeResponse(question);
-    const finalAnswer = answer || "I'm sorry, I don't have information about that yet. Try asking about Agent Lee, the resume tour, RapidWebDevelop, Leonard's experience, or LEEWAY.";
-    this.appendChatMessage("Agent Lee", finalAnswer);
+  async answerQuestion(question) {
+    const localAnswer = this.getKnowledgeResponse(question);
+    let projectAnswer = null;
+    if (window.LeeWayResumeKnowledge) {
+      await window.LeeWayResumeKnowledge.load();
+      projectAnswer = window.LeeWayResumeKnowledge.answer(question);
+    }
+    const finalAnswer = projectAnswer?.text || localAnswer ||
+      "I do not have sufficient verified information for that question in the public Digital Brain catalog. " +
+      "Please explore RapidWebDevelop.com for project records and evidence; I will not invent project details.";
+    this.appendChatMessage("Agent Lee", finalAnswer, projectAnswer?.url || null);
     this.showResponse(finalAnswer);
     this.speak(finalAnswer);
   }
@@ -720,15 +689,29 @@ class AgentLee {
       : null;
   }
 
-  appendChatMessage(author, text) {
+  appendChatMessage(author, text, sourceUrl = null) {
     const chatWindow = document.getElementById("agent-lee-chat-window");
-    if (!chatWindow) {
-      return;
-    }
-
+    if (!chatWindow) return;
     const message = document.createElement("div");
-    message.className = `agent-lee-chat-message ${author === "You" ? "user-message" : "bot-message"}`;
-    message.innerHTML = `<strong>${author}:</strong> ${text}`;
+    message.className = "agent-lee-chat-message " + (author === "You" ? "user-message" : "bot-message");
+    const label = document.createElement("strong");
+    label.textContent = author + ": ";
+    message.appendChild(label);
+    message.appendChild(document.createTextNode(String(text)));
+    if (sourceUrl) {
+      try {
+        const url = new URL(sourceUrl);
+        if (url.protocol === "https:" &&
+            ["github.com","rapidwebdevelop.com","4citeb4u.github.io"].includes(url.hostname)) {
+          const link = document.createElement("a");
+          link.href = url.href;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.textContent = " Open verified public source";
+          message.appendChild(link);
+        }
+      } catch {}
+    }
     chatWindow.appendChild(message);
     chatWindow.scrollTop = chatWindow.scrollHeight;
   }

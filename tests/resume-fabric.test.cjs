@@ -47,7 +47,8 @@ test("avatar delegates speech to canonical Voice Fabric; no independent browser 
   const adapter = read("resume-fabric-adapters.js");
   assert.match(agent, /window\.LeeWayResumeVoice/);
   assert.match(adapter, /LeeWayVoiceClient/);
-  assert.match(adapter, /LeeWay-Voice-Fabric\/src\/voice-sdk\.js/);
+  assert.match(adapter, /https:\/\/4citeb4u\.github\.io\/LeeWay-Voice-Fabric/);
+  assert.match(adapter, /\/src\/voice-sdk\.js/);
   assert.match(adapter, /agent-lee-active-voice\.v1\.json/);
   assert.doesNotMatch(agent, /SpeechSynthesisUtterance|speechSynthesis\.(speak|cancel)/);
   assert.match(agent, /agent-lee-voice-source/);
